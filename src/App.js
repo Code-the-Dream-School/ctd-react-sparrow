@@ -3,7 +3,7 @@ import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
 
 /*
-  Instructions for Lesson 1.2
+ Instructions for Lesson 1.2
   
 //Move List into New "Todo List" Component
 [x] Inside /src directory, create a new file called TodoList.js
