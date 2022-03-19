@@ -31,9 +31,9 @@ function TodoList() {
           </li>
         )
       })}
-    </ul>
-        </>
+      </ul>
+    </>
     )
-}
+  }
 
 export default TodoList;
