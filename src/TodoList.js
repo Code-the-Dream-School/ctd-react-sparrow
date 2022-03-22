@@ -1,39 +1,25 @@
-import React from 'react';
-
-/* an array with 3 objects that have 2 properties: id and title */
-const todoList = [
-    {
-      id:1, 
-      title: "first"
-    },
-    {
-      id:2, 
-      title: "second"},
-    {
-      id:3,
-      title:"third"
-    }
-  ]
-
-/* 
-  a functional component that maps through an array of data
-  and renders specific values to back to the DOM
+import React from 'react'
+import TodoListItem from './TodoListItem'
+ 
+/*
+ a functional component that takes in props and maps through that data
+ it will then return a div with key and a TodoListItem component that
+ passes down props
 */
-function TodoList() {
-  return(
-    <>
-      <ul>
-      {/* maps over the array, the key attribute uses the object id */}
-      {todoList.map((item) => {
-        return(
-          <li key={item.id}>
-            <p>{item.title}</p>
-          </li>
-        )
-      })}
-      </ul>
-    </>
-    )
-  }
-
-export default TodoList;
+function TodoList({ todoList }) {
+ return(
+   <>
+     <ul>
+     {todoList.map((item) => {
+       return(
+         <div key={item.id}>
+           <TodoListItem id={item.id} key={item.id} todo={item} />
+         </div>
+       )
+     })}
+   </ul>
+   </>
+ )
+}
+ 
+export default TodoList
