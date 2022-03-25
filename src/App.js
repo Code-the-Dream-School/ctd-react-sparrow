@@ -1,31 +1,11 @@
-import React from 'react';
-const toDoList = [
-  {
-    id: 0,
-    title: "Sweep the floors"
-  }, 
-  {
-    id: 1,
-    title: "Read a book"
-  }, 
-  {
-    id: 2,
-    title: "Unload the dishwasher"
-  }
-];
+import React from 'react';  
+import ToDoList from './todolist';
 
 function App() {
   return (
     <div style={{ textAlign: 'center' }}>
      <h1>To Do List</h1>
-     <ul>
-       {toDoList.map(function(item) {
-         return (
-          <div key= {item.id}>
-            <span>{item.title}</span>
-          </div>)
-       })}
-     </ul>
+     <ToDoList/> 
     </div>
   );
 }
