@@ -20,7 +20,7 @@ function App() {
     <div>
       <h1>Todo List</h1>
 
-      <label htmlFor="add">Add Task: </label>
+      <label htmlFor="add">Add: </label>
       <input id="add" type="text" />
 
       <hr />
