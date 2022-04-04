@@ -1,18 +1,9 @@
 import * as React from "react";
 
 const todoList = [
-  {
-    title: "Complete assignment",
-    id: 1,
-  },
-  {
-    title: "Read React book",
-    id: 2,
-  },
-  {
-    title: "Watch React videos",
-    id: 3,
-  },
+  { id: 1, title: "Complete assignment" },
+  { id: 2, title: "Read React book" },
+  { id: 3, title: "Watch React videos" },
 ];
 
 function App() {
@@ -20,8 +11,8 @@ function App() {
     <div>
       <h1>Todo List</h1>
 
-      <label htmlFor="add">Add: </label>
-      <input id="add" type="text" />
+      <label htmlFor="search">Add: </label>
+      <input id="search" type="text" />
 
       <hr />
 
