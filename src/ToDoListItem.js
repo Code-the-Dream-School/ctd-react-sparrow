@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ToDoListItem = ({todo}) => {
+function ToDoListItem({todo}) {
  return (
     <li >{todo.title}</li>
  )
