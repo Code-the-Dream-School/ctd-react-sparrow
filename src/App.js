@@ -1,18 +1,19 @@
-import React from 'react';  
-import { useState } from 'react/cjs/react.production.min';
+import React from 'react'; 
 import AddToDoForm from './addToDoForm';
 import ToDoList from './todolist';
 
-const [toDoList, setToDoList]= useState([]);
+
 
 function App() {
-  const [newToDo, setNewToDo]= React.useState('');
+  const [toDoList, setToDoList]= React.useState([]);
+  const addToDo= (newToDo)=> {
+    setToDoList([...toDoList, newToDo])
+  }
   return (
     <div style={{ textAlign: 'center' }}>
      <h1>To Do List</h1>
-     <AddToDoForm onAddToDo= {setNewToDo}/>
-     <p>{newToDo}</p>
-     <ToDoList/> 
+     <AddToDoForm onAddToDo={addToDo}/>
+     <ToDoList toDoList={toDoList}/> 
     </div>
   );
 }
