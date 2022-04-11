@@ -15,25 +15,19 @@ function Search(){
   )
   }
 
-
-
 function App() {
-
- const [newTodo, setNewTodo] = React.useState('');
-
+  const [newTodo, setNewTodo] = React.useState('');
   return (
     <div>
-    <h1>To do List for CTD</h1>
-    <AddTodoForm onAddTodo = {setNewTodo} />
-    <p>
-      <strong>{newTodo}</strong>
-    </p>
-    <TodoList/>
-    <Search/>
+      <h1>To do List for CTD</h1>
+      <AddTodoForm onAddTodo = {setNewTodo} />
+      <p>
+        <strong>{newTodo}</strong>
+      </p>
+      <TodoList/>
+      <Search/>
     </div>
   );
 }
-
-
 
 export default App;

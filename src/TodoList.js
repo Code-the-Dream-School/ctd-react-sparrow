@@ -1,7 +1,7 @@
 import React from "react";
 import TodoListItem from "./TodoListItem"
 
-const  list = [
+const  todoList = [
     {
       title: 'Read the book',
       url:'https://courses.robinwieruch.de/p/the-road-to-learn-react',
@@ -32,13 +32,12 @@ const  list = [
       link: '"Github"',
       id: 5, 
     }
-  
-  ];
+   ];
 
   function TodoList () {
     return (
-    <ul>
-        {list.map(function(todo) {
+      <ul>
+        {todoList.map(function(todo) {
          return (
         <TodoListItem key = {todo.id} todo = {todo}/> 
         );
