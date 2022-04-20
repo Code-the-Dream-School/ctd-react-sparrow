@@ -1,9 +1,9 @@
 import * as React from 'react';
 import TodoList from "./TodoList"
-import AddTodoForm from  "./AddTodoForm"
+import AddTodoForm from "./AddTodoForm"
 
 
-function Search(){
+/*function Search(){
   const handleChange = (event) => {
     console.log(event);
   }
@@ -13,21 +13,21 @@ function Search(){
       <input id="search" type = "text" onChange={handleChange} />
     </div>
   )
-  }
+  }*/
 
 function App() {
-  const [newTodo, setNewTodo] = React.useState('');
+  const [todoList, setTodoList] = React.useState([]);
+  const addTodo = (newTodo) => {
+    setTodoList([...todoList, newTodo])
+  }
   return (
     <div>
       <h1>To do List for CTD</h1>
-      <AddTodoForm onAddTodo = {setNewTodo} />
-      <p>
-        <strong>{newTodo}</strong>
-      </p>
-      <TodoList/>
-      <Search/>
+      <AddTodoForm onAddTodo={addTodo} />
+      <TodoList todoList={todoList} />
     </div>
   );
 }
+
 
 export default App;
