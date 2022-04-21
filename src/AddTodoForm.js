@@ -1,29 +1,26 @@
 import React from 'react';
 
 
-//This component renders the form (imput field)
+//This component renders the form (input field)
 const AddTodoForm = ({onAddTodo}) => {
+
+    //This state controls the input field (it makes this component a controlled component)
     let [todoTitle, setTodoTitle] = React.useState('');
 
-    //
-    const handleTitleChange = (event) => {
-        const newTodoTitle = event.target.value;
+    //This event handle controls the information the user enters in the input fied
+    const handleTitleChange = (e) => {
+        const newTodoTitle = e.target.value;
         setTodoTitle(newTodoTitle);
-        console.log(`input field as well but with controlled component ${newTodoTitle}`)
+        console.log(`input field as well but with controlled component ${setTodoTitle(newTodoTitle)}`)
     }
 
     //This a handler function (event listener) that gets trigger once the user clicks on the submit button 
-    const handleAddTodo = (event) => {
-        event.preventDefault();
+    const handleAddTodo = (e) => {
+        e.preventDefault();
         //const todoTitle = event.target.title.value;
         console.log(`input field => ${todoTitle}`);
         //the prop "onAddTodo" is the callback function from the parent component (App) with new state 
-        onAddTodo(
-            {
-                title: todoTitle,
-                id: Date.now()
-            }
-        );
+        onAddTodo(todoTitle);
         //event.target.reset();
         setTodoTitle(''); 
     };

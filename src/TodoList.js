@@ -26,11 +26,11 @@ const todoList = [
 ];
 */
 
-const TodoList = ({todoList}) => {
-  console.log(`this are the props from TodoList => ${todoList}`)
+const TodoList = (props) => {
+  console.log(`these are the props from TodoList => ${props}`)
     return (
         <ul>
-        {todoList.map(function (todo) {
+        {props.todoList.map(function (todo) {
         return (
           <TodoListItem key={todo.id} todo={todo}/>
         )
