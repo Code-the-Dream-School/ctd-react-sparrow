@@ -8,23 +8,24 @@ import TodoList from './TodoList'
 //4.[x]Destructure Props 
 
 const App = () => {
-  //this state manages the data from the user input
-  const [newTodo, setNewTodo] = React.useState('');
-  const [todoLista, setTodoList] = React.useState([]);
+  //This state renders our list with the user input
+  //Passing information down the state to the TodoList component 
+  const [todoList, setTodoList] = React.useState([]);
   console.log();
   
-  //function addTodo(newTodo) {
-  //  setTodoList([...todoLista, newTodo])
-  //
+  //This is my lift state that gets the information from the input 
+  //and adds updates the state 
+  const addTodo = (newTodo) => {
+   setTodoList([...todoList, newTodo])
+  }
 
-  console.log(`setTodoList function --> ${setTodoList}`);
+
   
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={setNewTodo /*addTodo*/} />
-      {<p>{newTodo}</p>}
-      <TodoList todoList={todoLista} />
+      <AddTodoForm onAddTodo={addTodo} />
+      <TodoList todoList={todoList} />
     </div>
   );
 }
