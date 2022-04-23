@@ -1,9 +1,7 @@
 import React from "react";
-
 import TodoListItem from "./TodoListItem";
 
-let TodoList = (props) => {
-  let todoList = props.todoList;
+function TodoList({ todoList }) {
   return (
     <ul>
       {todoList.map((todo) => {
@@ -11,6 +9,5 @@ let TodoList = (props) => {
       })}
     </ul>
   );
-};
-
+}
 export default TodoList;
