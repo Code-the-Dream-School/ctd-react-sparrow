@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 
-function AddTodoForm(props) {
-  let [todoTitle, setTodoTitle] = useState("");
+function AddTodoForm({ onAddTodo }) {
+  const [todoTitle, setTodoTitle] = useState("");
 
-  let handleTitleChange = (e) => {
-    let newTodoTitle = e.target.value;
+  const handleTitleChange = (e) => {
+    const newTodoTitle = e.target.value;
     setTodoTitle(newTodoTitle);
   };
-  let handleAddTodo = (e) => {
+
+  const handleAddTodo = (e) => {
     e.preventDefault();
-    let newTodo = e.target.title.value;
-    props.onAddTodo(newTodo);
+    onAddTodo({
+      title: todoTitle,
+      id: Date.now(),
+    });
 
     setTodoTitle("");
   };
