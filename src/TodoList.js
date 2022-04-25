@@ -1,26 +1,19 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
 
-let todoList = [ {
-    id: 1,
-    title: "Complete Assignment",
-  }, 
-  {
-    id: 2,
-    title: "Clean Room",
-  },
-  {
-    id: 3,
-    title: "Do Taxes",
-  }];
+//this file renders the todo list on the page
 
-const TodoList = () => (
-        <ul>
-        {todoList.map((todo) => (
-          <TodoListItem key={todo.id} todo={todo} />
-        ))};
-
-      </ul>
-    );
+const TodoList = (props) => {
+  const { todoList } = props; 
+  return (
+    < ul >
+    {
+      todoList.map((todo) => (
+        <TodoListItem key={todo.id} todo={todo} />
+      ))
+    }
+      </ul >
+    )
+  }
 
 export default TodoList;
