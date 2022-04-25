@@ -3,8 +3,8 @@ import TodoListItem from './TodoListItem';
 
 //this file renders the todo list on the page
 
-const TodoList = (props) => {
-  const { todoList } = props; 
+const TodoList = ({ todoList }) => { 
+console.log(todoList);
   return (
     < ul >
     {
