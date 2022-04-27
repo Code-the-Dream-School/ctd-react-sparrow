@@ -8,13 +8,13 @@ const AddTodoForm = ({onAddTodo}) => {
     let [todoTitle, setTodoTitle] = React.useState('');
 
     //This event retrieves the information the user enters in the input field
-    //and update the state 
+    //and update the state in the controlled component.
     const handleTitleChange = (e) => {
         const newTodoTitle = e.target.value;
         setTodoTitle(newTodoTitle);
     }
 
-    //This a handler function (event listener) that gets trigger once the user clicks on the submit button 
+    //This is a handler function (event listener) that gets trigger once the user clicks on the submit button 
     //gets the updated state and send it back to the App component with a new id 
     const handleAddTodo = (e) => {
         e.preventDefault();
