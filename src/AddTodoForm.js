@@ -3,6 +3,7 @@ import React from 'react';
 
 //This component renders the form (input field)
 const AddTodoForm = ({onAddTodo}) => {
+    console.log(onAddTodo)
 
     //This state controls the input field (it makes this component a controlled component)
     let [todoTitle, setTodoTitle] = React.useState('');
@@ -26,8 +27,9 @@ const AddTodoForm = ({onAddTodo}) => {
                 id: Date.now()
             }
         );
-        setTodoTitle(''); 
+       setTodoTitle(''); 
     };
+    
   
     return(
         <form onSubmit={handleAddTodo} >
