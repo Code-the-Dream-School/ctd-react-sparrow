@@ -19,7 +19,7 @@ function App() {
   let [todoList, setTodoList] = useSemiPersistentState();
 
   let addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
+    if (newTodo.title !== "") setTodoList([...todoList, newTodo]);
   };
 
   let removeTodo = (id) => {
