@@ -10,12 +10,17 @@ function App() {
     setToDoList([...toDoList, newToDo])
   }
   useEffect(()=> {
-    new Promise((resolve, reject)=> setTimeout(()=> resolve({data: {toDoList: []} }), 2000))
+    fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, 
+    {headers: {Authorization: `Bearer {REACT_APP_AIRTABLE_API_KEY}`}})
     .then((result)=> {
-      setToDoList(result.data.toDoList);
+      console.log('result', result);
+      setToDoList(result.records.toDoList);
       setIsLoading(false);
     })
-  }, []);
+    .catch((error)=> {
+      console.log('error', error)
+    })
+  }, [toDoList]);
   //setting list from the input box
   useEffect(()=> {
     if (isLoading === false) {

@@ -5,7 +5,7 @@ function ToDoListItem({todo, onRemoveToDo}) {
  return (
     <>
       <li id= {todo.id}>
-      {todo.title}
+      {todo.fields.Title}
       <button onClick={() => onRemoveToDo(todo.id)}>Remove</button>
       </li>
       {console.log(todo)}
