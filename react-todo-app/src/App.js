@@ -26,7 +26,7 @@ function App() {
     if (!isLoading) {
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
     }
-  }, [todoList]);
+  }, [todoList]); // eslint-disable-line react-hooks/exhaustive-deps
 
   let addTodo = (newTodo) => {
     if (newTodo.title !== "") setTodoList([...todoList, newTodo]);
