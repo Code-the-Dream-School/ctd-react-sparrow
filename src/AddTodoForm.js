@@ -1,4 +1,5 @@
 import React from 'react';
+import InputWithLabel from './InputWithLabel';
 
 // this file renders the form where each todo item is entered to create the todolist
 
@@ -24,14 +25,9 @@ function AddTodoForm( { onAddTodo }) {
     }
     return (
         <form id="todoForm" onSubmit={handleAddTodo}>
-            <label htmlFor="todoTitle">Title</label>
-            <input 
-            name = "title" 
-            type = "text" 
-            id="todoTitle" 
-            value={todoTitle} 
-            onChange={handleTitleChange}>
-            </input>
+            <InputWithLabel isFocused todoTitle={todoTitle} handleTitleChange={handleTitleChange}>
+                Title
+            </InputWithLabel>
             <button type ="submit">Add</button>
         </form>
     );

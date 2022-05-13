@@ -3,13 +3,12 @@ import TodoListItem from './TodoListItem';
 
 //this file renders the todo list on the page
 
-const TodoList = ({ todoList }) => { 
-console.log(todoList);
+const TodoList = ({ todoList, onRemoveTodo }) => { 
   return (
     < ul >
     {
       todoList.map((todo) => (
-        <TodoListItem key={todo.id} todo={todo} />
+        <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo}/>
       ))
     }
       </ul >
