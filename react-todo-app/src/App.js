@@ -3,20 +3,30 @@ import "./App.css";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 
-function useSemiPersistentState() {
-  let [todoList, setTodoList] = useState(
-    JSON.parse(localStorage.getItem("savedTodoList")) || []
-  );
+function App() {
+  const [todoList, setTodoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-  }, [todoList]);
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          data: {
+            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
+          },
+        });
+      }, 2000);
+    }).then((result) => {
+      setTodoList(result.data.todoList);
+      setIsLoading(false);
+    });
+  }, []);
 
-  return [todoList, setTodoList];
-}
-
-function App() {
-  let [todoList, setTodoList] = useSemiPersistentState();
+  useEffect(() => {
+    if (!isLoading) {
+      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+    }
+  }, [todoList]); // eslint-disable-line react-hooks/exhaustive-deps
 
   let addTodo = (newTodo) => {
     if (newTodo.title !== "") setTodoList([...todoList, newTodo]);
@@ -30,11 +40,15 @@ function App() {
     <>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList
-        className="wrapper"
-        onRemoveTodo={removeTodo}
-        todoList={todoList}
-      />
+      {isLoading ? (
+        <p>Loading ...</p>
+      ) : (
+        <TodoList
+          className="wrapper"
+          onRemoveTodo={removeTodo}
+          todoList={todoList}
+        />
+      )}
     </>
   );
 }
