@@ -5,13 +5,13 @@ import TodoListItem from "./TodoListItem";
 const TodoList = ({ todoList, onRemoveTodo }) => {
   console.log(todoList);
   return (
-    <ul>
+    <ol>
       {todoList.map(function (todo) {
         return (
           <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} />
         );
       })}
-    </ul>
+    </ol>
   );
 };
 

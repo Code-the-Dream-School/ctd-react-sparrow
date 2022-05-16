@@ -40,10 +40,17 @@ const App = () => {
   1.Start: Index where you want to change your array
   2.Delete: Number of elements in the array to remove
   3.Add: Add new Elements
-  
+  */
+
+  /*
   const removeTodo = (id) => {
+    let index = 0;
+    for (let todoIndex of todoList) {
+      index = +todoIndex.id;
+    }
+    console.log(index);
     console.log(id);
-    const removedItem = todoList.splice(id, 1);
+    const removedItem = todoList.splice(index, 1);
     console.log(removedItem);
     setTodoList(removedItem);
   };
