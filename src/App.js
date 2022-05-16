@@ -2,59 +2,49 @@ import React from "react";
 import AddTodoForm from "./Components/AddTodoForm";
 import TodoList from "./Components/TodoList";
 //Challenges for this lesson:
-//1.[x]Create Reusable Input with Label Component.
-//2.[x]Refactor input with label to use Component Composition.
-//3.[x]Add Auto-Focus to Input.
-//4.[x]Add "Remove" Button to List Items.
-
-//This "Custom component" puts together two hooks that usualy go together, it would be a god practice
-//to create a separate file just for this component and imported in my App component.
-const useSemiPersistentState = () => {
-  //This state renders our list with user input, and saved the value in the local storage
-  //Passing information down the state to the TodoList component
-  const [todoList, setTodoList] = React.useState(
-    JSON.parse(localStorage.getItem("savedTodoList")) || []
-  );
-
-  console.log(todoList);
-
-  //Use effect hook which in this case... is use to save the user input
-  React.useEffect(() => {
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-    console.log("what is going on");
-  }, [todoList]);
-  return [todoList, setTodoList];
-};
+//1.[x]Remove Custom Hook.
+//2.[x]Async.
+//3.[x]Add Loading State.
+//4.[]Create Conditional Loading Indicator.
 
 const App = () => {
-  const [todoList, setTodoList] = useSemiPersistentState();
+  //This state renders our list with user input, and saved the value in the local storage
+  //Passing information down the state to the TodoList component
+  const [todoList, setTodoList] = React.useState([]);
+  console.log(todoList);
+
+  //This state is managing the loading mock data
+  const [isLoading, setIsloading] = React.useState(true);
+
+  //Second useEffect hook, which help us to save the data on LocalStorage
+  React.useEffect(() => {
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          data: {
+            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
+          },
+        });
+      }, 2000);
+    }).then((result) => {
+      setTodoList(result.data.todoList);
+      setIsloading(false);
+    });
+  }, []);
+
+  //This is a use effect hook which in this case... is use to save the user input
+  React.useEffect(() => {
+    if (!isLoading) {
+      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+    }
+    console.log("what is going on");
+  }, [todoList]);
 
   //This is my lift state that gets the information from the input
   //and adds updates the state
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
   };
-
-  //Splicemethod( start , delete , add(as many elements as you want))
-  /*
-  1.Start: Index where you want to change your array
-  2.Delete: Number of elements in the array to remove
-  3.Add: Add new Elements
-  */
-
-  /*
-  const removeTodo = (id) => {
-    let index = 0;
-    for (let todoIndex of todoList) {
-      index = +todoIndex.id;
-    }
-    console.log(index);
-    console.log(id);
-    const removedItem = todoList.splice(index, 1);
-    console.log(removedItem);
-    setTodoList(removedItem);
-  };
-  */
 
   const removeTodo = (id) => {
     const removedItem = todoList.filter((todo) => todo.id !== id);
@@ -65,7 +55,11 @@ const App = () => {
     <>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      )}
     </>
   );
 };
