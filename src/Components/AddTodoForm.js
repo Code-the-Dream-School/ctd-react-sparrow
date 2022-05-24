@@ -9,7 +9,7 @@ const AddTodoForm = ({ onAddTodo }) => {
   let [todoTitle, setTodoTitle] = React.useState("");
 
   //This event retrieves the information the user enters in the input field
-  //and update the state in the controlled component.
+  //and update the state in the now controlled component.
   const handleTitleChange = (e) => {
     const newTodoTitle = e.target.value;
     setTodoTitle(newTodoTitle);
@@ -20,6 +20,9 @@ const AddTodoForm = ({ onAddTodo }) => {
   const handleAddTodo = (e) => {
     e.preventDefault();
     console.log(`input field => ${todoTitle}`);
+    // if(todoTitle.trim().length !== 0) {
+    //   alert('input field is empty')
+    // }
     //the prop "onAddTodo" is the callback function from the parent component (App) with new state
     onAddTodo({
       title: todoTitle,

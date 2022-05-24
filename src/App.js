@@ -2,10 +2,11 @@ import React from "react";
 import AddTodoForm from "./Components/AddTodoForm";
 import TodoList from "./Components/TodoList";
 //Challenges for this lesson:
-//1.[x]Remove Custom Hook.
-//2.[x]Async.
-//3.[x]Add Loading State.
-//4.[]Create Conditional Loading Indicator.
+//1.[x]Setup Airtable account.
+//2.[x]Create Enviroment File.
+//3.[x]Generate Airtable API Key.
+//4.[x]Connect to Airtable API.
+//5.[x]Fetch Data from Airtable.
 
 const App = () => {
   //This state renders our list with user input, and saved the value in the local storage
@@ -16,20 +17,21 @@ const App = () => {
   //This state is managing the loading mock data
   const [isLoading, setIsloading] = React.useState(true);
 
-  //Second useEffect hook, which help us to save the data on LocalStorage
   React.useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data: {
-            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
-          },
-        });
-      }, 2000);
-    }).then((result) => {
-      setTodoList(result.data.todoList);
-      setIsloading(false);
-    });
+    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
+    const options = {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+    };
+    fetch(reqUrl, options)
+      .then((result) => {
+        return result.json();
+      })
+      .then((result) => {
+        setTodoList(result.records);
+        setIsloading(false);
+      });
   }, []);
 
   //This is a use effect hook which in this case... is use to save the user input
