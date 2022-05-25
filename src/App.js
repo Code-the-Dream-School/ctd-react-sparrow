@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'; 
 import AddToDoForm from './addToDoForm';
 import ToDoList from './todolist';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
    //read the list from local storage after load 
@@ -10,7 +11,6 @@ function App() {
     setToDoList([...toDoList, newToDo])
   }
   useEffect(()=> {
-    //'https://api.airtable.com/v0/appKFGhZhz2GyZSp8/tbln7S0L5bCcELBkR'
     fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`, 
     {headers: {Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`}})
     .then((result)=> {
@@ -20,9 +20,9 @@ function App() {
       setToDoList(result.records);
       setIsLoading(false);
     })
-    .catch((error)=> {
-      console.log('error', error)
-    })
+    .catch(() => {
+        throw new Error;
+      })
   }, []);
   //setting list from the input box
   useEffect(()=> {
@@ -35,12 +35,19 @@ function App() {
     setToDoList(filteredToDoList);
 }
   return (
-    <div style={{ textAlign: 'center' }}>
-     <h1>To Do List</h1>
-     <AddToDoForm onAddToDo={addToDo}/>
-     {isLoading=== true && <p>Loading....</p>}
-     {isLoading=== false && <ToDoList toDoList={toDoList} onRemoveToDo={removeToDo}/>} 
-    </div>
+   <BrowserRouter>
+   
+     <Routes>
+      <Route exact path="/" element={<h1>Home</h1>}/>
+      <Route path="new" element={<h1>New To Do List</h1>}/>
+      </Routes>
+      <div style={{ textAlign: 'center' }}>
+      <h1>To Do List</h1>
+      <AddToDoForm onAddToDo={addToDo}/>
+      {isLoading=== true && <p>Loading....</p>}
+      {isLoading=== false && <ToDoList toDoList={toDoList} onRemoveToDo={removeToDo}/>} 
+      </div>
+    </BrowserRouter>
   );
 }
 
