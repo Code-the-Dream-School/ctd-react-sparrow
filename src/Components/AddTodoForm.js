@@ -2,7 +2,7 @@ import React from "react";
 import InputWithLabel from "./InputWithLabel";
 
 //This component renders the form (input field)
-const AddTodoForm = ({ onAddTodo }) => {
+const AddTodoForm = ({ onAddTodo, todoList }) => {
   console.log(`This is the prop from the App component ${onAddTodo}`);
 
   //This state controls the input field (it makes this component a controlled component)
@@ -20,15 +20,18 @@ const AddTodoForm = ({ onAddTodo }) => {
   const handleAddTodo = (e) => {
     e.preventDefault();
     console.log(`input field => ${todoTitle}`);
-    // if(todoTitle.trim().length !== 0) {
-    //   alert('input field is empty')
-    // }
-    //the prop "onAddTodo" is the callback function from the parent component (App) with new state
-    onAddTodo({
-      title: todoTitle,
-      id: Date.now(),
-    });
-    setTodoTitle("");
+    if (todoTitle.trim().length === 0) {
+      alert("Input field is empty");
+    } else {
+      //The prop "onAddTodo" is the callback function from the parent component (App) with new state
+      onAddTodo({
+        fields: {
+          Title: todoTitle,
+          id: Date.now(),
+        },
+      });
+      setTodoTitle("");
+    }
   };
 
   return (

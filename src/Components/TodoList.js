@@ -1,7 +1,7 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-//This renders the entire list
+//This component renders the entire list
 const TodoList = ({ todoList, onRemoveTodo }) => {
   console.log(todoList);
   return (
