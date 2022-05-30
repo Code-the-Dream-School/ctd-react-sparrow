@@ -57,15 +57,21 @@ const App = () => {
   };
 
   return (
-    <>
+    <Router>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} todoList={todoList} />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      )}
-    </>
+      <Routes>
+        <Route
+          index
+          exact
+          path="/"
+          element={<AddTodoForm onAddTodo={addTodo} todoList={todoList} />}
+        />
+        <Route
+          path="/new"
+          element={<TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
+        />
+      </Routes>
+    </Router>
   );
 };
 
