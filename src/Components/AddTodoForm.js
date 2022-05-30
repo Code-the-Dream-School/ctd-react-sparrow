@@ -35,15 +35,18 @@ const AddTodoForm = ({ onAddTodo, todoList }) => {
   };
 
   return (
-    <form onSubmit={handleAddTodo}>
-      <InputWithLabel
-        todoTitle={todoTitle}
-        handleTitleChange={handleTitleChange}
-      >
-        Title
-      </InputWithLabel>
-      <button type="submit">Add</button>
-    </form>
+    <>
+      <h1>New Todo List</h1>
+      <form onSubmit={handleAddTodo}>
+        <InputWithLabel
+          todoTitle={todoTitle}
+          handleTitleChange={handleTitleChange}
+        >
+          Title
+        </InputWithLabel>
+        <button type="submit">Add</button>
+      </form>
+    </>
   );
 };
 

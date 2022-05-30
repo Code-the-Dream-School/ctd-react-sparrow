@@ -3,8 +3,8 @@ import AddTodoForm from "./Components/AddTodoForm";
 import TodoList from "./Components/TodoList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Challenges for this lesson:
-//1.[]Install React Router.
-//2.[]Setup Router.
+//1.[x]Install React Router.
+//2.[x]Setup Router.
 //3.[]Add New Route.
 
 const App = () => {
@@ -58,17 +58,17 @@ const App = () => {
 
   return (
     <Router>
-      <h1>Todo List</h1>
+      <h1>Todo List Project</h1>
       <Routes>
         <Route
           index
           exact
           path="/"
-          element={<AddTodoForm onAddTodo={addTodo} todoList={todoList} />}
+          element={<TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
         />
         <Route
           path="/new"
-          element={<TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
+          element={<AddTodoForm onAddTodo={addTodo} todoList={todoList} />}
         />
       </Routes>
     </Router>
