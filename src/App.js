@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Challenges for this lesson:
 //1.[x]Install React Router.
 //2.[x]Setup Router.
-//3.[]Add New Route.
+//3.[x]Add New Route.
 
 const App = () => {
   //This state renders our list with user input, and saved the value in the local storage
