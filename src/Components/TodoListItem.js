@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./TodoListItem.module.css";
 
 //This component renders each element of the list, and the remove button
 //
@@ -17,7 +18,7 @@ const TodoListItem = ({ todo, onRemoveTodo, onEditTodo }) => {
   };
 
   return (
-    <li>
+    <li className={style.listItem}>
       {isToggle ? (
         <form onSubmit={onSubmit}>
           <label htmlFor="edit"></label>
