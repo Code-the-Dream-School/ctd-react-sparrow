@@ -3,8 +3,6 @@ import InputWithLabel from "./InputWithLabel";
 
 //This component renders the form (input field)
 const AddTodoForm = ({ onAddTodo, todoList }) => {
-  console.log(`This is the prop from the App component ${onAddTodo}`);
-
   //This state controls the input field (it makes this component a controlled component)
   let [todoTitle, setTodoTitle] = React.useState("");
 
@@ -27,7 +25,6 @@ const AddTodoForm = ({ onAddTodo, todoList }) => {
       onAddTodo({
         fields: {
           Title: todoTitle,
-          id: Date.now(),
         },
       });
       setTodoTitle("");
