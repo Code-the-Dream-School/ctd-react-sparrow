@@ -1,0 +1,14 @@
+/*
+.nav_container {
+ 
+}
+*/
+
+.nav_list {
+    list-style: none;
+    display: flex;
+    align-items: row;
+    color: black;
+    gap: 4.8rem;
+
+}
