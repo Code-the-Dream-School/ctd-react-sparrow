@@ -2,6 +2,9 @@ import React from "react";
 import AddTodoForm from "./Components/AddTodoForm";
 import TodoList from "./Components/TodoList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import styles from "./App.module.css";
+import NavMain from "./UI/NavMain";
+import "./index.css";
 
 const App = () => {
   //This state renders our list, and saved the value in the local storage
@@ -122,27 +125,30 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <h1>Todo List Project</h1>
-      <Routes>
-        <Route
-          index
-          exact
-          path="/"
-          element={
-            <>
-              <AddTodoForm onAddTodo={addTodo} todoList={todoList} />
-              <TodoList
-                todoList={todoList}
-                onRemoveTodo={removeTodo}
-                onEditTodo={editTodo}
-              />
-            </>
-          }
-        />
-        <Route path="/new" element={<h1>New Todo</h1>} />
-      </Routes>
-    </Router>
+    <div className={styles.app_container}>
+      <Router>
+        <NavMain></NavMain>
+        <Routes>
+          <Route
+            index
+            exact
+            path="/"
+            element={
+              <>
+                <AddTodoForm onAddTodo={addTodo} todoList={todoList} />
+                <TodoList
+                  todoList={todoList}
+                  onRemoveTodo={removeTodo}
+                  onEditTodo={editTodo}
+                />
+              </>
+            }
+          />
+          <Route path="/habit" element={<h1>Habits</h1>} />
+          <Route path="/goal" element={<h1>Goals</h1>} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 

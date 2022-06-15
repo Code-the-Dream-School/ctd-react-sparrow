@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.app_container {
+    height: 100vw;
+    padding: 20px;
+    color: #171212;
+  
+}

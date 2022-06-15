@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@100&display=swap');
+
+body {
+    
+    font-family: 'Inter', sans-serif;
+    background: #83a4d4; /* fallback for old browsers */
+    background: linear-gradient(to left, #806cc9, #aac1e4);
+  }
