@@ -18,30 +18,32 @@ const TodoListItem = ({ todo, onRemoveTodo, onEditTodo }) => {
   };
 
   return (
-    <li className={style.listItem}>
-      {isToggle ? (
-        <form onSubmit={onSubmit}>
-          <label htmlFor="edit"></label>
-          <input id="edit" value={todoTitle} onChange={onChangeEdit} />
-        </form>
-      ) : (
-        <p>{todo.fields.Title}</p>
-      )}
-      <button
-        onClick={() => {
-          setToggle(true);
-        }}
-      >
-        Edit
-      </button>
-      <button
-        onClick={() => {
-          onRemoveTodo(todo.id);
-        }}
-      >
-        Remove
-      </button>
-    </li>
+    <div className={style.listItem_container}>
+      <li className={style.listItem}>
+        {isToggle ? (
+          <form onSubmit={onSubmit}>
+            <label htmlFor="edit"></label>
+            <input id="edit" value={todoTitle} onChange={onChangeEdit} />
+          </form>
+        ) : (
+          <p>{todo.fields.Title}</p>
+        )}
+        <button
+          onClick={() => {
+            setToggle(true);
+          }}
+        >
+          Edit
+        </button>
+        <button
+          onClick={() => {
+            onRemoveTodo(todo.id);
+          }}
+        >
+          Remove
+        </button>
+      </li>
+    </div>
   );
 };
 
