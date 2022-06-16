@@ -4,8 +4,9 @@
 }
 
 .app_container {
+    margin-left: 0px;
     height: 100vw;
     padding: 20px;
     color: #171212;
-  
+    
 }

@@ -5,12 +5,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import NavMain from "./UI/NavMain";
 import "./index.css";
+import SideVar from "./UI/SideVar/SideVar";
 
 const App = () => {
   //This state renders our list, and saved the value in the local storage
   //Passing information down the state to the TodoList component
   const [todoList, setTodoList] = React.useState(
-    JSON.parse(localStorage.getItem("savedTodoList"))
+    JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
   console.log(`todoList state ${todoList}`);
 
