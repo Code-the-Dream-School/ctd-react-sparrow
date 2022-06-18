@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AddToDoForm from './addToDoForm';
 import ToDoList from './todolist';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import style from './ToDoList.module.css';
 
 function App() {
    //read the list from local storage after load 
@@ -21,8 +22,8 @@ function App() {
       setIsLoading(false);
     })
     .catch(() => {
-        throw new Error;
-      })
+      throw new Error;
+    })
   }, []);
   //setting list from the input box
   useEffect(()=> {
@@ -36,16 +37,17 @@ function App() {
 }
   return (
    <BrowserRouter>
-   
      <Routes>
       <Route exact path="/" element={<h1>Home</h1>}/>
       <Route path="new" element={<h1>New To Do List</h1>}/>
       </Routes>
-      <div style={{ textAlign: 'center' }}>
-      <h1>To Do List</h1>
-      <AddToDoForm onAddToDo={addToDo}/>
-      {isLoading=== true && <p>Loading....</p>}
-      {isLoading=== false && <ToDoList toDoList={toDoList} onRemoveToDo={removeToDo}/>} 
+      <div  className= {style.Root}>
+        <div>
+          <h1>To Do List</h1>
+          <AddToDoForm onAddToDo={addToDo}/>
+          {isLoading=== true && <p>Loading....</p>}
+          {isLoading=== false && <ToDoList toDoList={toDoList} onRemoveToDo={removeToDo}/>}
+        </div>   
       </div>
     </BrowserRouter>
   );
