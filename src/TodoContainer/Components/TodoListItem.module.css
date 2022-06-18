@@ -1,0 +1,15 @@
+.listItem {
+    color: blue;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+   
+}
+
+
+
+.listItem_container {
+  border: 1px solid black;
+
+}
