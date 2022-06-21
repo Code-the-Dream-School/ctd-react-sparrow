@@ -26,6 +26,7 @@ const AddTodoForm = ({ onAddTodo, todoList }) => {
       onAddTodo({
         fields: {
           Title: todoTitle,
+          Description: todoTitle.Description,
         },
       });
       setTodoTitle("");
@@ -34,7 +35,6 @@ const AddTodoForm = ({ onAddTodo, todoList }) => {
 
   return (
     <div className={style.label_container}>
-      <h1>Title</h1>
       <form onSubmit={handleAddTodo}>
         <InputWithLabel
           todoTitle={todoTitle}

@@ -1,24 +1,21 @@
 import React from "react";
 import AddTodoForm from "./Components/AddTodoForm";
 import TodoList from "./Components/TodoList";
-import { Routes, Route } from "react-router-dom";
-import style from "./TodoContainer.module.css";
-import ItemDescription from "./Components/ItemDescription";
-import SideVar from "../UI/SideVar/SideVar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+//import styles from "./App.module.css";
 import NavMain from "../UI/NavMain";
+//import "./index.css";
+//import SideVar from "./UI/SideVar/SideVar";
 
-const TodoContainer = () => {
+const App = () => {
   //This state renders our list, and saved the value in the local storage
   //Passing information down the state to the TodoList component
   const [todoList, setTodoList] = React.useState(
     JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
-  console.log(todoList);
 
   //conditional renderting state
   const [isLoading, setIsloading] = React.useState(true);
-
-  const [toggleDescription, setToggleDescription] = React.useState(false);
 
   //This is a use effect hook which in this case is use to save the user input on local storage
   React.useEffect(() => {
@@ -99,7 +96,7 @@ const TodoContainer = () => {
 
   //PATCH method
   const editTodo = (id, newEditTodo) => {
-    console.log("new edit todo", newEditTodo);
+    console.log(newEditTodo);
     const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`;
 
     fetch(EDITurl, {
@@ -115,72 +112,45 @@ const TodoContainer = () => {
       })
       .then((data) => {
         console.log(data);
-        //make a new list
-        const editedTodoList = todoList.map((todoItem) => {
-          if (todoItem.id === data.id) {
-            return {
-              ...todoItem,
-              fields: {
-                ...todoItem.fields,
-                Title: data.fields.Title,
-                Description: data.fields.Description,
-              },
-            };
-          }
-          return todoItem;
-        });
-        setTodoList(editedTodoList);
       });
-  };
-
-  const [itemDescription, setItemDescription] = React.useState("");
-
-  const handleDescription = (id) => {
-    setToggleDescription(!toggleDescription);
-    setItemDescription(id);
+    const editedTodoItem = todoList.map((todoItem) => {
+      if (todoItem.id === id) {
+        todoItem = newEditTodo;
+      }
+      return todoItem;
+    });
+    console.log(editedTodoItem);
+    setTodoList(editedTodoItem);
   };
 
   return (
+    //  <div className={styles.app_container}>
     <div>
-      <Routes>
-        <Route
-          index
-          exact
-          path="/"
-          element={
-            <div className={style.todoCont_split_box}>
-              <div className={style.todoCont_MainNav}>
-                <NavMain />
-              </div>
-
-              <div className={style.todoCont_lelf_pane_sideBar}>
-                <SideVar />
-              </div>
-
-              <div className={style.todoCon_middle_pane_todoList}>
+      <h1>Todo App</h1>
+      <Router>
+        <NavMain></NavMain>
+        <Routes>
+          <Route
+            index
+            exact
+            path="/"
+            element={
+              <>
                 <AddTodoForm onAddTodo={addTodo} todoList={todoList} />
                 <TodoList
                   todoList={todoList}
                   onRemoveTodo={removeTodo}
                   onEditTodo={editTodo}
-                  handleDescription={handleDescription}
                 />
-              </div>
-
-              <div className={style.todoCon_right_pane_description}>
-                {toggleDescription && (
-                  <ItemDescription
-                    todoList={todoList}
-                    itemDescription={itemDescription}
-                  />
-                )}
-              </div>
-            </div>
-          }
-        />
-      </Routes>
+              </>
+            }
+          />
+          <Route path="/habit" element={<h1>Habits</h1>} />
+          <Route path="/goal" element={<h1>Goals</h1>} />
+        </Routes>
+      </Router>
     </div>
   );
 };
 
-export default TodoContainer;
+export default App;

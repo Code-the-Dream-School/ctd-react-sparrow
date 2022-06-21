@@ -2,7 +2,12 @@ import React from "react";
 import TodoListItem from "./TodoListItem";
 
 //This component renders the entire list
-const TodoList = ({ todoList, onRemoveTodo, onEditTodo }) => {
+const TodoList = ({
+  todoList,
+  onRemoveTodo,
+  onEditTodo,
+  handleDescription,
+}) => {
   return (
     <>
       {todoList.map((todoListItems) => {
@@ -12,6 +17,7 @@ const TodoList = ({ todoList, onRemoveTodo, onEditTodo }) => {
             todoListItems={todoListItems}
             onRemoveTodo={onRemoveTodo}
             onEditTodo={onEditTodo}
+            handleDescription={handleDescription}
           />
         );
       })}

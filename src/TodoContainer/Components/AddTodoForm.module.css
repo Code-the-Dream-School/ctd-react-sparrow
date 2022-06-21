@@ -1,9 +1,19 @@
 .label_container {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+   
+}
+
+/*
+.label_container {
     border: 3px solid black;
     display: flex;
     align-items: center;
    
 }
+*/
+
 
 .add_button {
     align-self: flex-end;

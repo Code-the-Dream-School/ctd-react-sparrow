@@ -1,4 +1,4 @@
-/*Icons*/
+/*Icons */
 
 .icon_menu {
     stroke: rgba(52, 49, 49, 0.975);
@@ -18,10 +18,11 @@
     height: 24px;
 }
 
+
 /*sidebar*/
 
 .sideBar {
-   background-color: #060b26; 
+   background-color: #9ca3cc; 
    height: 80px;
    display: flex;
    justify-content: start;
@@ -35,9 +36,9 @@
 }
 
 .nav_menu {
-    background-color: #060b26;
-    width: 250px;
-    height: 100vh;
+    background-color: #919bd5;
+    width:20px;
+    height: 1vh;
     display: flex;
     justify-content: center;
     top: 0;
@@ -70,4 +71,4 @@
     align-items: center;
     padding: 0 16px;
     border-radius: 4px;
-  }
+  }  
