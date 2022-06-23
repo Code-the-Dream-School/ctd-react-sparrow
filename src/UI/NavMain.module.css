@@ -1,9 +1,13 @@
-/*
-.nav_container {
- 
-}
-*/
 
+/*Icon menu*/
+.icon_menu {
+    stroke: rgba(52, 49, 49, 0.975);
+    width: 24px;
+    height: 24px;
+}
+
+
+/*li elements inside of the navBar*/
 .nav_list {
     list-style: none;
     display: flex;
@@ -11,4 +15,4 @@
     color: black;
     gap: 4.8rem;
 
-}
+} 

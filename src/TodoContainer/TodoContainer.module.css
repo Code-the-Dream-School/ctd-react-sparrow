@@ -1,21 +1,21 @@
 
 .todoCont_split_box {
     display: grid;
-    grid-template-columns: 150px 1fr 400px;
-    grid-template-rows: 80px 1fr;
+    grid-template-columns: 150px 1fr 200px;
+    grid-template-rows: 50px 1fr;
     height: 100vh;
 }
 
 
 .todoCont_MainNav {
     background-color: rgb(244, 221, 193);
-    grid-column: 2 / -1;
+    grid-column: 1 / -1;
 
 }
 
 .todoCont_lelf_pane_sideBar {
-    background-color: rgb(97, 206, 206);
-    grid-row: 1/ -1;
+    background-color: rgb(244, 221, 193);
+    grid-row: 2/ -1;
 
     
 }

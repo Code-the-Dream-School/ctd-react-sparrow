@@ -4,7 +4,7 @@ import TodoList from "./Components/TodoList";
 import { Routes, Route } from "react-router-dom";
 import style from "./TodoContainer.module.css";
 import ItemDescription from "./Components/ItemDescription";
-import SideVar from "../UI/SideVar/SideVar";
+import SideBar from "../UI/SideVar/SideBar";
 import NavMain from "../UI/NavMain";
 
 const TodoContainer = () => {
@@ -17,8 +17,6 @@ const TodoContainer = () => {
 
   //conditional renderting state
   const [isLoading, setIsloading] = React.useState(true);
-
-  const [toggleDescription, setToggleDescription] = React.useState(false);
 
   //This is a use effect hook which in this case is use to save the user input on local storage
   React.useEffect(() => {
@@ -41,7 +39,6 @@ const TodoContainer = () => {
         return result.json();
       })
       .then((result) => {
-        console.log(result);
         setTodoList(result.records);
         setIsloading(false);
       });
@@ -133,12 +130,19 @@ const TodoContainer = () => {
       });
   };
 
+  //Item description section
+  const [toggleDescription, setToggleDescription] = React.useState(false);
+
   const [itemDescription, setItemDescription] = React.useState("");
 
   const handleDescription = (id) => {
     setToggleDescription(!toggleDescription);
     setItemDescription(id);
   };
+
+  //sidebar state
+  const [sideBar, setSideBar] = React.useState(false);
+  console.log(sideBar);
 
   return (
     <div>
@@ -150,11 +154,11 @@ const TodoContainer = () => {
           element={
             <div className={style.todoCont_split_box}>
               <div className={style.todoCont_MainNav}>
-                <NavMain />
+                <NavMain onSideBar={setSideBar} />
               </div>
 
               <div className={style.todoCont_lelf_pane_sideBar}>
-                <SideVar />
+                <SideBar sideBar={sideBar} onSideBar={setSideBar} />
               </div>
 
               <div className={style.todoCon_middle_pane_todoList}>

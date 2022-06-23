@@ -10,7 +10,7 @@ const App = () => {
         <Routes>
           <Route index exact path="/" element={<TodoContainer />} />
           <Route path="/habit" element={<h1>Habits</h1>} />
-          <Route path="/goal" element={<h1>Goals</h1>} />
+          <Route path="/goal" element={<h1>This is what I'm rendering</h1>} />
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,103 @@
+/*Icons */
+
+.icon_menu {
+    stroke: rgba(52, 49, 49, 0.975);
+    width: 24px;
+    height: 24px;
+}
+
+.icon_x {
+    stroke: rgba(52, 49, 49, 0.975);
+    width: 24px;
+    height: 24px;
+}
+
+.icon_sideBar {
+    stroke: rgba(52, 49, 49, 0.975);
+    width: 24px;
+    height: 24px;
+} 
+
+
+/*sidebar*/
+
+/*x icon with the link tag*/
+
+.menu_bars {
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;  
+}
+
+/* conditional redenring in the class name inside the nav tag */
+
+.nav_menu {
+    background-color: rgb(244, 221, 193);
+    width: 150px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+}
+.nav_menu_active {
+    background-color: rgb(244, 221, 193);
+    width: 150px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 350ms;
+
+}
+
+/* ul inside of nav tag */
+
+.nav_menu_items {
+    width: 100%;
+}
+
+
+/* li tag with the map method */
+
+.items_sideBar {
+  display: flex;
+  align-items: row;
+  justify-content: start;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+
+}
+
+.items_sideBar a {
+    text-decoration: none;
+    color: #989292;
+    font-size: 18px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+    border-radius: 4px;
+
+}
+
+.items_sideBar a:hover {
+    background-color: #92b9e5;
+}
+
+/* x icon functionality */
+
+.navbar_toggle {
+    background-color: rgb(244, 221, 193);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
