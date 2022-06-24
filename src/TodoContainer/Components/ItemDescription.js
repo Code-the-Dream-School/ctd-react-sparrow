@@ -1,14 +1,6 @@
 import React from "react";
 
-function ItemDescription({
-  todoList,
-  itemDescription,
-  tableId,
-  setCurrentLink,
-}) {
-  console.log("item Description prop", itemDescription);
-  console.log("tableId prop", tableId);
-  console.log("Current Link prop", setCurrentLink);
+function ItemDescription({ todoList, itemDescription }) {
   return (
     <>
       <ul>

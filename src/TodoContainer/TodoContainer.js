@@ -156,7 +156,9 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
   const [itemDescription, setItemDescription] = React.useState("");
   console.log(itemDescription);
 
-  const handleDescription = (id) => {
+  const [table, setTable] = React.useState();
+
+  const handleDescription = (id, tableId) => {
     setToggleDescription(!toggleDescription);
     setItemDescription(id);
   };

@@ -62,7 +62,7 @@ const TodoListItem = ({
         >
           Remove
         </button>
-        <button onClick={() => handleDescription(todoListItems.id)}>
+        <button onClick={() => handleDescription(todoListItems.id, tableId)}>
           text area
         </button>
       </li>
