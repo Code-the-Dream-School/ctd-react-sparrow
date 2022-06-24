@@ -4,10 +4,10 @@ import TodoList from "./Components/TodoList";
 import { Routes, Route } from "react-router-dom";
 import style from "./TodoContainer.module.css";
 import ItemDescription from "./Components/ItemDescription";
-import SideBar from "../UI/SideVar/SideBar";
-import NavMain from "../UI/NavMain";
+// import SideBar from "../UI/SideVar/SideBar";
+// import NavMain from "../UI/NavMain";
 
-const TodoContainer = () => {
+const TodoContainer = ({ id }) => {
   //This state renders our list, and saved the value in the local storage
   //Passing information down the state to the TodoList component
   const [todoList, setTodoList] = React.useState(
@@ -140,49 +140,48 @@ const TodoContainer = () => {
     setItemDescription(id);
   };
 
-  //sidebar state
-  const [sideBar, setSideBar] = React.useState(false);
-  console.log(sideBar);
+  // //sidebar state
+  // const [sideBar, setSideBar] = React.useState(false);
+  // console.log(sideBar);
+
+  // //sidebar state for work and personal
+  // const [currentLink, setCurrentLink] = React.useState();
 
   return (
-    <div>
-      <Routes>
-        <Route
-          index
-          exact
-          path="/"
-          element={
-            <div className={style.todoCont_split_box}>
-              <div className={style.todoCont_MainNav}>
-                <NavMain onSideBar={setSideBar} />
-              </div>
+    <div className={style.todoCont_split_box}>
+      {/* <div className={style.todoCont_MainNav}>
+        <NavMain onSideBar={setSideBar} />
+      </div> */}
 
-              <div className={style.todoCont_lelf_pane_sideBar}>
-                <SideBar sideBar={sideBar} onSideBar={setSideBar} />
-              </div>
-
-              <div className={style.todoCon_middle_pane_todoList}>
-                <AddTodoForm onAddTodo={addTodo} todoList={todoList} />
-                <TodoList
-                  todoList={todoList}
-                  onRemoveTodo={removeTodo}
-                  onEditTodo={editTodo}
-                  handleDescription={handleDescription}
-                />
-              </div>
-
-              <div className={style.todoCon_right_pane_description}>
-                {toggleDescription && (
-                  <ItemDescription
-                    todoList={todoList}
-                    itemDescription={itemDescription}
-                  />
-                )}
-              </div>
-            </div>
-          }
+      {/* <div className={style.todoCont_lelf_pane_sideBar}>
+        <SideBar
+          sideBar={sideBar}
+          onSideBar={setSideBar}
+          onCurrentLink={setCurrentLink}
         />
-      </Routes>
+      </div> */}
+
+      {/* <div className={style.todoCon_middle_pane_todoList}> */}
+      <div>
+        <AddTodoForm onAddTodo={addTodo} todoList={todoList} />
+        <TodoList
+          todoList={todoList}
+          onRemoveTodo={removeTodo}
+          onEditTodo={editTodo}
+          handleDescription={handleDescription}
+        />
+      </div>
+
+      {/* </div> */}
+
+      {/* <div className={style.todoCon_right_pane_description}>
+        {toggleDescription && (
+          <ItemDescription
+            todoList={todoList}
+            itemDescription={itemDescription}
+          />
+        )}
+      </div>*/}
     </div>
   );
 };
