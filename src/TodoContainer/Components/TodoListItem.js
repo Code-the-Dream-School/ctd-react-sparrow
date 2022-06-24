@@ -7,6 +7,7 @@ const TodoListItem = ({
   onRemoveTodo,
   onEditTodo,
   handleDescription,
+  tableId,
 }) => {
   const [isToggle, setToggle] = React.useState(false);
 
@@ -22,17 +23,18 @@ const TodoListItem = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onEditTodo(todoListItems.id, {
-      fields: {
-        Title: todoEditTitle,
-        Description: todoListItems.fields.Description,
+    onEditTodo(
+      todoListItems.id,
+      {
+        fields: {
+          Title: todoEditTitle,
+          Description: todoListItems.fields.Description,
+        },
       },
-    });
+      tableId
+    );
     setToggle(false);
   };
-  // const handleOnClick = (id) => {
-  //   handleDescription(todoListItems.id);
-  // };
 
   return (
     <div className={style.listItem_container}>
@@ -55,7 +57,7 @@ const TodoListItem = ({
         </button>
         <button
           onClick={() => {
-            onRemoveTodo(todoListItems.id);
+            onRemoveTodo(todoListItems.id, tableId);
           }}
         >
           Remove

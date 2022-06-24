@@ -3,7 +3,7 @@ import InputWithLabel from "./InputWithLabel";
 import style from "./AddTodoForm.module.css";
 
 //This component renders the form (input field)
-const AddTodoForm = ({ onAddTodo, todoList }) => {
+const AddTodoForm = ({ onAddTodo, tableId }) => {
   //This state controls the input field (it makes this component a controlled component)
   let [todoTitle, setTodoTitle] = React.useState("");
 
@@ -23,12 +23,15 @@ const AddTodoForm = ({ onAddTodo, todoList }) => {
       alert("Input field is empty");
     } else {
       //The prop "onAddTodo" is the callback function from the parent component (App) with new state
-      onAddTodo({
-        fields: {
-          Title: todoTitle,
-          Description: todoTitle.Description,
+      onAddTodo(
+        {
+          fields: {
+            Title: todoTitle,
+            Description: todoTitle.Description,
+          },
         },
-      });
+        tableId
+      );
       setTodoTitle("");
     }
   };

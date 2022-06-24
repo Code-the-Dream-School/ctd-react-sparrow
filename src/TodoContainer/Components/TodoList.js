@@ -7,7 +7,9 @@ const TodoList = ({
   onRemoveTodo,
   onEditTodo,
   handleDescription,
+  tableId,
 }) => {
+  console.log("tableId prop", tableId);
   return (
     <>
       {todoList.map((todoListItems) => {
@@ -18,6 +20,7 @@ const TodoList = ({
             onRemoveTodo={onRemoveTodo}
             onEditTodo={onEditTodo}
             handleDescription={handleDescription}
+            tableId={tableId}
           />
         );
       })}

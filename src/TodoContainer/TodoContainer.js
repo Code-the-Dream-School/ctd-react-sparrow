@@ -7,7 +7,8 @@ import ItemDescription from "./Components/ItemDescription";
 // import SideBar from "../UI/SideVar/SideBar";
 // import NavMain from "../UI/NavMain";
 
-const TodoContainer = ({ id }) => {
+const TodoContainer = ({ tableId, setCurrentLink }) => {
+  console.log("currentlink prop", setCurrentLink);
   //This state renders our list, and saved the value in the local storage
   //Passing information down the state to the TodoList component
   const [todoList, setTodoList] = React.useState(
@@ -27,8 +28,9 @@ const TodoContainer = ({ id }) => {
 
   //Airtable APIs with the fetch method
   //GET
+
   React.useEffect(() => {
-    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
+    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
     const optionsGet = {
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -44,11 +46,29 @@ const TodoContainer = ({ id }) => {
       });
   }, []);
 
+  //Use effect with new id
+  React.useEffect(() => {
+    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
+    const optionsGet = {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+    };
+    fetch(reqUrl, optionsGet)
+      .then((result) => {
+        return result.json();
+      })
+      .then((result) => {
+        setTodoList(result.records);
+        setIsloading(false);
+      });
+  }, [setCurrentLink]);
+
   // POST method
   //Lift state
-  const addTodo = (newTodo) => {
+  const addTodo = (newTodo, tableId) => {
     fetch(
-      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`,
       {
         method: "POST",
         headers: {
@@ -73,8 +93,8 @@ const TodoContainer = ({ id }) => {
 
   //Delete method
   //lifted state and filter method
-  const removeTodo = (id) => {
-    const DELETEurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`;
+  const removeTodo = (id, tableId) => {
+    const DELETEurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
 
     fetch(DELETEurl, {
       method: "Delete",
@@ -95,9 +115,9 @@ const TodoContainer = ({ id }) => {
   };
 
   //PATCH method
-  const editTodo = (id, newEditTodo) => {
+  const editTodo = (id, newEditTodo, tableId) => {
     console.log("new edit todo", newEditTodo);
-    const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`;
+    const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
 
     fetch(EDITurl, {
       method: "PATCH",
@@ -134,6 +154,7 @@ const TodoContainer = ({ id }) => {
   const [toggleDescription, setToggleDescription] = React.useState(false);
 
   const [itemDescription, setItemDescription] = React.useState("");
+  console.log(itemDescription);
 
   const handleDescription = (id) => {
     setToggleDescription(!toggleDescription);
@@ -163,25 +184,32 @@ const TodoContainer = ({ id }) => {
 
       {/* <div className={style.todoCon_middle_pane_todoList}> */}
       <div>
-        <AddTodoForm onAddTodo={addTodo} todoList={todoList} />
+        <AddTodoForm
+          onAddTodo={addTodo}
+          todoList={todoList}
+          tableId={tableId}
+        />
         <TodoList
           todoList={todoList}
           onRemoveTodo={removeTodo}
           onEditTodo={editTodo}
           handleDescription={handleDescription}
+          tableId={tableId}
         />
       </div>
 
       {/* </div> */}
 
-      {/* <div className={style.todoCon_right_pane_description}>
+      <div className={style.todoCon_right_pane_description}>
         {toggleDescription && (
           <ItemDescription
             todoList={todoList}
             itemDescription={itemDescription}
+            tableId={tableId}
+            setCurrentLink={setCurrentLink}
           />
         )}
-      </div>*/}
+      </div>
     </div>
   );
 };

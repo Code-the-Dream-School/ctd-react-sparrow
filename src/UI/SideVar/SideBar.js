@@ -6,8 +6,9 @@ import { ReactComponent as IconX } from "./IconsSideBar/x.svg";
 import sideBarData from "./SideBarData";
 import TodoList from "../../TodoContainer/Components/TodoList.js";
 
-const SideBar = ({ sideBar, onSideBar }) => {
+const SideBar = ({ sideBar, onSideBar, setCurrentLink }) => {
   console.log(sideBar);
+  console.log("setcurrentLink", setCurrentLink);
 
   return (
     <>
@@ -29,7 +30,7 @@ const SideBar = ({ sideBar, onSideBar }) => {
                 <Link to={item.path}>
                   <div className={style.icon_sideBar}>{item.icon}</div>
                 </Link>
-                <Link to={item.path}>
+                <Link to={item.path} onClick={() => setCurrentLink("Personal")}>
                   <p>{item.title}</p>
                 </Link>
               </li>

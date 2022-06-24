@@ -19,12 +19,14 @@ const App = () => {
   //   setItemDescription(id);
   // };
 
+  //
+
   //sidebar state
   const [sideBar, setSideBar] = React.useState(false);
   console.log(sideBar);
 
   //sidebar state for work and personal
-  const [currentLink, setCurrentLink] = React.useState();
+  const [currentLink, setCurrentLink] = React.useState("Work");
 
   return (
     <div className={styles.app_container}>
@@ -42,7 +44,15 @@ const App = () => {
           </div>
           <div className={styles.todoCon_middle_pane_todoList}>
             <Routes>
-              <Route path="/" element={<TodoContainer />}>
+              <Route
+                path="/"
+                element={
+                  <TodoContainer
+                    tableId={"Default"}
+                    setCurrentLink={setCurrentLink}
+                  />
+                }
+              >
                 <Route path="/habit" element={<h1>Habits</h1>} />
                 <Route
                   path="/goal"
@@ -51,9 +61,13 @@ const App = () => {
               </Route>
               <Route
                 path="personal"
-                element={<TodoContainer id={"tblvT4z7QLKoCc04L"} />}
+                element={<TodoContainer tableId={"Personal"} />}
               />
-              <Route path="work" element={<TodoContainer />} />
+              <Route path="work" element={<TodoContainer tableId={"Work"} />} />
+              <Route
+                path="chores"
+                element={<TodoContainer tableId={"Chores"} />}
+              />
             </Routes>
           </div>
           {/* <div className={styles.todoCon_right_pane_description}>

@@ -24,6 +24,12 @@ const sideBarData = [
     icon: <IconWork className="sideNav_todo" />,
     className: "nav-text",
   },
+  {
+    title: "Chores",
+    path: "/chores",
+    icon: <IconWork className="sideNav_todo" />,
+    className: "nav-text",
+  },
 ];
 
 export default sideBarData;
