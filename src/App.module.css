@@ -17,13 +17,21 @@
 
 /*Main layout with grid*/
 
+/* 
+Before the idea of doing flexbox on todo container. just deleted one colunm
 .todoCont_split_box {
     display: grid;
     grid-template-columns: 150px 1fr 200px;
     grid-template-rows: 50px 1fr;
     height: 100vh;
-}
+} */
 
+.todoCont_split_box {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 50px 1fr;
+    height: 100vh;
+}
 
 .todoCont_MainNav {
     background-color: rgb(244, 221, 193);
@@ -42,7 +50,7 @@
     background-color: rgb(225, 209, 240);
 }
 
-.todoCon_right_pane_description {
+/* .todoCon_right_pane_description {
     background-color: rgb(218, 205, 189);
-}
+} */
 

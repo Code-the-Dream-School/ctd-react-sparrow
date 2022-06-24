@@ -1,5 +1,31 @@
+/*Flex box*/
+.split_box {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center; /*vertically aligment inside the box*/
+    justify-content:space-evenly; /*horizontally aligment inside the box*/
+    
+    /* flex-direction: row; colunm */
+}
 
-.todoCont_split_box {
+/*individual items inside of flex box*/
+.right_pane {
+    background-color: rgb(189, 173, 152);
+    align-self: auto;
+}
+
+.left_pane {
+    list-style: none;
+    background-color: rgb(157, 139, 115);
+    align-self: stretch;
+
+}
+
+
+
+
+
+/* .todoCont_split_box {
     display: grid;
     grid-template-columns: 150px 1fr 200px;
     grid-template-rows: 50px 1fr;
@@ -26,4 +52,4 @@
 
 .todoCon_right_pane_description {
     background-color: rgb(218, 205, 189);
-}
+} */

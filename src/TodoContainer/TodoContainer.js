@@ -1,11 +1,8 @@
 import React from "react";
 import AddTodoForm from "./Components/AddTodoForm";
 import TodoList from "./Components/TodoList";
-import { Routes, Route } from "react-router-dom";
 import style from "./TodoContainer.module.css";
 import ItemDescription from "./Components/ItemDescription";
-// import SideBar from "../UI/SideVar/SideBar";
-// import NavMain from "../UI/NavMain";
 
 const TodoContainer = ({ tableId, setCurrentLink }) => {
   console.log("currentlink prop", setCurrentLink);
@@ -156,9 +153,7 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
   const [itemDescription, setItemDescription] = React.useState("");
   console.log(itemDescription);
 
-  const [table, setTable] = React.useState();
-
-  const handleDescription = (id, tableId) => {
+  const handleDescription = (id) => {
     setToggleDescription(!toggleDescription);
     setItemDescription(id);
   };
@@ -171,7 +166,7 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
   // const [currentLink, setCurrentLink] = React.useState();
 
   return (
-    <div className={style.todoCont_split_box}>
+    <div className={style.split_box}>
       {/* <div className={style.todoCont_MainNav}>
         <NavMain onSideBar={setSideBar} />
       </div> */}
@@ -185,7 +180,7 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
       </div> */}
 
       {/* <div className={style.todoCon_middle_pane_todoList}> */}
-      <div>
+      <div className={style.left_pane}>
         <AddTodoForm
           onAddTodo={addTodo}
           todoList={todoList}
@@ -202,13 +197,11 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
 
       {/* </div> */}
 
-      <div className={style.todoCon_right_pane_description}>
+      <div className={style.right_pane}>
         {toggleDescription && (
           <ItemDescription
             todoList={todoList}
             itemDescription={itemDescription}
-            tableId={tableId}
-            setCurrentLink={setCurrentLink}
           />
         )}
       </div>
