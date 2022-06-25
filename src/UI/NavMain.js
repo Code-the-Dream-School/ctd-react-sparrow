@@ -1,9 +1,9 @@
 import React from "react";
 import style from "./NavMain.module.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ReactComponent as IconMenu } from "./SideVar/IconsSideBar/menu.svg";
 
-const NavMain = ({ onSideBar }) => {
+const NavMain = ({ setSideBar, sideBar }) => {
   return (
     <nav className={style.nav_container}>
       <ul className={style.nav_list}>
@@ -11,11 +11,13 @@ const NavMain = ({ onSideBar }) => {
           <Link to="#">
             <IconMenu
               className={style.icon_menu}
-              onClick={() => onSideBar(true)}
+              onClick={() => {
+                setSideBar(!sideBar);
+              }}
             />
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/">Home</Link>
         </li>
         <li>
@@ -24,7 +26,7 @@ const NavMain = ({ onSideBar }) => {
 
         <li>
           <Link to="/habit">Habits</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

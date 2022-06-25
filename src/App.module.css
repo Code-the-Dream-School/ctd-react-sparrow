@@ -10,7 +10,7 @@
 .app_container {
     margin-left: 0px;
     padding: 0;
-    color: #171212;
+    color: #393d40;
     text-align: center;
 }
 
@@ -34,20 +34,39 @@ Before the idea of doing flexbox on todo container. just deleted one colunm
 }
 
 .todoCont_MainNav {
-    background-color: #d7c0b5;
+    background-color: #62929e;
     grid-column: 1 / -1;
 
 }
 
+/*Sidebar style*/
 .todoCont_lelf_pane_sideBar {
-    background-color: #faf2f0;
+    background-color: #fdfdff;
     grid-row: 2/ -1;
 
     
 }
 
+/*Sidebar hidden and appear*/
+
+.left_menu_active {
+   opacity: 1;  
+   visibility: visible;
+}
+
+.left_menu_done {
+ opacity: 0;
+ visibility: hidden;   
+}
+
+
+
+
+
+
+
 .todoCon_middle_pane_todoList {
-    background-color: #faf2f0;
+    background-color: #fdfdff;
 }
 
 /* .todoCon_right_pane_description {

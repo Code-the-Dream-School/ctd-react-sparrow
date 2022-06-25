@@ -43,7 +43,7 @@ const AddTodoForm = ({ onAddTodo, tableId }) => {
           todoTitle={todoTitle}
           handleTitleChange={handleTitleChange}
         >
-          Title
+          {tableId}
         </InputWithLabel>
         <button type="submit" className={style.add_button}>
           Add

@@ -21,7 +21,7 @@ const App = () => {
       <Router>
         <div className={styles.todoCont_split_box}>
           <div className={styles.todoCont_MainNav}>
-            <NavMain onSideBar={setSideBar} />
+            <NavMain setSideBar={setSideBar} sideBar={sideBar} />
           </div>
           <div className={styles.todoCont_lelf_pane_sideBar}>
             <SideBar

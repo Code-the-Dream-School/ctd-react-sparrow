@@ -8,11 +8,11 @@
 }
 
 .right_pane {
-    background-color: #faf2f0;
+    background-color: #fdfdff;
 }
 
 .left_pane {
-    background-color: #faf2f0;
+    background-color: #fdfdff;
     border: 1px solid rgb(123, 123, 123);
     border-right: none;
 }

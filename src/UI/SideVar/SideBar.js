@@ -10,17 +10,12 @@ const SideBar = ({ sideBar, onSideBar, setCurrentLink }) => {
   return (
     <>
       {/*conditional rendering inside of class name based on a state */}
+      {/* <nav className={sideBar ? style.nav_menu_active : style.nav_menu}></nav>
+      trying out hiding the bar with css properties
+      
+      */}
       <nav className={sideBar ? style.nav_menu_active : style.nav_menu}>
         <ul className={style.nav_menu_items}>
-          <li className={style.navbar_toggle}>
-            <Link to="#" className={style.menu_bars}>
-              <IconX
-                className={style.icon_x}
-                onClick={() => onSideBar(false)}
-              />
-            </Link>
-          </li>
-
           {sideBarData.map((item, index) => {
             return (
               <li key={index} className={style.items_sideBar}>
