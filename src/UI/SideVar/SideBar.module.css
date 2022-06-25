@@ -1,19 +1,19 @@
-/*Icons */
+/*Icons, just icon_sideBar is being used */
  
 .icon_menu {
-    stroke: rgba(52, 49, 49, 0.975);
+    color: #393d40;
     width: 24px;
     height: 24px;
 }
 
 .icon_x {
-    stroke: rgba(52, 49, 49, 0.975);
+    color: #393d40;
     width: 24px;
     height: 24px;
 }
 
 .icon_sideBar {
-    stroke: rgba(52, 49, 49, 0.975);
+    color: #393d40;
     width: 24px;
     height: 24px;
 } 
@@ -23,27 +23,23 @@
 
 /* conditional redenring in the class name inside the nav tag */
 
-.nav_menu {
+.nav_menu_done {
     background-color: #fdfdff;
     width: 250px;
     height: 100vh;
-    display: flex;
-    justify-content: center;
     position: fixed;
-    top: 50px;
+    top: 60px;
     left: -100%;
-    transition: 600ms;
+    transition: 1s;
 }
 .nav_menu_active {
     background-color: #fdfdff;
     width: 250px;
     height: 100vh;
-    display: flex;
-    justify-content: center;
     position: fixed;
     top: 60px;
-    left: 0;
-    transition: 250ms;
+    left: 0px;
+    transition: 0.5s;
 
 }
 
@@ -51,6 +47,7 @@
 
 .nav_menu_items {
     width: 100%;
+    
 }
 
 
@@ -60,26 +57,33 @@
   display: flex;
   align-items: row;
   justify-content: start;
-  padding: 8px 0px 8px 16px;
+  padding: 10px 30px 0px 40px;
   list-style: none;
-  height: 60px;
+  height: 35px;
 
 }
 
-.items_sideBar a {
+.items_sideBar a{
     text-decoration: none;
     color: #989292;
     font-size: 18px;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
+    gap:30px;
     padding: 0 7px;
     border-radius: 4px;
 
 }
 
 .items_sideBar a:hover {
-    background-color: #92b9e5;
+    background-color: #8cabb2;
+    width: 100%;
+    color: #393d40;
+    cursor: pointer;
 }
+
+
+
 
 

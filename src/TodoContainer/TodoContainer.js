@@ -161,6 +161,7 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
   return (
     <div className={style.split_box}>
       <div className={style.left_pane}>
+        <h5 className={style.tableId}>{tableId}</h5>
         <AddTodoForm
           onAddTodo={addTodo}
           todoList={todoList}

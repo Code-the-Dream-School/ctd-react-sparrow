@@ -42,11 +42,9 @@ const AddTodoForm = ({ onAddTodo, tableId }) => {
         <InputWithLabel
           todoTitle={todoTitle}
           handleTitleChange={handleTitleChange}
-        >
-          {tableId}
-        </InputWithLabel>
+        ></InputWithLabel>
         <button type="submit" className={style.add_button}>
-          Add
+          Add task
         </button>
       </form>
     </div>
