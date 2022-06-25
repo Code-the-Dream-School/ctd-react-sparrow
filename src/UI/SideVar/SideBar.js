@@ -7,9 +7,6 @@ import sideBarData from "./SideBarData";
 import TodoList from "../../TodoContainer/Components/TodoList.js";
 
 const SideBar = ({ sideBar, onSideBar, setCurrentLink }) => {
-  console.log(sideBar);
-  console.log("setcurrentLink", setCurrentLink);
-
   return (
     <>
       {/*conditional rendering inside of class name based on a state */}

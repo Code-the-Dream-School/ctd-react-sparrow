@@ -7,7 +7,7 @@ const NavMain = ({ onSideBar }) => {
   return (
     <nav className={style.nav_container}>
       <ul className={style.nav_list}>
-        <li>
+        <li className={style.menu}>
           <Link to="#">
             <IconMenu
               className={style.icon_menu}
@@ -27,7 +27,7 @@ const NavMain = ({ onSideBar }) => {
         </li>
       </ul>
     </nav>
-  )
+  );
 };
 
 export default NavMain;

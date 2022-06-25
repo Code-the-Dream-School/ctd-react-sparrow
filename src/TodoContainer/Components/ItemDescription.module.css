@@ -1,0 +1,24 @@
+.ul_el {
+    list-style: none;
+}
+
+.li_el {
+    
+}
+
+.text_el {
+    height: 100vh;
+    width: 400px;
+    border-style:  2px solid rgb(123, 123, 123);
+    background-color: #faf2f0;
+    
+
+
+    
+}
+
+.span_el {
+    height: 50px;
+    border: 1px solid rgb(123, 123, 123);
+    border-bottom: none;
+}

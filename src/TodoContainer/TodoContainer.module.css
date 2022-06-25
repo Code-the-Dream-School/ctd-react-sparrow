@@ -1,55 +1,63 @@
-/*Flex box*/
+/*grid instead*/
+
 .split_box {
-    background-color: aliceblue;
-    display: flex;
-    align-items: center; /*vertically aligment inside the box*/
-    justify-content:space-evenly; /*horizontally aligment inside the box*/
-    
-    /* flex-direction: row; colunm */
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    height: 100vh;
+
 }
 
-/*individual items inside of flex box*/
 .right_pane {
-    background-color: rgb(189, 173, 152);
-    align-self: auto;
+    background-color: #faf2f0;
 }
 
 .left_pane {
-    list-style: none;
-    background-color: rgb(157, 139, 115);
-    align-self: stretch;
-
+    background-color: #faf2f0;
+    border: 1px solid rgb(123, 123, 123);
+    border-right: none;
 }
 
 
 
+/* Flex box*/
 
-
-/* .todoCont_split_box {
-    display: grid;
-    grid-template-columns: 150px 1fr 200px;
-    grid-template-rows: 50px 1fr;
+/* .split_box {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center; vertically aligment inside the box
+    justify-content:flex-start; horizontally aligment inside the box (main-axis)
     height: 100vh;
-}
 
 
-.todoCont_MainNav {
-    background-color: rgb(244, 221, 193);
-    grid-column: 1 / -1;
+    flex-direction: row; colunm
+*/ 
+       
 
-}
 
-.todoCont_lelf_pane_sideBar {
-    background-color: rgb(244, 221, 193);
-    grid-row: 2/ -1;
+/*For changing position when working with small devices --> order property,
+by default all items are in 0
+*/
 
-    
-}
+/*flex property
+            --> default
+flex-grow: 0; 
+flex-shrink: 1;
+flex-basis: auto;
+*/
 
-.todoCon_middle_pane_todoList {
-    background-color: rgb(225, 209, 240);
-}
+/*individual items inside of flex box*/
 
-.todoCon_right_pane_description {
-    background-color: rgb(218, 205, 189);
+/* .right_pane {
+    background-color: rgb(232, 195, 241);
+    align-self: stretch; vertially aligment for each item
+    /* list-style: none;
+    flex-basis: 400px;
 } */
+
+
+/* .left_pane {
+    align-self: stretch;
+    background-color: rgb(236, 255, 243);
+
+}  */
+

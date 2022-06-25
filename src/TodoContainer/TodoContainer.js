@@ -5,12 +5,12 @@ import style from "./TodoContainer.module.css";
 import ItemDescription from "./Components/ItemDescription";
 
 const TodoContainer = ({ tableId, setCurrentLink }) => {
-  console.log("currentlink prop", setCurrentLink);
   //This state renders our list, and saved the value in the local storage
   //Passing information down the state to the TodoList component
   const [todoList, setTodoList] = React.useState(
     JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
+
   console.log(todoList);
 
   //conditional renderting state
@@ -23,9 +23,9 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
     }
   }, [todoList, isLoading]);
 
-  //Airtable APIs with the fetch method
-  //GET
+  //Airtable APIs with the fetch method:
 
+  //GET
   React.useEffect(() => {
     const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
     const optionsGet = {
@@ -158,28 +158,8 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
     setItemDescription(id);
   };
 
-  // //sidebar state
-  // const [sideBar, setSideBar] = React.useState(false);
-  // console.log(sideBar);
-
-  // //sidebar state for work and personal
-  // const [currentLink, setCurrentLink] = React.useState();
-
   return (
     <div className={style.split_box}>
-      {/* <div className={style.todoCont_MainNav}>
-        <NavMain onSideBar={setSideBar} />
-      </div> */}
-
-      {/* <div className={style.todoCont_lelf_pane_sideBar}>
-        <SideBar
-          sideBar={sideBar}
-          onSideBar={setSideBar}
-          onCurrentLink={setCurrentLink}
-        />
-      </div> */}
-
-      {/* <div className={style.todoCon_middle_pane_todoList}> */}
       <div className={style.left_pane}>
         <AddTodoForm
           onAddTodo={addTodo}
@@ -194,9 +174,6 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
           tableId={tableId}
         />
       </div>
-
-      {/* </div> */}
-
       <div className={style.right_pane}>
         {toggleDescription && (
           <ItemDescription

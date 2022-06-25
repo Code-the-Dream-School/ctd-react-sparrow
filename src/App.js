@@ -9,18 +9,6 @@ import Personal from "./UI/Pages/Personal.js";
 import Work from "./UI/Pages/Work.js";
 
 const App = () => {
-  //Item description section
-  // const [toggleDescription, setToggleDescription] = React.useState(false);
-
-  // const [itemDescription, setItemDescription] = React.useState("");
-
-  // const handleDescription = (id) => {
-  //   setToggleDescription(!toggleDescription);
-  //   setItemDescription(id);
-  // };
-
-  //
-
   //sidebar state
   const [sideBar, setSideBar] = React.useState(false);
   console.log(sideBar);
@@ -70,14 +58,6 @@ const App = () => {
               />
             </Routes>
           </div>
-          {/* <div className={styles.todoCon_right_pane_description}>
-            {toggleDescription && (
-              <ItemDescription
-                todoList={todoList}
-                itemDescription={itemDescription}
-              />
-            )}
-          </div> */}
         </div>
       </Router>
     </div>

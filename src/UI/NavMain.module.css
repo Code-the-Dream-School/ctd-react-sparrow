@@ -14,7 +14,19 @@
     align-items: row;
     color: black;
     gap: 4.8rem;
+    justify-content:flex-end;
 
 } 
 
-/*order: 0 */
+.menu {
+    position: fixed;
+    left: 50px;
+    padding-top: 15px;
+    
+}
+
+/*Navbar container*/
+ .nav_container {
+    border-bottom: 1px solid rgb(123, 123, 123);
+    height: 50px;
+ }
