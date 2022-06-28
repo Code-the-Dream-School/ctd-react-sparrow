@@ -5,7 +5,6 @@
 
 .Root {
     color: rgb(38, 49, 52);
-    background-color: rgb(0,159,183);
     font-family: Arial;
     display: flex;
     justify-content: center;
@@ -23,7 +22,6 @@
 
 .Container {
     padding: 10px;
-    margin: 0px;
 }
 
 .ListItem {

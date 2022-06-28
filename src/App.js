@@ -13,6 +13,23 @@ function App() {
   const updateURL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/`
   
   //read the list from local storage after load 
+  useEffect(()=> {
+    //fetching data from AirTable and parsing it
+   fetch(url, 
+    {method: "GET",
+    headers: {Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`}})
+    .then((result)=> {
+    return result.json();
+    })
+    .then((result)=> {
+    setToDoList(result.records);
+    setIsLoading(false);
+    })
+    .catch((error) => {
+    console.log(error);
+    })
+  }, [toDoList.length]);
+
   const addToDo= (newToDo)=> {
     fetch(updateURL, {
       method: 'POST',
@@ -30,14 +47,16 @@ function App() {
         ],
       }),
     })
-    .then((result) => result.json)
     .then((result) => {
-          setToDoList([...toDoList, result.records])
+      return result.json()
+    })
+    .then((result) => {  
+      console.log(result.records);
+      setToDoList([...toDoList, result.records[0]])
     })
     .catch((error) => {
       console.log(error);
-      })
-    console.log("Posted");
+    })
   }
 
   const airtableDelete = (id) => {
@@ -51,30 +70,6 @@ function App() {
     })
   }
 
-  useEffect(()=> {
-    //fetching data from AirTable and parsing it
-   fetch(url, 
-    {method: "GET",
-    headers: {Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`}})
-    .then((result)=> {
-    return result.json();
-    })
-    .then((result)=> {
-      console.log("LOOK AT THIS ONE");
-      console.log(result.records);
-    setToDoList(result.records);
-    setIsLoading(false);
-    })
-    .catch((error) => {
-    console.log(error);
-    })
-  }, []);
-  //setting the To Do List from the input box
-  // useEffect(()=> {
-  //   if (isLoading === false) {
-  //     localStorage.setItem('savedToDoList', JSON.stringify(toDoList))
-  //   }
-  // }, [toDoList]);
 //remove the ToDo from the displayed list and send delete request to Airtable API for that item
   const removeToDo= (id)=> {
     const filteredToDoList= toDoList.filter((todo)=> todo.id !== id);
