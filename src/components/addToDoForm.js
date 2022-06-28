@@ -1,7 +1,7 @@
 import React from 'react';
 import InputWithLabel from './InputWithLabel';
 import style from './ToDoList.module.css';
-
+import propTypes from 'prop-types';
 const AddToDoForm= ({onAddToDo}) => {
     const [toDoTitle, setToDoTitle]=React.useState('');
 
@@ -21,6 +21,10 @@ const AddToDoForm= ({onAddToDo}) => {
             <button className={style.AddToDoButton}>Add</button>
         </form>
     )
+}
+
+AddToDoForm.propTypes = {
+    onAddToDo: propTypes.func.isRequired
 }
 
 export default AddToDoForm;

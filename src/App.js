@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'; 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AddToDoForm from './addToDoForm';
-import ToDoList from './todolist';
-import style from './ToDoList.module.css';
+import AddToDoForm from './components/addToDoForm';
+import ToDoList from './components/todolist';
+import style from './components/ToDoList.module.css';
 
 function App() {
   
@@ -51,7 +51,6 @@ function App() {
       return result.json()
     })
     .then((result) => {  
-      console.log(result.records);
       setToDoList([...toDoList, result.records[0]])
     })
     .catch((error) => {
@@ -60,7 +59,6 @@ function App() {
   }
 
   const airtableDelete = (id) => {
-    console.log(`This has the id of ${id}`)
     fetch(`${updateURL}${id}`, 
     {method: "DELETE",
     headers: {Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`},
