@@ -12,11 +12,11 @@ const TodoList = ({
   console.log("tableId prop", tableId);
   return (
     <>
-      {todoList.map((todoListItems) => {
+      {todoList.map((todoList) => {
         return (
           <TodoListItem
-            key={todoListItems.id}
-            todoListItems={todoListItems}
+            key={todoList.id}
+            todoList={todoList}
             onRemoveTodo={onRemoveTodo}
             onEditTodo={onEditTodo}
             handleDescription={handleDescription}

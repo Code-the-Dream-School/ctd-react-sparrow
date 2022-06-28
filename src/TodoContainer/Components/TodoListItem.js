@@ -1,34 +1,40 @@
 import React from "react";
 import style from "./TodoListItem.module.css";
+import { ReactComponent as XIcon } from "./IconsComponents/x.svg";
+import { ReactComponent as NoteIcon } from "./IconsComponents/note.svg";
 
 //This component renders each element of the list, edit, and remove button
 const TodoListItem = ({
-  todoListItems,
+  todoList,
   onRemoveTodo,
   onEditTodo,
   handleDescription,
   tableId,
 }) => {
+  //Shows the input field when the user clicks on an item
   const [isToggle, setToggle] = React.useState(false);
 
   //controls input field for the edit button
   const [todoEditTitle, setTodoEditTitle] = React.useState(
-    todoListItems.fields.Title
+    todoList.fields.Title
   );
 
+  //handles:
+  // get the value from the user input
   const onChangeEdit = (e) => {
     const editTodo = e.target.value;
     setTodoEditTitle(editTodo);
   };
 
+  //updates the value, sends the user iput up to todoContainer
   const onSubmit = (e) => {
     e.preventDefault();
     onEditTodo(
-      todoListItems.id,
+      todoList.id,
       {
         fields: {
           Title: todoEditTitle,
-          Description: todoListItems.fields.Description,
+          Description: todoList.fields.Description,
         },
       },
       tableId
@@ -45,26 +51,48 @@ const TodoListItem = ({
             <input id="edit" value={todoEditTitle} onChange={onChangeEdit} />
           </form>
         ) : (
-          <p>{todoListItems.fields.Title}</p>
+          <span
+            onClick={() => {
+              setToggle(true);
+            }}
+          >
+            {todoList.fields.Title}
+          </span>
         )}
-        <button
+        {/* <button
           type="button"
           onClick={() => {
             setToggle(true);
           }}
         >
           Edit
-        </button>
-        <button
+        </button> */}
+
+        <NoteIcon
+          className={style.icons}
+          onClick={() => handleDescription(todoList.id, tableId)}
+        />
+
+        <div className={style.tool_tip} data-tooltip="Remove task">
+          <XIcon
+            className={style.icons}
+            onClick={() => {
+              onRemoveTodo(todoList.id, tableId);
+            }}
+          />
+          {/* <span className={style.tooltip_text}>Remove task</span> */}
+        </div>
+
+        {/* <button
           onClick={() => {
-            onRemoveTodo(todoListItems.id, tableId);
+            onRemoveTodo(todoList.id, tableId);
           }}
         >
           Remove
-        </button>
-        <button onClick={() => handleDescription(todoListItems.id, tableId)}>
-          text area
-        </button>
+        </button> */}
+        {/* <button onClick={() => handleDescription(todoList.id, tableId)}>
+          note
+        </button> */}
       </li>
     </div>
   );

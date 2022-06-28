@@ -1,15 +1,32 @@
-.listItem {
-    color: blue;
+/*li tag*/
+.listItem{
+    background-color: #f3f3f3;
+    margin-left: 10px;
+    color: #393d40;
     font-size: 16px;
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+    border-bottom: 1px solid #c2c2c2 ;
    
 }
 
-
-
-.listItem_container {
-  border: 1px solid black;
-
+.listItem:hover {
+  background-color: #a6c2c9;
 }
+
+/* buttons-icons */
+
+.icons {
+color: #393d40;
+width: 23px;
+height: 23px;
+}
+
+
+
+/* .listItem_container {
+    border-bottom: 1px solid #c2c2c2 ;
+}
+ */
+

@@ -2,7 +2,7 @@
 
 .split_box {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 100px;
     height: 100vh;
 
 }
@@ -23,6 +23,7 @@
 
 /*todo list title*/
 
+/*name of the table keeps moving down*/
 .tableId {
     font-weight: 250;
     font-size: 23px;

@@ -17,7 +17,7 @@ function ItemDescription({ todoList, itemDescription }) {
           if (todoList.id === itemDescription)
             return (
               <li key={todoList.id} className={style.li_el}>
-                <textarea className={style.text_el}>
+                <textarea placeholder="Description" className={style.text_el}>
                   {todoList.fields.Description}
                 </textarea>
               </li>
