@@ -1,15 +1,17 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Caveat&family=Fascinate&family=Marck+Script&family=Nunito:wght@300&family=Pacifico&family=Patrick+Hand&display=swap');
+
+
+*{  
     margin: 0px;
     padding: 0px;
+    font-family: 'Nunito', sans-serif;
 }
 
 .Root {
     color: rgb(38, 49, 52);
-    font-family: Arial;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px;
 }
 
 .Header {
@@ -21,21 +23,35 @@
 }
 
 .Container {
+    margin: 5px;
     padding: 10px;
 }
 
 .ListItem {
-    border: 4px, solid, rgb(227, 214, 231);
+    margin: 5px;
+    padding: 5px;
     width: 80%;
-    margin-bottom: 35px;
+}
+
+.AddToDoButton {
+   background-color: rgb(255,112,112);
+   color: rgb(54,73,78);
+   font-size: medium;
+   width: 4em;
+   border: 'none';
+   border-radius: 12px;
+}
+
+.InputBar {
+    margin: 4px;
 }
 
 .RemoveButton {
     border: 'none';
-    background-image: url(./Images/trashIcon.png);
+    background-image: url("./Images/trash.png");
     width: 25px;
     height: 25px;
-    margin: 5px 5px;
+    margin: 0px 5px 0px 5px;
 }
 
 body {
@@ -43,5 +59,17 @@ body {
 }
 
 h1, h2, h3, h4 {
+    font-family: 'Pacifico', cursive;
     color: rgb(38, 49, 52);
+    margin: 5px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+input {
+    background-color: rgb(230,230,234);
+    margin: 2px 5px 0px 2px;
+    border-radius: 4px;
 }
