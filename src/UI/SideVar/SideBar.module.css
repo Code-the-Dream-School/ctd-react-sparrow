@@ -27,19 +27,21 @@
     background-color: #fdfdff;
     width: 250px;
     height: 100vh;
-    position: fixed;
-    top: 60px;
+    position: absolute;
+    top: 50px;
     left: -100%;
-    transition: 1s;
+    transition: left .25s;
 }
 .nav_menu_active {
-    background-color: #fdfdff;
+    /* background-color: #fdfdff; */
+    background-color: #f3f3f4;
     width: 250px;
     height: 100vh;
-    position: fixed;
-    top: 60px;
+    position: absolute;
+    top: 50px;
     left: 0px;
-    transition: 0.5s;
+    transition: right .25s;
+    padding-top: 25px;
 
 }
 

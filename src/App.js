@@ -30,33 +30,36 @@ const App = () => {
               onCurrentLink={setCurrentLink}
             />
           </div>
-          <div className={styles.todoCon_middle_pane_todoList}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <TodoContainer
-                    tableId={"Default"}
-                    setCurrentLink={setCurrentLink}
-                  />
-                }
-              >
-                <Route path="/habit" element={<h1>Habits</h1>} />
+          {/* <div className={styles.todoCon_middle_pane_todoList}> */}
+          <div
+            className={sideBar ? styles["todo_container"] : styles["active"]}
+          >
+            <div className={styles.todoCon_middle_pane_todoList}>
+              <Routes>
                 <Route
-                  path="/goal"
-                  element={<h1>This is what I'm rendering</h1>}
+                  path="/"
+                  element={
+                    <TodoContainer
+                      sideBar={sideBar}
+                      tableId={"Default"}
+                      setCurrentLink={setCurrentLink}
+                    />
+                  }
+                ></Route>
+                <Route
+                  path="personal"
+                  element={<TodoContainer tableId={"Personal"} />}
                 />
-              </Route>
-              <Route
-                path="personal"
-                element={<TodoContainer tableId={"Personal"} />}
-              />
-              <Route path="work" element={<TodoContainer tableId={"Work"} />} />
-              <Route
-                path="chores"
-                element={<TodoContainer tableId={"Chores"} />}
-              />
-            </Routes>
+                <Route
+                  path="work"
+                  element={<TodoContainer tableId={"Work"} />}
+                />
+                <Route
+                  path="chores"
+                  element={<TodoContainer tableId={"Chores"} />}
+                />
+              </Routes>
+            </div>
           </div>
         </div>
       </Router>

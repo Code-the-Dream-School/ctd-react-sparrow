@@ -1,10 +1,10 @@
 import React from "react";
-import AddTodoForm from "./Components/AddTodoForm";
+import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 import TodoList from "./Components/TodoList";
 import style from "./TodoContainer.module.css";
-import ItemDescription from "./Components/ItemDescription";
+import ItemDescription from "./Components/ItemDescription/ItemDescription";
 
-const TodoContainer = ({ tableId, setCurrentLink }) => {
+const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //This state renders our list, and saved the value in the local storage
   //Passing information down the state to the TodoList component
   const [todoList, setTodoList] = React.useState(
@@ -148,40 +148,42 @@ const TodoContainer = ({ tableId, setCurrentLink }) => {
   };
 
   //Item description section
-  const [toggleDescription, setToggleDescription] = React.useState(false);
+  // const [toggleDescription, setToggleDescription] = React.useState(false);
 
   const [itemDescription, setItemDescription] = React.useState("");
   console.log(itemDescription);
 
   const handleDescription = (id) => {
-    setToggleDescription(!toggleDescription);
+    // setToggleDescription(!toggleDescription);
     setItemDescription(id);
   };
 
   return (
-    <div className={style.split_box}>
-      <div className={style.left_pane}>
-        <h5 className={style.tableId}>{tableId}</h5>
-        <AddTodoForm
-          onAddTodo={addTodo}
-          todoList={todoList}
-          tableId={tableId}
-        />
-        <TodoList
-          todoList={todoList}
-          onRemoveTodo={removeTodo}
-          onEditTodo={editTodo}
-          handleDescription={handleDescription}
-          tableId={tableId}
-        />
-      </div>
-      <div className={style.right_pane}>
-        {toggleDescription && (
+    <div className={sideBar ? style["todo_container"] : style["active"]}>
+      <div className={style.split_box}>
+        <div className={style.left_pane}>
+          <h5 className={style.tableId}>{tableId}</h5>
+          <AddTodoForm
+            onAddTodo={addTodo}
+            todoList={todoList}
+            tableId={tableId}
+          />
+          <TodoList
+            todoList={todoList}
+            onRemoveTodo={removeTodo}
+            onEditTodo={editTodo}
+            handleDescription={handleDescription}
+            tableId={tableId}
+          />
+        </div>
+        <div className={style.right_pane}>
+          {/* {toggleDescription && ( */}
           <ItemDescription
             todoList={todoList}
             itemDescription={itemDescription}
           />
-        )}
+          {/* )} */}
+        </div>
       </div>
     </div>
   );

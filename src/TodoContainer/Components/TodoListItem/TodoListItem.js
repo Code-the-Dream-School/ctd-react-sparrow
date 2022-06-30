@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./TodoListItem.module.css";
-import { ReactComponent as XIcon } from "./IconsComponents/x.svg";
-import { ReactComponent as NoteIcon } from "./IconsComponents/note.svg";
+import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
+import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
 
 //This component renders each element of the list, edit, and remove button
 const TodoListItem = ({
@@ -20,7 +20,7 @@ const TodoListItem = ({
   );
 
   //handles:
-  // get the value from the user input
+  // get the value from the user input to edit the current item
   const onChangeEdit = (e) => {
     const editTodo = e.target.value;
     setTodoEditTitle(editTodo);
@@ -48,7 +48,12 @@ const TodoListItem = ({
         {isToggle ? (
           <form onSubmit={onSubmit}>
             <label htmlFor="edit"></label>
-            <input id="edit" value={todoEditTitle} onChange={onChangeEdit} />
+            <input
+              id="edit"
+              value={todoEditTitle}
+              onChange={onChangeEdit}
+              className={style.edit_input}
+            />
           </form>
         ) : (
           <span
@@ -59,40 +64,18 @@ const TodoListItem = ({
             {todoList.fields.Title}
           </span>
         )}
-        {/* <button
-          type="button"
-          onClick={() => {
-            setToggle(true);
-          }}
-        >
-          Edit
-        </button> */}
-
-        <NoteIcon
-          className={style.icons}
-          onClick={() => handleDescription(todoList.id, tableId)}
-        />
-
-        <div className={style.tool_tip} data-tooltip="Remove task">
+        <div>
+          <NoteIcon
+            className={style.icons}
+            onClick={() => handleDescription(todoList.id, tableId)}
+          />
           <XIcon
             className={style.icons}
             onClick={() => {
               onRemoveTodo(todoList.id, tableId);
             }}
           />
-          {/* <span className={style.tooltip_text}>Remove task</span> */}
         </div>
-
-        {/* <button
-          onClick={() => {
-            onRemoveTodo(todoList.id, tableId);
-          }}
-        >
-          Remove
-        </button> */}
-        {/* <button onClick={() => handleDescription(todoList.id, tableId)}>
-          note
-        </button> */}
       </li>
     </div>
   );

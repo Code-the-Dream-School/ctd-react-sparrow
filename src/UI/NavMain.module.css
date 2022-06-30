@@ -4,6 +4,7 @@
     stroke: rgba(52, 49, 49, 0.975);
     width: 24px;
     height: 24px;
+
 }
 
 
@@ -21,7 +22,8 @@
 
 /*icon keeps moving down*/
 .menu {
-    position: fixed;
+    position: absolute;
+    top: 0;
     left: 50px;
     padding-top: 15px;
     
@@ -29,6 +31,6 @@
 
 /*Navbar container*/
  .nav_container {
-    border-bottom: 1px solid rgb(123, 123, 123);
+    border-bottom: 1px solid #c2c2c2;
     height: 50px;
  }

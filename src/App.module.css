@@ -28,7 +28,7 @@ Before the idea of doing flexbox on todo container. just deleted one colunm
 
 .todoCont_split_box {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr;
     height: 100vh;
 }
@@ -58,18 +58,40 @@ Before the idea of doing flexbox on todo container. just deleted one colunm
  opacity: 0;
  visibility: hidden;   
 }
-
-
-
-
-
+ 
 
 
 .todoCon_middle_pane_todoList {
     background-color: #fdfdff;
+    padding-left: 55px;
+    /* padding-right: var(--editor-side-padding); */
+    /* max-width: 800px;
+    margin: 0 auto; */
+    position: relative;
+    /* z-index: 1; */
+    
 }
 
 /* .todoCon_right_pane_description {
     background-color: rgb(218, 205, 189);
 } */
 
+
+
+/*Try moving midldle pane when the sidebar appears*/
+.todo_container {
+    margin-left: 250px;
+    /* width: 100%; */
+    transition: left .25s;
+    padding-bottom: 5rem;
+    /* padding-left: 80px; */
+   
+  
+  }
+  .todo_container.active {
+    padding-left: 250px;
+    overflow: hidden;
+    transition: left .25s;
+    
+   
+  } 

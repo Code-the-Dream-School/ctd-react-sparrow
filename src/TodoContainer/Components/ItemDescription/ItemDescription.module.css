@@ -1,0 +1,18 @@
+
+/*Unordered list tag */
+.ul_el {
+    list-style: none;
+}
+  
+
+.text_el {
+    height: 100vh;
+    width: 200px;
+    /* border-style:  1px solid rgb(123, 123, 123); */
+    background-color: #fdfdff;
+    outline: none;
+    border: none;
+    resize: none;
+    
+}
+

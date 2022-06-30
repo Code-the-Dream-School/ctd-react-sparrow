@@ -1,7 +1,7 @@
 import React from "react";
-import InputWithLabel from "./InputWithLabel";
+import InputWithLabel from "../InputWithLabel/InputWithLabel";
 import style from "./AddTodoForm.module.css";
-import { ReactComponent as AddIcon } from "./IconsComponents/addTask+.svg";
+import { ReactComponent as AddIcon } from "../IconsComponents/addTask+.svg";
 import PropTypes from "prop-types";
 
 //This component renders the form (input field)
@@ -43,7 +43,6 @@ const AddTodoForm = ({ onAddTodo, tableId }) => {
       <InputWithLabel
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
-        className={style.input_component}
       ></InputWithLabel>
       <button type="submit" className={style.add_button}>
         <AddIcon className={style.add_button} />

@@ -1,5 +1,5 @@
 import React from "react";
-import TodoListItem from "./TodoListItem";
+import TodoListItem from "./TodoListItem/TodoListItem";
 
 //This component renders the entire list
 const TodoList = ({
@@ -10,6 +10,7 @@ const TodoList = ({
   tableId,
 }) => {
   console.log("tableId prop", tableId);
+
   return (
     <>
       {todoList.map((todoList) => {

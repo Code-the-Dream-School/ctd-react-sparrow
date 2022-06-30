@@ -1,79 +1,58 @@
-/*grid*/
+/* ----grid from the div tag ----*/
 
 .split_box {
     display: grid;
-    grid-template-columns: 1fr 100px;
+    grid-template-columns: 1fr 200px;
     height: 100vh;
-
 }
 
+/*--- this is the item description component---*/
 .right_pane {
     background-color: #fdfdff;
     
+    
 }
+
+/*--- this the AddForm and TodoLis component ---*/
 
 .left_pane {
     background-color: #fdfdff;
-    border: 1px solid rgb(123, 123, 123);
-    border-right: none;
+    border: 1px solid #c2c2c2;
+    border-top: none;
+    border-left: none;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-left: 4rem;
+    /* margin-right: 4rem; */
+    padding-right: 3rem;
 }
 
 /*todo list title*/
 
-/*name of the table keeps moving down*/
 .tableId {
     font-weight: 250;
     font-size: 23px;
     padding-top: 15px;
     padding-left: 15px;
-    position: fixed;
+    position: absolute;
     top: 50px;
 }
 
+/*Middle pane todoLis and ItemDescription components*/
 
+/*Deleted it the styling for the middle pane and put in the App modules file
+so it can works with all the reused components*/
 
-/* Flex box*/
-
-/* .split_box {
-    background-color: aliceblue;
-    display: flex;
-    align-items: center; vertically aligment inside the box
-    justify-content:flex-start; horizontally aligment inside the box (main-axis)
-    height: 100vh;
-
-
-    flex-direction: row; colunm
-*/ 
-       
-
-
-/*For changing position when working with small devices --> order property,
-by default all items are in 0
-*/
-
-/*flex property
-            --> default
-flex-grow: 0; 
-flex-shrink: 1;
-flex-basis: auto;
-*/
-
-/*individual items inside of flex box*/
-
-/* .right_pane {
-    background-color: rgb(232, 195, 241);
-    align-self: stretch; vertially aligment for each item
-    /* list-style: none;
-    flex-basis: 400px;
-} */
-
-
-/* .left_pane {
-    align-self: stretch;
-    background-color: rgb(236, 255, 243);
-
-}  */
-
+ .todo_container {
+    /* margin-left: 250px; */
+    transition: left .25s;
+    padding-bottom: 5rem;
+    /* margin-right: 200px; */
+  }
+  .todo_container.active {
+    padding-left: 250px;
+    overflow: hidden;
+    transition: left .25s;
+    margin-right: 200px;
+  }
