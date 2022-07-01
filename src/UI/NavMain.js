@@ -2,6 +2,7 @@ import React from "react";
 import style from "./NavMain.module.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as IconMenu } from "./SideVar/IconsSideBar/menu.svg";
+import PropTypes from "prop-types";
 
 const NavMain = ({ setSideBar, sideBar }) => {
   return (
@@ -30,6 +31,11 @@ const NavMain = ({ setSideBar, sideBar }) => {
       </ul>
     </nav>
   );
+};
+
+NavMain.propTypes = {
+  setSideBar: PropTypes.func, //This is supposted to be a boolean
+  sideBar: PropTypes.bool,
 };
 
 export default NavMain;

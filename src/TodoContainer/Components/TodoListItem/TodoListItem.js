@@ -2,6 +2,7 @@ import React from "react";
 import style from "./TodoListItem.module.css";
 import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
 import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
+import PropTypes from "prop-types";
 
 //This component renders each element of the list, edit, and remove button
 const TodoListItem = ({
@@ -79,6 +80,14 @@ const TodoListItem = ({
       </li>
     </div>
   );
+};
+
+TodoListItem.prototype = {
+  todoList: PropTypes.array,
+  onRemoveTodo: PropTypes.func,
+  onEditTodo: PropTypes.func,
+  handleDescription: PropTypes.func,
+  tableId: PropTypes.string,
 };
 
 export default TodoListItem;

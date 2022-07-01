@@ -2,6 +2,7 @@ import React from "react";
 import style from "./SideBar.module.css";
 import { Link } from "react-router-dom";
 import sideBarData from "./SideBarData";
+import PropTypes from "prop-types";
 
 const SideBar = ({ sideBar, setCurrentLink }) => {
   // sideBar --> state: manage the transition
@@ -25,6 +26,11 @@ const SideBar = ({ sideBar, setCurrentLink }) => {
       </nav>
     </>
   );
+};
+
+SideBar.prototypes = {
+  sideBar: PropTypes.bool,
+  setCurrentLink: PropTypes.func, // This is supposted to be a string
 };
 
 export default SideBar;

@@ -3,6 +3,7 @@ import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 import TodoList from "./Components/TodoList";
 import style from "./TodoContainer.module.css";
 import ItemDescription from "./Components/ItemDescription/ItemDescription";
+import PropTypes from "prop-types";
 
 const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //This state renders our list, and saved the value in the local storage
@@ -10,6 +11,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   const [todoList, setTodoList] = React.useState(
     JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
+  console.log(`currentLink ${setCurrentLink}`);
 
   console.log(todoList);
 
@@ -189,4 +191,9 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   );
 };
 
+TodoContainer.propTypes = {
+  tableId: PropTypes.string,
+  setCurrentLink: PropTypes.func, // This is supposed to be a string
+  sideBar: PropTypes.bool,
+};
 export default TodoContainer;
