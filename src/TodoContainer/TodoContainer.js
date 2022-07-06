@@ -8,17 +8,15 @@ import PropTypes from "prop-types";
 const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //This state renders our list, and saved the value in the local storage
   //Passing information down the state to the TodoList component
+
   const [todoList, setTodoList] = React.useState(
     JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
-  console.log(`currentLink ${setCurrentLink}`);
-
-  console.log(todoList);
 
   //conditional renderting state
   const [isLoading, setIsloading] = React.useState(true);
 
-  //This is a use effect hook which in this case is use to save the user input on local storage
+  // This is a use effect hook which in this case is use to save the user input on local storage
   React.useEffect(() => {
     if (!isLoading) {
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
@@ -28,8 +26,9 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //Airtable APIs with the fetch method:
 
   //GET
+  //const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
   React.useEffect(() => {
-    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
+    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=${direction}`;
     const optionsGet = {
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -39,7 +38,17 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
       .then((result) => {
         return result.json();
       })
+      //To do: use the switch if statement method
       .then((result) => {
+        result.records.sort((objectA, objectB) => {
+          if (objectA.fields.Title < objectB.fields.Title) {
+            return -1;
+          } else if (objectA.fields.Title === objectB.fields.Title) {
+            return 0;
+          } else if (objectA.fields.Title > objectB.fields.Title) {
+            return 1;
+          }
+        });
         setTodoList(result.records);
         setIsloading(false);
       });
@@ -160,6 +169,19 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
     setItemDescription(id);
   };
 
+  //Sorting Section
+  const [direction, setDirection] = React.useState("asc");
+  console.log(direction);
+  const handleSort = () => {
+    const sortDirection = direction === "desc" ? "asc" : "desc";
+    setDirection(sortDirection);
+  };
+
+  const sorting = () => {
+    if (direction === "asc") {
+    }
+  };
+
   return (
     <div className={sideBar ? style["todo_container"] : style["active"]}>
       <div className={style.split_box}>
@@ -170,6 +192,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
             todoList={todoList}
             tableId={tableId}
           />
+          <button onClick={handleSort}>sort</button>
           <TodoList
             todoList={todoList}
             onRemoveTodo={removeTodo}
