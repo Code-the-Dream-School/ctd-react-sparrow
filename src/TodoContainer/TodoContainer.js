@@ -55,22 +55,22 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   }, []);
 
   //Use effect with new id
-  React.useEffect(() => {
-    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
-    const optionsGet = {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-      },
-    };
-    fetch(reqUrl, optionsGet)
-      .then((result) => {
-        return result.json();
-      })
-      .then((result) => {
-        setTodoList(result.records);
-        setIsloading(false);
-      });
-  }, [setCurrentLink]);
+  // React.useEffect(() => {
+  //   const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
+  //   const optionsGet = {
+  //     headers: {
+  //       Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+  //     },
+  //   };
+  //   fetch(reqUrl, optionsGet)
+  //     .then((result) => {
+  //       return result.json();
+  //     })
+  //     .then((result) => {
+  //       setTodoList(result.records);
+  //       setIsloading(false);
+  //     });
+  // }, [setCurrentLink]);
 
   // POST method
   //Lift state
