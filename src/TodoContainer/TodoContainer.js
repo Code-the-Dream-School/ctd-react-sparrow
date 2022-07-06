@@ -12,6 +12,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   const [todoList, setTodoList] = React.useState(
     JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
+  // JSON.parse(localStorage.getItem("savedTodoList")) || []
 
   //conditional renderting state
   const [isLoading, setIsloading] = React.useState(true);
@@ -28,6 +29,31 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //GET
   //const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
   React.useEffect(() => {
+    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view`;
+    const optionsGet = {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+    };
+    fetch(reqUrl, optionsGet)
+      .then((result) => {
+        return result.json();
+      })
+      .then((result) => {
+        setTodoList(result.records);
+      });
+    setIsloading(false);
+  }, []);
+
+  //Sort section: I used a useEffect that would change the
+  const [direction, setDirection] = React.useState("asc");
+  console.log(direction);
+  const handleSort = () => {
+    const sortDirection = direction === "desc" ? "asc" : "desc";
+    setDirection(sortDirection);
+  };
+  // useEffect for soting the data
+  React.useEffect(() => {
     const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=${direction}`;
     const optionsGet = {
       headers: {
@@ -38,23 +64,23 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
       .then((result) => {
         return result.json();
       })
-      //To do: use the switch if statement method
       .then((result) => {
-        result.records.sort((objectA, objectB) => {
-          if (objectA.fields.Title < objectB.fields.Title) {
-            return -1;
-          } else if (objectA.fields.Title === objectB.fields.Title) {
-            return 0;
-          } else if (objectA.fields.Title > objectB.fields.Title) {
-            return 1;
-          }
-        });
         setTodoList(result.records);
-        setIsloading(false);
       });
-  }, []);
+    setIsloading(false);
+  }, [direction]);
 
-  //Use effect with new id
+  // result.records.sort((objectA, objectB) => {
+  //   if (objectA.fields.Title < objectB.fields.Title) {
+  //     return -1;
+  //   } else if (objectA.fields.Title === objectB.fields.Title) {
+  //     return 0;
+  //   } else if (objectA.fields.Title > objectB.fields.Title) {
+  //     return 1;
+  //   }
+  // });
+
+  // Use effect with new id
   // React.useEffect(() => {
   //   const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
   //   const optionsGet = {
@@ -170,12 +196,12 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   };
 
   //Sorting Section
-  const [direction, setDirection] = React.useState("asc");
-  console.log(direction);
-  const handleSort = () => {
-    const sortDirection = direction === "desc" ? "asc" : "desc";
-    setDirection(sortDirection);
-  };
+  // const [direction, setDirection] = React.useState("asc");
+  // console.log(direction);
+  // const handleSort = () => {
+  //   const sortDirection = direction === "desc" ? "asc" : "desc";
+  //   setDirection(sortDirection);
+  // };
 
   const sorting = () => {
     if (direction === "asc") {
