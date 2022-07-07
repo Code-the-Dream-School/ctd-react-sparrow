@@ -4,14 +4,14 @@
     list-style: none;
 }
   
-
+  
 .text_el {
-    height: 100vh;
+    height: 50vh;
     width: 200px;
     /* border-style:  1px solid rgb(123, 123, 123); */
     background-color: #fdfdff;
     outline: none;
-    border: none;
+    /* border: none; */
     resize: none;
     
 }

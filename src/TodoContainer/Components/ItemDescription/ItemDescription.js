@@ -1,41 +1,41 @@
 import React from "react";
 import style from "./ItemDescription.module.css";
+import DescriptionText from "./DescriptionText";
+import PropTypes from "prop-types";
 
-function ItemDescription({ todoList, itemDescription }) {
-  // const description = 0;
-  // for (description)
-
-  //Make a controlled component and work with the data from airtable
-
-  // const [itemDescription, setItemDescription] = React.useState("");
-
-  // const handleDesChange = (e) => {
-  //   setItemDescription(e.todoList.fields.Description);
-  // };
-  //states
-  // const [description, setDescription] = React.useState(todoList.fields.Title);
-
+const ItemDescription = ({
+  todoList,
+  itemDescription,
+  onEditDescription,
+  tableId,
+}) => {
   return (
     <>
       <ul className={style.ul_el}>
         {todoList.map((todoList) => {
           if (todoList.id === itemDescription)
             return (
-              <li key={todoList.id} className={style.li_el}>
-                <textarea
-                  // value={description}
-                  placeholder="Description"
-                  className={style.text_el}
-                  // onEdit={onEdit}
-                >
-                  {todoList.fields.Description}
-                </textarea>
-              </li>
+              <>
+                <DescriptionText
+                  key={todoList.id}
+                  todoList={todoList}
+                  className={style.li_el}
+                  onEditDescription={onEditDescription}
+                  tableId={tableId}
+                />
+              </>
             );
         })}
       </ul>
     </>
   );
-}
+};
+
+DescriptionText.prototype = {
+  todoList: PropTypes.array,
+  itemDescription: PropTypes.string,
+  onEditDescription: PropTypes.func,
+  tableId: PropTypes.string,
+};
 
 export default ItemDescription;

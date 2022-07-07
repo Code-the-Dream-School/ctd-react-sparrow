@@ -185,6 +185,43 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   };
 
   //Item description section
+  //PATCH method for ItemDescription
+
+  const editDescription = (id, newEditDescription, tableId) => {
+    console.log("new edit todo", newEditDescription);
+    const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
+
+    fetch(EDITurl, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newEditDescription),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        //make a new list with different description
+        const editedTodoList = todoList.map((todoItem) => {
+          if (todoItem.id === data.id) {
+            return {
+              ...todoItem,
+              fields: {
+                ...todoItem.fields,
+                Title: data.fields.Title,
+                Description: data.fields.Description,
+              },
+            };
+          }
+          return todoItem;
+        });
+        setTodoList(editedTodoList);
+      });
+  };
+
   // const [toggleDescription, setToggleDescription] = React.useState(false);
 
   const [itemDescription, setItemDescription] = React.useState("");
@@ -193,19 +230,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   const handleDescription = (id) => {
     // setToggleDescription(!toggleDescription);
     setItemDescription(id);
-  };
-
-  //Sorting Section
-  // const [direction, setDirection] = React.useState("asc");
-  // console.log(direction);
-  // const handleSort = () => {
-  //   const sortDirection = direction === "desc" ? "asc" : "desc";
-  //   setDirection(sortDirection);
-  // };
-
-  const sorting = () => {
-    if (direction === "asc") {
-    }
   };
 
   return (
@@ -230,8 +254,10 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
         <div className={style.right_pane}>
           {/* {toggleDescription && ( */}
           <ItemDescription
+            tableId={tableId}
             todoList={todoList}
             itemDescription={itemDescription}
+            onEditDescription={editDescription}
           />
           {/* )} */}
         </div>

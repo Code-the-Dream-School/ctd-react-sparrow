@@ -27,7 +27,7 @@ const TodoListItem = ({
     setTodoEditTitle(editTodo);
   };
 
-  //updates the value, sends the user iput up to todoContainer
+  //updates the value, when the user edits it and sends it up to todoContainer
   const onSubmit = (e) => {
     e.preventDefault();
     onEditTodo(
@@ -68,7 +68,8 @@ const TodoListItem = ({
         <div>
           <NoteIcon
             className={style.icons}
-            onClick={() => handleDescription(todoList.id, tableId)}
+            onClick={() => handleDescription(todoList.id)}
+            // onClick={() => handleDescription(todoList.id, tableId)} I don't need the tableId here
           />
           <XIcon
             className={style.icons}
