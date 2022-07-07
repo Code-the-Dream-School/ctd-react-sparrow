@@ -1,8 +1,9 @@
 import React from "react";
 import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 import TodoList from "./Components/TodoList";
-import style from "./TodoContainer.module.css";
 import ItemDescription from "./Components/ItemDescription/ItemDescription";
+import Search from "./Components/Search/Search";
+import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 
 const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
@@ -44,15 +45,17 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
     setIsloading(false);
   }, []);
 
-  //Sort section: I used a useEffect that would change the
+  //Sort section: I used a function that would change the
   const [direction, setDirection] = React.useState("asc");
   console.log(direction);
   const handleSort = () => {
     const sortDirection = direction === "desc" ? "asc" : "desc";
     setDirection(sortDirection);
+    requestSortedList();
   };
   // useEffect for soting the data
-  React.useEffect(() => {
+  // React.useEffect(() => {
+  const requestSortedList = () => {
     const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=${direction}`;
     const optionsGet = {
       headers: {
@@ -67,7 +70,8 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
         setTodoList(result.records);
       });
     setIsloading(false);
-  }, [direction]);
+  };
+  // }, [direction]);
 
   // POST method
   //Lift state
@@ -200,10 +204,21 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
     setItemDescription(id);
   };
 
+  //Search filter Section
+  const [searchTerm, setSearchTerm] = React.useState("");
+  // const handleChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  //   onSearch(e);
+  // };
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div className={sideBar ? style["todo_container"] : style["active"]}>
       <div className={style.split_box}>
         <div className={style.left_pane}>
+          <Search onSearch={handleSearch} />
           <h5 className={style.tableId}>{tableId}</h5>
           <AddTodoForm
             onAddTodo={addTodo}
@@ -212,6 +227,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
           />
           <button onClick={handleSort}>sort</button>
           <TodoList
+            searchTerm={searchTerm}
             todoList={todoList}
             onRemoveTodo={removeTodo}
             onEditTodo={editTodo}

@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 
 const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
   //useRef and useEffect hook keep the focus on the input field
-  const inputRef = React.useRef();
-  React.useEffect(() => {
-    inputRef.current.focus();
-  });
+  // const inputRef = React.useRef();
+  // React.useEffect(() => {
+  //   inputRef.current.focus();
+  // });
 
   return (
     <>
@@ -17,7 +17,7 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
         placeholder="Add a new task"
         id="todoTitle"
         name="title"
-        ref={inputRef}
+        // ref={inputRef}
         value={todoTitle}
         onChange={handleTitleChange}
       />

@@ -9,12 +9,15 @@ const TodoList = ({
   onEditTodo,
   handleDescription,
   tableId,
+  searchTerm,
 }) => {
-  console.log("tableId prop", tableId);
+  const filteredList = todoList.filter((items) => {
+    return items.fields.Title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <>
-      {todoList.map((todoList) => {
+      {filteredList.map((todoList) => {
         return (
           <TodoListItem
             key={todoList.id}
