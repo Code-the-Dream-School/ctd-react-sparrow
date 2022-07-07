@@ -4,7 +4,7 @@ import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
 import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
 import PropTypes from "prop-types";
 
-//This component renders each element of the list, edit, and remove button
+//This component renders each element of the list, edit, and remove button.
 const TodoListItem = ({
   todoList,
   onRemoveTodo,
@@ -13,6 +13,7 @@ const TodoListItem = ({
   tableId,
 }) => {
   //Shows the input field when the user clicks on an item
+  //to edit the task
   const [isToggle, setToggle] = React.useState(false);
 
   //controls input field for the edit button
@@ -20,7 +21,7 @@ const TodoListItem = ({
     todoList.fields.Title
   );
 
-  //handles:
+  //handles for edit:
   // get the value from the user input to edit the current item
   const onChangeEdit = (e) => {
     const editTodo = e.target.value;
@@ -69,7 +70,6 @@ const TodoListItem = ({
           <NoteIcon
             className={style.icons}
             onClick={() => handleDescription(todoList.id)}
-            // onClick={() => handleDescription(todoList.id, tableId)} I don't need the tableId here
           />
           <XIcon
             className={style.icons}

@@ -7,8 +7,7 @@ import PropTypes from "prop-types";
 
 const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //This state renders our list, and saved the value in the local storage
-  //Passing information down the state to the TodoList component
-
+  //Pass information down to the TodoList component
   const [todoList, setTodoList] = React.useState(
     JSON.parse(localStorage.getItem("savedTodoList")) || []
   );
@@ -70,34 +69,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
     setIsloading(false);
   }, [direction]);
 
-  // result.records.sort((objectA, objectB) => {
-  //   if (objectA.fields.Title < objectB.fields.Title) {
-  //     return -1;
-  //   } else if (objectA.fields.Title === objectB.fields.Title) {
-  //     return 0;
-  //   } else if (objectA.fields.Title > objectB.fields.Title) {
-  //     return 1;
-  //   }
-  // });
-
-  // Use effect with new id
-  // React.useEffect(() => {
-  //   const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`;
-  //   const optionsGet = {
-  //     headers: {
-  //       Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-  //     },
-  //   };
-  //   fetch(reqUrl, optionsGet)
-  //     .then((result) => {
-  //       return result.json();
-  //     })
-  //     .then((result) => {
-  //       setTodoList(result.records);
-  //       setIsloading(false);
-  //     });
-  // }, [setCurrentLink]);
-
   // POST method
   //Lift state
   const addTodo = (newTodo, tableId) => {
@@ -125,8 +96,8 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
       });
   };
 
-  //Delete method
-  //lifted state and filter method
+  //DeLETE method
+  //lifted state and filter the data
   const removeTodo = (id, tableId) => {
     const DELETEurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
 
@@ -149,6 +120,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   };
 
   //PATCH method
+  //Map the response and add new data from the user
   const editTodo = (id, newEditTodo, tableId) => {
     console.log("new edit todo", newEditTodo);
     const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
@@ -186,7 +158,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
 
   //Item description section
   //PATCH method for ItemDescription
-
   const editDescription = (id, newEditDescription, tableId) => {
     console.log("new edit todo", newEditDescription);
     const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
@@ -222,13 +193,10 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
       });
   };
 
-  // const [toggleDescription, setToggleDescription] = React.useState(false);
-
   const [itemDescription, setItemDescription] = React.useState("");
   console.log(itemDescription);
 
   const handleDescription = (id) => {
-    // setToggleDescription(!toggleDescription);
     setItemDescription(id);
   };
 
@@ -252,7 +220,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
           />
         </div>
         <div className={style.right_pane}>
-          {/* {toggleDescription && ( */}
           <ItemDescription
             tableId={tableId}
             todoList={todoList}
