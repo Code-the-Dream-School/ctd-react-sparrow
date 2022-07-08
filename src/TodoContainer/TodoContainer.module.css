@@ -47,7 +47,7 @@ so it can works with all the reused components*/
  .todo_container {
     /* margin-left: 250px; */
     transition: left .25s;
-    padding-bottom: 5rem;
+    /* padding-bottom: 5rem; */
     /* margin-right: 200px; */
   }
   .todo_container.active {
@@ -56,3 +56,12 @@ so it can works with all the reused components*/
     transition: left .25s;
     margin-right: 200px;
   }
+
+/*Button*/
+
+.sort_button {
+  color: #393d40;
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+}

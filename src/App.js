@@ -17,53 +17,48 @@ const App = () => {
   const [currentLink, setCurrentLink] = React.useState("Work");
 
   return (
-    <div className={styles.app_container}>
-      <Router>
-        <div className={styles.todoCont_split_box}>
-          <div className={styles.todoCont_MainNav}>
-            <NavMain setSideBar={setSideBar} sideBar={sideBar} />
-          </div>
-          <div className={styles.todoCont_lelf_pane_sideBar}>
-            <SideBar
-              sideBar={sideBar}
-              onSideBar={setSideBar}
-              onCurrentLink={setCurrentLink}
-            />
-          </div>
-          {/* <div className={styles.todoCon_middle_pane_todoList}> */}
-          <div
-            className={sideBar ? styles["todo_container"] : styles["active"]}
-          >
-            <div className={styles.todoCon_middle_pane_todoList}>
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <TodoContainer
-                      sideBar={sideBar}
-                      tableId={"Default"}
-                      setCurrentLink={setCurrentLink}
-                    />
-                  }
-                ></Route>
-                <Route
-                  path="personal"
-                  element={<TodoContainer tableId={"Personal"} />}
-                />
-                <Route
-                  path="work"
-                  element={<TodoContainer tableId={"Work"} />}
-                />
-                <Route
-                  path="chores"
-                  element={<TodoContainer tableId={"Chores"} />}
-                />
-              </Routes>
-            </div>
+    // <div className={styles.app_container}>
+    <Router>
+      <div className={styles.todoCont_split_box}>
+        <div className={styles.todoCont_MainNav}>
+          <NavMain setSideBar={setSideBar} sideBar={sideBar} />
+        </div>
+        <div className={styles.todoCont_lelf_pane_sideBar}>
+          <SideBar
+            sideBar={sideBar}
+            onSideBar={setSideBar}
+            onCurrentLink={setCurrentLink}
+          />
+        </div>
+        {/* <div className={styles.todoCon_middle_pane_todoList}> */}
+        <div className={sideBar ? styles["todo_container"] : styles["active"]}>
+          <div className={styles.todoCon_middle_pane_todoList}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <TodoContainer
+                    sideBar={sideBar}
+                    tableId={"Default"}
+                    setCurrentLink={setCurrentLink}
+                  />
+                }
+              ></Route>
+              <Route
+                path="personal"
+                element={<TodoContainer tableId={"Personal"} />}
+              />
+              <Route path="work" element={<TodoContainer tableId={"Work"} />} />
+              <Route
+                path="chores"
+                element={<TodoContainer tableId={"Chores"} />}
+              />
+            </Routes>
           </div>
         </div>
-      </Router>
-    </div>
+      </div>
+    </Router>
+    // </div>
   );
 };
 

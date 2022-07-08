@@ -31,6 +31,8 @@ Before the idea of doing flexbox on todo container. just deleted one colunm
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr;
     height: 100vh;
+    width: 100vw;
+
 }
 
 .todoCont_MainNav {
@@ -83,10 +85,9 @@ Before the idea of doing flexbox on todo container. just deleted one colunm
     margin-left: 250px;
     /* width: 100%; */
     transition: left .25s;
-    padding-bottom: 5rem;
+    /* padding-bottom: 5rem; */
     /* padding-left: 80px; */
-   
-  
+    height: 100vh;
   }
   .todo_container.active {
     padding-left: 250px;

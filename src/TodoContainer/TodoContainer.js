@@ -5,6 +5,7 @@ import ItemDescription from "./Components/ItemDescription/ItemDescription";
 import Search from "./Components/Search/Search";
 import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
+import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
 
 const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //This state renders our list, and saved the value in the local storage
@@ -230,7 +231,8 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
             todoList={todoList}
             tableId={tableId}
           />
-          <button onClick={handleSort}>sort</button>
+          <SortButton className={style.sort_button} onClick={handleSort} />
+          {/* <button onClick={handleSort}>sort</button> */}
           {isLoading ? (
             <span>Is loading...</span>
           ) : (
@@ -252,7 +254,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
             itemDescription={itemDescription}
             onEditDescription={editDescription}
           />
-          {/* )} */}
         </div>
       </div>
     </div>
