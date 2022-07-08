@@ -10,7 +10,9 @@ const TodoList = ({
   handleDescription,
   tableId,
   searchTerm,
+  handleCheckBox,
 }) => {
+  console.log(handleCheckBox);
   const filteredList = todoList.filter((items) => {
     return items.fields.Title.toLowerCase().includes(searchTerm.toLowerCase());
   });
@@ -26,6 +28,7 @@ const TodoList = ({
             onEditTodo={onEditTodo}
             handleDescription={handleDescription}
             tableId={tableId}
+            handleCheckBox={handleCheckBox}
           />
         );
       })}

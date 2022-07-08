@@ -9,23 +9,12 @@ import PropTypes from "prop-types";
 const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   //This state renders our list, and saved the value in the local storage
   //Pass information down to the TodoList component
-  const [todoList, setTodoList] = React.useState(
-    JSON.parse(localStorage.getItem("savedTodoList")) || []
-  );
-  // JSON.parse(localStorage.getItem("savedTodoList")) || []
+  const [todoList, setTodoList] = React.useState([]);
 
   //conditional renderting state
   const [isLoading, setIsloading] = React.useState(true);
 
-  // This is a use effect hook which in this case is use to save the user input on local storage
-  React.useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-    }
-  }, [todoList, isLoading]);
-
   //Airtable APIs with the fetch method:
-
   //GET
   //const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
   React.useEffect(() => {
@@ -41,8 +30,8 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
       })
       .then((result) => {
         setTodoList(result.records);
+        setIsloading(false);
       });
-    setIsloading(false);
   }, []);
 
   //Sort section: I used a function that would change the
@@ -160,7 +149,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
       });
   };
 
-  //Item description section
+  /* -----------> Item description section <----------*/
   //PATCH method for ItemDescription
   const editDescription = (id, newEditDescription, tableId) => {
     console.log("new edit todo", newEditDescription);
@@ -204,7 +193,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
     setItemDescription(id);
   };
 
-  //Search filter Section
+  /*--------> Search filter Section <----------*/
   const [searchTerm, setSearchTerm] = React.useState("");
   // const handleChange = (e) => {
   //   setSearchTerm(e.target.value);
@@ -212,6 +201,22 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
   // };
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+  };
+
+  /*--------> Checkbox Sectiom <----------*/
+  //To do:
+  //Try to link this to airtable
+  const handleCheckBox = (id) => {
+    const newTodoList = todoList.map((todo) => {
+      if (todo.id === id)
+        return {
+          ...todo,
+          done: !todo.done,
+        };
+      return todo;
+    });
+    setTodoList(newTodoList);
+    console.log(newTodoList);
   };
 
   return (
@@ -226,14 +231,19 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
             tableId={tableId}
           />
           <button onClick={handleSort}>sort</button>
-          <TodoList
-            searchTerm={searchTerm}
-            todoList={todoList}
-            onRemoveTodo={removeTodo}
-            onEditTodo={editTodo}
-            handleDescription={handleDescription}
-            tableId={tableId}
-          />
+          {isLoading ? (
+            <span>Is loading...</span>
+          ) : (
+            <TodoList
+              searchTerm={searchTerm}
+              todoList={todoList}
+              onRemoveTodo={removeTodo}
+              onEditTodo={editTodo}
+              handleDescription={handleDescription}
+              tableId={tableId}
+              handleCheckBox={handleCheckBox}
+            />
+          )}
         </div>
         <div className={style.right_pane}>
           <ItemDescription

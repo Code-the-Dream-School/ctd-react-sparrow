@@ -11,7 +11,9 @@ const TodoListItem = ({
   onEditTodo,
   handleDescription,
   tableId,
+  handleCheckBox,
 }) => {
+  console.log(handleCheckBox);
   //Shows the input field when the user clicks on an item
   //to edit the task
   const [isToggle, setToggle] = React.useState(false);
@@ -44,9 +46,20 @@ const TodoListItem = ({
     setToggle(false);
   };
 
+  //Checkbox section
+  //To do:
+  //Try to Link the state with airtable with Done field
+  const [isChecked, setIsChecked] = React.useState("false");
+
+  const handleCheckBoxChange = () => {
+    setIsChecked(!isChecked);
+    if (todoList.done === true) return null;
+    handleCheckBox(todoList.id);
+  };
   return (
     <div className={style.listItem_container}>
       <li className={style.listItem}>
+        <input type="checkbox" onChange={() => handleCheckBoxChange()} />
         {isToggle ? (
           <form onSubmit={onSubmit}>
             <label htmlFor="edit"></label>
@@ -62,6 +75,7 @@ const TodoListItem = ({
             onClick={() => {
               setToggle(true);
             }}
+            style={!isChecked ? { textDecoration: "line-through" } : null}
           >
             {todoList.fields.Title}
           </span>
