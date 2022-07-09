@@ -20,13 +20,13 @@
     border: 1px solid #c2c2c2;
     border-top: none;
     border-left: none;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 5px; */
     margin-left: 4rem;
     /* margin-right: 4rem; */
     padding-right: 3rem;
-}
+}  
 
 /*todo list title*/
 

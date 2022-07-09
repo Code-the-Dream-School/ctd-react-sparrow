@@ -18,16 +18,6 @@ const NavMain = ({ setSideBar, sideBar }) => {
             />
           </Link>
         </li>
-        {/* <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/goal">Goals</Link>
-        </li>
-
-        <li>
-          <Link to="/habit">Habits</Link>
-        </li> */}
       </ul>
     </nav>
   );

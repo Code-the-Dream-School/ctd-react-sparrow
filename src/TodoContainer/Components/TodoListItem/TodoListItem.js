@@ -57,6 +57,14 @@ const TodoListItem = ({
     handleCheckBox(todoList.id);
   };
 
+  //Handle Description section
+  const [showDescription, setShowDescription] = React.useState(false);
+  console.log("showDescription", showDescription);
+  const handleClickDescription = () => {
+    handleDescription(todoList.id);
+    setShowDescription(!showDescription);
+  };
+
   return (
     <div className={style.listItem_container}>
       <li className={style.listItem}>
@@ -84,7 +92,8 @@ const TodoListItem = ({
         <div>
           <NoteIcon
             className={style.icons}
-            onClick={() => handleDescription(todoList.id)}
+            // onClick={() => handleDescription(todoList.id)}
+            onClick={handleClickDescription}
           />
           <XIcon
             className={style.icons}

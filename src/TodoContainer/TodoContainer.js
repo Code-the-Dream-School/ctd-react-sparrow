@@ -194,6 +194,13 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
     setItemDescription(id);
   };
 
+  // const [showDescription, setShowDescription] = React.useState(false);
+  // console.log("showDescription", showDescription);
+  // const handleClickDescription = () => {
+  //   handleDescription(todoList.id);
+  //   setShowDescription(!showDescription);
+  // };
+
   /*--------> Search filter Section <----------*/
   const [searchTerm, setSearchTerm] = React.useState("");
   // const handleChange = (e) => {

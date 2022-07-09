@@ -18,7 +18,7 @@
     height: 24px;
 } 
 
-
+  
 /*sidebar*/
 
 /* conditional redenring in the class name inside the nav tag */
@@ -42,7 +42,6 @@
     left: 0px;
     transition: right .25s;
     padding-top: 25px;
-
 }
 
 /* ul inside of nav tag */

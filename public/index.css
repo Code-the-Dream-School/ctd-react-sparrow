@@ -10,9 +10,26 @@ body {
  background: linear-gradient(to left, #806cc9, #aac1e4);
 
 */
-html {
-  height: 100%;
+
+/*Variables uses ---> var(--variable) */ 
+#root {
+  --primary: #62929e;
+  --secondary: #fdfdff;
+  --terciary: #f3f3f4 ;
+  --borders: #c2c2c2;
+  --button-hover:#749FAA;
 }
- body {
-  min-height: 100%;
- }
+
+
+/* html, body, #root, .App {
+  height: 100vh;
+  
+}
+
+@media screen and (min-width: 390px) {
+  html, body, #root, .App {
+    height: 100vh;
+    min-height: 100%;
+  }
+  
+} */

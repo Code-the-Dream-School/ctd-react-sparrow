@@ -1,11 +1,22 @@
+/*Fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@100&display=swap');
+
+/*Universal style*/
 * {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
-
+    /* overflow-y: auto; */
+   
 }
+
+/*Hide scrollbar*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 .app_container {
     margin-left: 0px;
@@ -17,21 +28,12 @@
 
 /*Main layout with grid*/
 
-/* 
-Before the idea of doing flexbox on todo container. just deleted one colunm
-.todoCont_split_box {
-    display: grid;
-    grid-template-columns: 150px 1fr 200px;
-    grid-template-rows: 50px 1fr;
-    height: 100vh;
-} */
-
 .todoCont_split_box {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr;
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
 
 }
 
@@ -61,38 +63,45 @@ Before the idea of doing flexbox on todo container. just deleted one colunm
  visibility: hidden;   
 }
  
-
-
 .todoCon_middle_pane_todoList {
     background-color: #fdfdff;
     padding-left: 55px;
-    /* padding-right: var(--editor-side-padding); */
-    /* max-width: 800px;
-    margin: 0 auto; */
     position: relative;
-    /* z-index: 1; */
-    
 }
-
-/* .todoCon_right_pane_description {
-    background-color: rgb(218, 205, 189);
-} */
-
-
 
 /*Try moving midldle pane when the sidebar appears*/
 .todo_container {
     margin-left: 250px;
-    /* width: 100%; */
     transition: left .25s;
-    /* padding-bottom: 5rem; */
-    /* padding-left: 80px; */
-    height: 100vh;
+    
   }
   .todo_container.active {
     padding-left: 250px;
     overflow: hidden;
     transition: left .25s;
     
+    
    
   } 
+
+/*Media queries*/
+
+/*Mobile styles*/
+
+
+/*Table styles*/
+@media screen and (min-width: 620px) {
+
+}
+
+/*Large tablets and laptops*/
+
+@media screen and (min-width: 960px) {
+
+}
+
+/* Desktop styles*/
+
+@media screen and (min-width: 1200px) {
+
+}
