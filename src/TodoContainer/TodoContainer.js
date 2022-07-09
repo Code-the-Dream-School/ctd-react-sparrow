@@ -7,7 +7,8 @@ import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
 
-const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
+const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
+  console.log(searchTerm);
   //This state renders our list, and saved the value in the local storage
   //Pass information down to the TodoList component
   const [todoList, setTodoList] = React.useState([]);
@@ -187,28 +188,12 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
       });
   };
 
-  const [itemDescription, setItemDescription] = React.useState("");
-  console.log(itemDescription);
+  const [itemDescription, setItemDescription] = React.useState(""); //gets the id from the child component
+  const [showDescription, setShowDescription] = React.useState(false); //hides description with notebutton
 
   const handleDescription = (id) => {
+    setShowDescription(!showDescription);
     setItemDescription(id);
-  };
-
-  // const [showDescription, setShowDescription] = React.useState(false);
-  // console.log("showDescription", showDescription);
-  // const handleClickDescription = () => {
-  //   handleDescription(todoList.id);
-  //   setShowDescription(!showDescription);
-  // };
-
-  /*--------> Search filter Section <----------*/
-  const [searchTerm, setSearchTerm] = React.useState("");
-  // const handleChange = (e) => {
-  //   setSearchTerm(e.target.value);
-  //   onSearch(e);
-  // };
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
   };
 
   /*--------> Checkbox Sectiom <----------*/
@@ -231,7 +216,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
     <div className={sideBar ? style["todo_container"] : style["active"]}>
       <div className={style.split_box}>
         <div className={style.left_pane}>
-          <Search onSearch={handleSearch} />
           <h5 className={style.tableId}>{tableId}</h5>
           <AddTodoForm
             onAddTodo={addTodo}
@@ -239,7 +223,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
             tableId={tableId}
           />
           <SortButton className={style.sort_button} onClick={handleSort} />
-          {/* <button onClick={handleSort}>sort</button> */}
           {isLoading ? (
             <span>Is loading...</span>
           ) : (
@@ -254,14 +237,17 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar }) => {
             />
           )}
         </div>
-        <div className={style.right_pane}>
-          <ItemDescription
-            tableId={tableId}
-            todoList={todoList}
-            itemDescription={itemDescription}
-            onEditDescription={editDescription}
-          />
-        </div>
+        {showDescription ? (
+          <div className={style.right_pane}>
+            <ItemDescription
+              tableId={tableId}
+              todoList={todoList}
+              itemDescription={itemDescription}
+              onEditDescription={editDescription}
+              setShowDescription={setShowDescription}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

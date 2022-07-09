@@ -5,8 +5,6 @@ import TodoContainer from "./TodoContainer/TodoContainer";
 import NavMain from "./UI/NavMain";
 import SideBar from "./UI/SideVar/SideBar";
 // import ItemDescription from "./Components/ItemDescription";
-import Personal from "./UI/Pages/Personal.js";
-import Work from "./UI/Pages/Work.js";
 
 const App = () => {
   //sidebar state
@@ -16,12 +14,22 @@ const App = () => {
   //sidebar state for work and personal
   const [currentLink, setCurrentLink] = React.useState("Work");
 
+  //----------> Search Seaction (Navbar) <--------------//
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const handleSearch = (e) => {
+    console.log("SEARCH NAV", e);
+    setSearchTerm(e.target.value);
+  };
+
   return (
-    // <div className={styles.app_container}>
     <Router>
       <div className={styles.todoCont_split_box}>
         <div className={styles.todoCont_MainNav}>
-          <NavMain setSideBar={setSideBar} sideBar={sideBar} />
+          <NavMain
+            setSideBar={setSideBar}
+            sideBar={sideBar}
+            handleSearch={handleSearch}
+          />
         </div>
         <div className={styles.todoCont_lelf_pane_sideBar}>
           <SideBar
@@ -30,7 +38,6 @@ const App = () => {
             onCurrentLink={setCurrentLink}
           />
         </div>
-        {/* <div className={styles.todoCon_middle_pane_todoList}> */}
         <div className={sideBar ? styles["todo_container"] : styles["active"]}>
           <div className={styles.todoCon_middle_pane_todoList}>
             <Routes>
@@ -39,16 +46,24 @@ const App = () => {
                 element={
                   <TodoContainer
                     sideBar={sideBar}
-                    tableId={"Default"}
+                    tableId={"TodoList"}
                     setCurrentLink={setCurrentLink}
+                    searchTerm={searchTerm}
                   />
                 }
               ></Route>
               <Route
                 path="personal"
-                element={<TodoContainer tableId={"Personal"} />}
+                element={
+                  <TodoContainer tableId={"Personal"} searchTerm={searchTerm} />
+                }
               />
-              <Route path="work" element={<TodoContainer tableId={"Work"} />} />
+              <Route
+                path="work"
+                element={
+                  <TodoContainer tableId={"Work"} searchTerm={searchTerm} />
+                }
+              />
               <Route
                 path="chores"
                 element={<TodoContainer tableId={"Chores"} />}
@@ -58,7 +73,6 @@ const App = () => {
         </div>
       </div>
     </Router>
-    // </div>
   );
 };
 
