@@ -10,12 +10,15 @@
 
 /*li elements inside of the navBar*/
 .nav_list {
+    /* border: 5px solid black; */
     list-style: none;
-    display: flex;
+    /* display: flex;
     align-items: row;
     color: black;
     gap: 4.8rem;
-    justify-content:flex-end;
+    justify-content:flex-start; */
+    margin-left: 6rem;
+    padding-top: 13px;
 
 } 
 

@@ -8,6 +8,7 @@ const ItemDescription = ({
   itemDescription,
   onEditDescription,
   tableId,
+  setShowDescription,
 }) => {
   return (
     <>

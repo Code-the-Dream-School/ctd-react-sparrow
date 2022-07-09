@@ -5,7 +5,7 @@ import { ReactComponent as IconList } from "./IconsSideBar/list.svg";
 
 const sideBarData = [
   {
-    title: "Todo",
+    title: "TodoList",
     path: "/",
     icon: <IconList />,
   },

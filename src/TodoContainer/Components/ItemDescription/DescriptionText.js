@@ -59,7 +59,4 @@ DescriptionText.prototype = {
   tableId: PropTypes.string,
 };
 
-//To do List for CSS:
-// [] Make the width of the button 100%
-
 export default DescriptionText;

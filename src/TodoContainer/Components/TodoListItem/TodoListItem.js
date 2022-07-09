@@ -50,25 +50,20 @@ const TodoListItem = ({
   //To do:
   //Try to Link the state with airtable with Done field
   const [isChecked, setIsChecked] = React.useState("false");
-
   const handleCheckBoxChange = () => {
     setIsChecked(!isChecked);
     if (todoList.done === true) return null;
     handleCheckBox(todoList.id);
   };
 
-  //Handle Description section
-  const [showDescription, setShowDescription] = React.useState(false);
-  console.log("showDescription", showDescription);
-  const handleClickDescription = () => {
-    handleDescription(todoList.id);
-    setShowDescription(!showDescription);
-  };
-
   return (
     <div className={style.listItem_container}>
       <li className={style.listItem}>
-        <input type="checkbox" onChange={() => handleCheckBoxChange()} />
+        <input
+          className={style.checkbox}
+          type="checkbox"
+          onChange={() => handleCheckBoxChange()}
+        />
         {isToggle ? (
           <form onSubmit={onSubmit}>
             <label htmlFor="edit"></label>
@@ -81,6 +76,7 @@ const TodoListItem = ({
           </form>
         ) : (
           <span
+            className={style.item_text}
             onClick={() => {
               setToggle(true);
             }}
@@ -92,8 +88,7 @@ const TodoListItem = ({
         <div>
           <NoteIcon
             className={style.icons}
-            // onClick={() => handleDescription(todoList.id)}
-            onClick={handleClickDescription}
+            onClick={() => handleDescription(todoList.id)}
           />
           <XIcon
             className={style.icons}
