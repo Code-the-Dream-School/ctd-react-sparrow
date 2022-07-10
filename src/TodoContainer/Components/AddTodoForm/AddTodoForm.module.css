@@ -20,4 +20,6 @@
     border-left: none;
     border-bottom: 1px;
     border-right: 1px;
+    cursor: pointer;
 }
+

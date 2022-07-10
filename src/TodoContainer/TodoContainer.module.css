@@ -20,11 +20,7 @@
     border: 1px solid #c2c2c2;
     border-top: none;
     border-left: none;
-    /* display: flex;
-    flex-direction: column;
-    gap: 5px; */
     margin-left: 4rem;
-    /* margin-right: 4rem; */
     padding-right: 3rem;
 }  
 
@@ -42,11 +38,9 @@
 /*Middle pane todoLis and ItemDescription components*/
 
  .todo_container {
-    /* margin-left: 250px; */
     transition: left .25s;
-    /* padding-bottom: 5rem; */
-    /* margin-right: 200px; */
   }
+  
   .todo_container.active {
     padding-left: 250px;
     overflow: hidden;
@@ -56,7 +50,7 @@
 
 
 
-/*Button*/
+/*Sort button*/
 
 .sort_button {
   color: #393d40;
@@ -65,4 +59,28 @@
   opacity: 1;
   margin-left: 1rem;
   margin-top: 1rem;
+  cursor: pointer;
+}
+
+/*------ loading text -------*/
+
+.loading_text {
+  display: block;
+  margin-left: 1rem;
+  margin-top: 3px;
+}
+
+@media (max-width: 70em) {
+   .left_pane {
+    margin-left: 0;
+    padding-right: 0;
+   } 
+}
+
+
+/*This for mobile 330 px*/
+@media (max-width: 35em) { 
+  .split_box {
+      grid-template-columns: 1fr;
+  }
 }

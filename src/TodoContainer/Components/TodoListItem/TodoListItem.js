@@ -23,6 +23,8 @@ const TodoListItem = ({
     todoList.fields.Title
   );
 
+  //Edit button authentication
+
   //handles for edit:
   // get the value from the user input to edit the current item
   const onChangeEdit = (e) => {
@@ -33,17 +35,21 @@ const TodoListItem = ({
   //updates the value, when the user edits it and sends it up to todoContainer
   const onSubmit = (e) => {
     e.preventDefault();
-    onEditTodo(
-      todoList.id,
-      {
-        fields: {
-          Title: todoEditTitle,
-          Description: todoList.fields.Description,
+    if (todoEditTitle.trim().length === 0) {
+      alert("Task cannot be blank");
+    } else {
+      onEditTodo(
+        todoList.id,
+        {
+          fields: {
+            Title: todoEditTitle,
+            Description: todoList.fields.Description,
+          },
         },
-      },
-      tableId
-    );
-    setToggle(false);
+        tableId
+      );
+      setToggle(false);
+    }
   };
 
   //Checkbox section
@@ -65,7 +71,7 @@ const TodoListItem = ({
           onChange={() => handleCheckBoxChange()}
         />
         {isToggle ? (
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className={style.form}>
             <label htmlFor="edit"></label>
             <input
               id="edit"
@@ -75,7 +81,7 @@ const TodoListItem = ({
             />
           </form>
         ) : (
-          <span
+          <p
             className={style.item_text}
             onClick={() => {
               setToggle(true);
@@ -83,7 +89,7 @@ const TodoListItem = ({
             style={!isChecked ? { textDecoration: "line-through" } : null}
           >
             {todoList.fields.Title}
-          </span>
+          </p>
         )}
         <div>
           <NoteIcon

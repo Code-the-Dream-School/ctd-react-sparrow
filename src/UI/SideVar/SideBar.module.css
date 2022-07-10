@@ -18,6 +18,10 @@
     height: 24px;
 } 
 
+.icon_sideBar:hover {
+    color: #000000;
+}
+
   
 /*sidebar*/
 
@@ -66,7 +70,7 @@
  
 .items_sideBar a{
     text-decoration: none;
-    color: #989292;
+    color: #393d40;
     font-size: 18px;
     width: 100%;
     display: flex;
@@ -80,11 +84,58 @@
 .items_sideBar a:hover {
     background-color: #8cabb2;
     width: 100%;
-    color: #393d40;
+    color: #000000;
     cursor: pointer;
 }
 
 
+/*Media query*/
+
+@media (max-width: 51em) { 
+    .nav_menu_done {
+        background-color: #fdfdff;
+        width: 250px;
+        height: 100vh;
+        position: absolute;
+        top: 50px;
+        left: -100%;
+        transition: left .25s;
+    }
+    .nav_menu_active {
+        /* background-color: #f3f3f4; */
+        background-color: #AFC7CD;
+        width: 250px;
+        height: 100vh;
+        position: absolute;
+        top: 49px;
+        left: 0px;
+        transition: right .25s;
+        padding-top: 25px;
+        z-index: 1;
+        border-right: 1px solid var(--borders);
+    }
+
+    .items_sideBar a:hover {
+        background-color: #C8D9DD;
+        width: 100%;
+        color: #000000;
+        cursor: pointer;
+    }
+
+}
+
+/*Media query for phone 330px*/
+
+@media (max-width: 25em) { 
+    .nav_menu_active {
+        height: 130%;
+    }
+}
 
 
-
+/*This for mobile 530 px*/
+@media (max-width: 35em) { 
+    .nav_menu_active {
+        height: 128%;
+    }
+}

@@ -224,7 +224,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
           />
           <SortButton className={style.sort_button} onClick={handleSort} />
           {isLoading ? (
-            <span>Is loading...</span>
+            <span className={style.loading_text}>Is loading...</span>
           ) : (
             <TodoList
               searchTerm={searchTerm}
