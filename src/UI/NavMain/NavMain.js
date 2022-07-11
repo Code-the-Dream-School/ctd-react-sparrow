@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./NavMain.module.css";
 import { Link } from "react-router-dom";
-import { ReactComponent as IconMenu } from "./SideVar/IconsSideBar/menu.svg";
-import { ReactComponent as IconX } from "./SideVar/IconsSideBar/x.svg";
+import { ReactComponent as IconMenu } from "../SideVar/IconsSideBar/menu.svg";
+import { ReactComponent as IconX } from "../SideVar/IconsSideBar/x.svg";
 import PropTypes from "prop-types";
-import Search from "../TodoContainer/Components/Search/Search";
+import Search from "../../TodoContainer/Components/Search/Search.js";
 
 const NavMain = ({ setSideBar, sideBar, handleSearch }) => {
   console.log(handleSearch);

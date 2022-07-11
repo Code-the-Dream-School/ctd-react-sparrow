@@ -1,5 +1,5 @@
 import React from "react";
-import TodoListItem from "./TodoListItem/TodoListItem";
+import TodoListItem from "../TodoListItem/TodoListItem";
 import PropTypes from "prop-types";
 
 //This component renders the entire list

@@ -2,7 +2,7 @@
 
 .split_box {
     display: grid;
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: 1fr 270px;
     height: 100vh;
 }
 

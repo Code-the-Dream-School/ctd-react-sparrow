@@ -2,9 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import TodoContainer from "./TodoContainer/TodoContainer";
-import NavMain from "./UI/NavMain";
+import NavMain from "./UI/NavMain/NavMain.js";
 import SideBar from "./UI/SideVar/SideBar";
-// import ItemDescription from "./Components/ItemDescription";
 
 const App = () => {
   //sidebar state
@@ -12,7 +11,7 @@ const App = () => {
   console.log(sideBar);
 
   //sidebar state for work and personal
-  const [currentLink, setCurrentLink] = React.useState("Work");
+  const [currentLink, setCurrentLink] = React.useState("");
 
   //----------> Search Seaction (Navbar) <--------------//
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -66,7 +65,9 @@ const App = () => {
               />
               <Route
                 path="chores"
-                element={<TodoContainer tableId={"Chores"} />}
+                element={
+                  <TodoContainer tableId={"Chores"} searchTerm={searchTerm} />
+                }
               />
             </Routes>
           </div>
