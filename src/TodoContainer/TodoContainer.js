@@ -2,7 +2,6 @@ import React from "react";
 import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 import TodoList from "./Components/TodoList/TodoList.js";
 import ItemDescription from "./Components/ItemDescription/ItemDescription";
-import Search from "./Components/Search/Search";
 import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";

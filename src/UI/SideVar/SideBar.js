@@ -15,7 +15,7 @@ const SideBar = ({ sideBar, setCurrentLink }) => {
           {sideBarData.map((item, index) => {
             return (
               <li key={index} className={style.items_sideBar}>
-                <Link to={item.path} onClick={() => setCurrentLink("Personal")}>
+                <Link to={item.path} onClick={() => setCurrentLink("personal")}>
                   <div className={style.icon_sideBar}>{item.icon}</div>
                   <p>{item.title}</p>
                 </Link>

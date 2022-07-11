@@ -21,7 +21,7 @@ const sideBarData = [
   },
   {
     title: "Chores",
-    path: "/",
+    path: "/Chores",
     icon: <IconList />,
   },
 ];

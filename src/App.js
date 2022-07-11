@@ -11,7 +11,8 @@ const App = () => {
   console.log(sideBar);
 
   //sidebar state for work and personal
-  const [currentLink, setCurrentLink] = React.useState("");
+  const [currentLink, setCurrentLink] = React.useState("work");
+  console.log(currentLink);
 
   //----------> Search Seaction (Navbar) <--------------//
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -46,7 +47,7 @@ const App = () => {
                   <TodoContainer
                     sideBar={sideBar}
                     tableId={"TodoList"}
-                    setCurrentLink={setCurrentLink}
+                    // setCurrentLink={setCurrentLink}
                     searchTerm={searchTerm}
                   />
                 }
