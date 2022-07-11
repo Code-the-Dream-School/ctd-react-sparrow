@@ -10,7 +10,7 @@ const TodoListItem = ({
   onRemoveTodo,
   onEditTodo,
   handleDescription,
-  tableId,
+  tableName,
   handleCheckBox,
 }) => {
   console.log(handleCheckBox);
@@ -46,7 +46,7 @@ const TodoListItem = ({
             Description: todoList.fields.Description,
           },
         },
-        tableId
+        tableName
       );
       setToggle(false);
     }
@@ -99,7 +99,7 @@ const TodoListItem = ({
           <XIcon
             className={style.icons}
             onClick={() => {
-              onRemoveTodo(todoList.id, tableId);
+              onRemoveTodo(todoList.id, tableName);
             }}
           />
         </div>
@@ -113,7 +113,7 @@ TodoListItem.prototype = {
   onRemoveTodo: PropTypes.func,
   onEditTodo: PropTypes.func,
   handleDescription: PropTypes.func,
-  tableId: PropTypes.string,
+  tableName: PropTypes.string,
 };
 
 export default TodoListItem;

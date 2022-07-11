@@ -46,7 +46,7 @@ const App = () => {
                 element={
                   <TodoContainer
                     sideBar={sideBar}
-                    tableId={"TodoList"}
+                    tableName={"TodoList"}
                     // setCurrentLink={setCurrentLink}
                     searchTerm={searchTerm}
                   />
@@ -55,19 +55,22 @@ const App = () => {
               <Route
                 path="personal"
                 element={
-                  <TodoContainer tableId={"Personal"} searchTerm={searchTerm} />
+                  <TodoContainer
+                    tableName={"Personal"}
+                    searchTerm={searchTerm}
+                  />
                 }
               />
               <Route
                 path="work"
                 element={
-                  <TodoContainer tableId={"Work"} searchTerm={searchTerm} />
+                  <TodoContainer tableName={"Work"} searchTerm={searchTerm} />
                 }
               />
               <Route
                 path="chores"
                 element={
-                  <TodoContainer tableId={"Chores"} searchTerm={searchTerm} />
+                  <TodoContainer tableName={"Chores"} searchTerm={searchTerm} />
                 }
               />
             </Routes>

@@ -8,7 +8,7 @@ const TodoList = ({
   onRemoveTodo,
   onEditTodo,
   handleDescription,
-  tableId,
+  tableName,
   searchTerm,
   handleCheckBox,
 }) => {
@@ -27,7 +27,7 @@ const TodoList = ({
             onRemoveTodo={onRemoveTodo}
             onEditTodo={onEditTodo}
             handleDescription={handleDescription}
-            tableId={tableId}
+            tableName={tableName}
             handleCheckBox={handleCheckBox}
           />
         );
@@ -41,7 +41,7 @@ TodoList.propType = {
   onRemoveTodo: PropTypes.func,
   onEditTodo: PropTypes.func,
   handleDescription: PropTypes.func,
-  tableId: PropTypes.string,
+  tableName: PropTypes.string,
 };
 
 export default TodoList;

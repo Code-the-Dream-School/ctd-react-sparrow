@@ -5,7 +5,7 @@ import { ReactComponent as AddIcon } from "../IconsComponents/addTask+.svg";
 import PropTypes from "prop-types";
 
 //This component renders the form (input field)
-const AddTodoForm = ({ onAddTodo, tableId }) => {
+const AddTodoForm = ({ onAddTodo, tableName }) => {
   //This state controls the input field (it makes this component a controlled component)
   let [todoTitle, setTodoTitle] = React.useState("");
 
@@ -32,7 +32,7 @@ const AddTodoForm = ({ onAddTodo, tableId }) => {
             Description: todoTitle.Description,
           },
         },
-        tableId
+        tableName
       );
       setTodoTitle("");
     }
@@ -53,7 +53,7 @@ const AddTodoForm = ({ onAddTodo, tableId }) => {
 
 AddTodoForm.propTypes = {
   onAddTodo: PropTypes.func,
-  tableId: PropTypes.string,
+  tableName: PropTypes.string,
 };
 
 export default AddTodoForm;

@@ -6,7 +6,7 @@ import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
 
-const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
+const TodoContainer = ({ tableName, setCurrentLink, sideBar, searchTerm }) => {
   console.log(searchTerm);
   //This state renders our list, and saved the value in the local storage
   //Pass information down to the TodoList component
@@ -17,9 +17,9 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
 
   //Airtable APIs with the fetch method:
   //GET
-  //const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
+  //const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
   React.useEffect(() => {
-    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view`;
+    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view`;
     const optionsGet = {
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -46,7 +46,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
   // useEffect for soting the data
   // React.useEffect(() => {
   const requestSortedList = () => {
-    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=${direction}`;
+    const reqUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=${direction}`;
     const optionsGet = {
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -65,9 +65,9 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
 
   // POST method
   //Lift state
-  const addTodo = (newTodo, tableId) => {
+  const addTodo = (newTodo, tableName) => {
     fetch(
-      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}`,
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}`,
       {
         method: "POST",
         headers: {
@@ -79,7 +79,6 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTodoList([...todoList, ...data.records]);
       })
       .then((response) => {
@@ -92,32 +91,36 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
 
   //DeLETE method
   //lifted state and filter the data
-  const removeTodo = (id, tableId) => {
-    const DELETEurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
+  const removeTodo = (id, tableName) => {
+    const DELETEurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}/${id}`;
 
     fetch(DELETEurl, {
       method: "Delete",
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        "Content-type": "application/json",
       },
-    });
-    //.then((response) => {
-    //   console.log(response);
-    //   response.json();
-    // });
-    // .then((data) => {
-    //   console.log(data);
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // const removedItem = todoList.filter(
+        //   (todo) => todo.id !== id.data.records
+        // );
+        // setTodoList(removedItem);
+      });
+
     //Question what do I do with the response?
-    const removedItem = todoList.filter((todo) => todo.id !== id);
-    setTodoList(removedItem);
+    // const removedItem = todoList.filter((todo) => todo.id !== id);
+    // setTodoList(removedItem);
     // });
   };
 
   //PATCH method
   //Map the response and add new data from the user
-  const editTodo = (id, newEditTodo, tableId) => {
+  const editTodo = (id, newEditTodo, tableName) => {
     console.log("new edit todo", newEditTodo);
-    const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
+    const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}/${id}`;
 
     fetch(EDITurl, {
       method: "PATCH",
@@ -152,9 +155,9 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
 
   /* -----------> Item description section <----------*/
   //PATCH method for ItemDescription
-  const editDescription = (id, newEditDescription, tableId) => {
+  const editDescription = (id, newEditDescription, tableName) => {
     console.log("new edit todo", newEditDescription);
-    const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableId}/${id}`;
+    const EDITurl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}/${id}`;
 
     fetch(EDITurl, {
       method: "PATCH",
@@ -215,11 +218,11 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
     <div className={sideBar ? style["todo_container"] : style["active"]}>
       <div className={style.split_box}>
         <div className={style.left_pane}>
-          <h5 className={style.tableId}>{tableId}</h5>
+          <h5 className={style.tableId}>{tableName}</h5>
           <AddTodoForm
             onAddTodo={addTodo}
             todoList={todoList}
-            tableId={tableId}
+            tableName={tableName}
           />
           <SortButton className={style.sort_button} onClick={handleSort} />
           {isLoading ? (
@@ -231,7 +234,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
               onRemoveTodo={removeTodo}
               onEditTodo={editTodo}
               handleDescription={handleDescription}
-              tableId={tableId}
+              tableName={tableName}
               handleCheckBox={handleCheckBox}
             />
           )}
@@ -239,7 +242,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
         {showDescription ? (
           <div className={style.right_pane}>
             <ItemDescription
-              tableId={tableId}
+              tableName={tableName}
               todoList={todoList}
               itemDescription={itemDescription}
               onEditDescription={editDescription}
@@ -253,7 +256,7 @@ const TodoContainer = ({ tableId, setCurrentLink, sideBar, searchTerm }) => {
 };
 
 TodoContainer.propTypes = {
-  tableId: PropTypes.string,
+  tableName: PropTypes.string,
   setCurrentLink: PropTypes.func, // This is supposed to be a string
   sideBar: PropTypes.bool,
 };

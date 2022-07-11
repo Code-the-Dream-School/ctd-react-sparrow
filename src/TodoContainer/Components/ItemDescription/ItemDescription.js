@@ -7,7 +7,7 @@ const ItemDescription = ({
   todoList,
   itemDescription,
   onEditDescription,
-  tableId,
+  tableName,
   setShowDescription,
 }) => {
   return (
@@ -22,7 +22,7 @@ const ItemDescription = ({
                   todoList={todoList}
                   className={style.li_el}
                   onEditDescription={onEditDescription}
-                  tableId={tableId}
+                  tableName={tableName}
                 />
               </>
             );
