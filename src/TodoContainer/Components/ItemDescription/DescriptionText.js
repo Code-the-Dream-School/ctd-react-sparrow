@@ -1,23 +1,23 @@
-import React from "react";
-import style from "./ItemDescription.module.css";
-import PropTypes from "prop-types";
-import styles from "./ItemDescription.module.css";
+import React from "react"
+import style from "./ItemDescription.module.css"
+import PropTypes from "prop-types"
+import styles from "./ItemDescription.module.css"
 
-const DescriptionText = ({ todoList, onEditDescription, tableId }) => {
+const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
   //State controls the text area, and makes this a controlled component
   const [textDescription, setTextDescription] = React.useState(
     todoList.fields.Description
-  );
+  )
 
   //This handler gets the user input from the textarea
   const onChangeDescription = (e) => {
-    const editDescription = e.target.value;
-    setTextDescription(editDescription);
-  };
+    const editDescription = e.target.value
+    setTextDescription(editDescription)
+  }
 
   //Submit handler for textarea form, sends data back to TodoContainer
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     onEditDescription(
       todoList.id,
       {
@@ -26,9 +26,9 @@ const DescriptionText = ({ todoList, onEditDescription, tableId }) => {
           Description: textDescription,
         },
       },
-      tableId
-    );
-  };
+      tableName
+    )
+  }
 
   return (
     <div>
@@ -50,13 +50,13 @@ const DescriptionText = ({ todoList, onEditDescription, tableId }) => {
         </form>
       </li>
     </div>
-  );
-};
+  )
+}
 
 DescriptionText.prototype = {
   todoList: PropTypes.array,
   onEditDescription: PropTypes.func,
   tableId: PropTypes.string,
-};
+}
 
-export default DescriptionText;
+export default DescriptionText

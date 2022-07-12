@@ -1,5 +1,6 @@
 //This folder contains all the API functions
 
+//Adding a task
 export function fetchRequestAddTodo(newTodo, tableName) {
   return fetch(
     `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}`,
@@ -16,6 +17,7 @@ export function fetchRequestAddTodo(newTodo, tableName) {
   })
 }
 
+//Deleting a task
 export function fetchRequestDeleteTodo(id, tableName) {
   return fetch(
     `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}/${id}`,
@@ -29,6 +31,7 @@ export function fetchRequestDeleteTodo(id, tableName) {
   ).then((response) => response.json())
 }
 
+//Editing a task
 export function fetchRequestEditTodo(id, newEditTodo, tableName) {
   return fetch(
     `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}/${id}`,
@@ -43,8 +46,21 @@ export function fetchRequestEditTodo(id, newEditTodo, tableName) {
   ).then((response) => response.json())
 }
 
-export function fetchRequestSortData() {}
+//Sorting data
+export function fetchRequestSortData(tableName, direction) {
+  return fetch(
+    `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=${direction}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+    }
+  ).then((result) => {
+    return result.json()
+  })
+}
 
+//Adding a task description
 export function fetchRequestEditDescription(id, newEditDescription, tableName) {
   return fetch(
     `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}/${id}`,
