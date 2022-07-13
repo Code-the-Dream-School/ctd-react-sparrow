@@ -11,7 +11,6 @@ const App = () => {
 
   //sidebar state for work and personal
   const [currentLink, setCurrentLink] = React.useState(false)
-  console.log("current link", currentLink)
 
   //----------> Search Seaction (Navbar) <--------------//
   const [searchTerm, setSearchTerm] = React.useState("")

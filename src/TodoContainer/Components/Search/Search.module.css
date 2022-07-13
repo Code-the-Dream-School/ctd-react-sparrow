@@ -5,10 +5,11 @@
    /* width: 100%;  */
    outline: 0;
    background-color: #A7C1C8;
-   transition: width 2s ;
+   /* transition: width 2s ; */
+   /* margin-left: 1rem; */
 }
 
 .input:hover {
-    width: 15%;
+    /* width: 25%; */
     background-color:#fff ;
 }

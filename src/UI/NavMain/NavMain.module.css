@@ -14,8 +14,11 @@
 /*li elements inside of the navBar*/
 .nav_list {
     list-style: none;
-    margin-left: 6rem;
+    margin-left: 5rem;
     padding-top: 13px;
+    display: flex;
+    gap: 15px;
+
 
 } 
 
@@ -33,5 +36,6 @@
  .nav_container {
     border-bottom: 1px solid #c2c2c2;
     height: 50px;
+ 
  }
 

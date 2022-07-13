@@ -5,6 +5,7 @@ import { ReactComponent as IconMenu } from "../SideVar/IconsSideBar/menu.svg"
 import { ReactComponent as IconX } from "../SideVar/IconsSideBar/x.svg"
 import PropTypes from "prop-types"
 import Search from "../../TodoContainer/Components/Search/Search.js"
+import { ReactComponent as IconHome } from "../SideVar/IconsSideBar/home.svg"
 
 const NavMain = ({ setSideBar, sideBar, handleSearch }) => {
   //Hamburger state
@@ -28,6 +29,11 @@ const NavMain = ({ setSideBar, sideBar, handleSearch }) => {
               <IconX className={style.icon_menu} onClick={handleIconMenu} />
             </Link>
           )}
+        </li>
+        <li>
+          <Link to="/">
+            <IconHome className={style.icon_menu} />
+          </Link>
         </li>
         <li>
           <Search handleSearch={handleSearch} />

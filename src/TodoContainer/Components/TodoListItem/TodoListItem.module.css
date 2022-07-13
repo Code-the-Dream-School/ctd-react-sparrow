@@ -87,6 +87,13 @@ cursor: pointer;
   }
 }
 
+@media (max-width: 68em) {
+  .form {
+    position:absolute;
+    left: 2.5rem;
+  }
+}
+
 
 
 
