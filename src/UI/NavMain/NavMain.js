@@ -44,7 +44,7 @@ const NavMain = ({ setSideBar, sideBar, handleSearch }) => {
 }
 
 NavMain.propTypes = {
-  setSideBar: PropTypes.func, //This is supposted to be a boolean
+  setSideBar: PropTypes.func,
   sideBar: PropTypes.bool,
   handleSearch: PropTypes.func,
 }

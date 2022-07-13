@@ -4,13 +4,8 @@ import { Link } from "react-router-dom"
 import sideBarData from "./SideBarData"
 import PropTypes from "prop-types"
 
-const SideBar = ({ sideBar, setCurrentLink, tableName, currentLink }) => {
+const SideBar = ({ sideBar }) => {
   // sideBar --> state: manage the transition
-  // setCurrent --> link: triggers the data from airtable
-  // console.log("currrent link", currentLink)
-  // const handleCurrentLink = () => {
-  //   setCurrentLink(!currentLink)
-  // }
 
   return (
     <>
@@ -19,7 +14,6 @@ const SideBar = ({ sideBar, setCurrentLink, tableName, currentLink }) => {
           {sideBarData.map((item, index) => {
             return (
               <li key={index} className={style.items_sideBar}>
-                {/* <Link to={item.path} onClick={handleCurrentLink}> */}
                 <Link to={item.path}>
                   <div className={style.icon_sideBar}>{item.icon}</div>
                   <p>{item.title}</p>

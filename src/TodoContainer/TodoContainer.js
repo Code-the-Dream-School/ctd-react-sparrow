@@ -83,7 +83,7 @@ const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
       const editedTodoList = todoList.map((todoItem) => {
         if (todoItem.id === data.id) {
           return {
-            ...todoItem, //copy the list with spread
+            ...todoItem,
             fields: {
               ...todoItem.fields,
               Title: data.fields.Title,
@@ -123,22 +123,6 @@ const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
     setItemDescription(id)
   }
 
-  /*--------> Checkbox Sectiom <----------*/
-  //To do:
-  //Try to link this to airtable
-  const handleCheckBox = (id) => {
-    const newTodoList = todoList.map((todo) => {
-      if (todo.id === id)
-        return {
-          ...todo,
-          done: !todo.done,
-        }
-      return todo
-    })
-    setTodoList(newTodoList)
-    console.log(newTodoList)
-  }
-
   return (
     <div className={sideBar ? style["todo_container"] : style["active"]}>
       <div className={style.split_box}>
@@ -160,7 +144,6 @@ const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
               onEditTodo={editTodo}
               handleDescription={handleDescription}
               tableName={tableName}
-              handleCheckBox={handleCheckBox}
             />
           )}
         </div>
@@ -182,7 +165,7 @@ const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
 
 TodoContainer.propTypes = {
   tableName: PropTypes.string,
-  setCurrentLink: PropTypes.func, // This is supposed to be a string
+  setCurrentLink: PropTypes.func,
   sideBar: PropTypes.bool,
 }
 export default TodoContainer

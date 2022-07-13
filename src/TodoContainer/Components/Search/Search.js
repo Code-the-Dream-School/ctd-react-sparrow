@@ -1,5 +1,6 @@
-import React from "react";
-import style from "./Search.module.css";
+import React from "react"
+import style from "./Search.module.css"
+import PropTypes from "prop-types"
 
 const Search = ({ handleSearch }) => {
   return (
@@ -13,7 +14,11 @@ const Search = ({ handleSearch }) => {
         className={style.input}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Search;
+Search.popType = {
+  handleSearch: PropTypes.func,
+}
+
+export default Search
