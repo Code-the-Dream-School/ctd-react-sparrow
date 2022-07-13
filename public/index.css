@@ -1,0 +1,35 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@100&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+   
+  } */
+
+/*
+ background: #83a4d4; /fallback for old browsers/
+ background: linear-gradient(to left, #806cc9, #aac1e4);
+
+*/
+
+/*Variables uses ---> var(--variable) */ 
+#root {
+  --primary: #62929e;
+  --secondary: #fdfdff;
+  --terciary: #f3f3f4 ;
+  --borders: #c2c2c2;
+  --button-hover:#749FAA;
+}
+
+
+/* html, body, #root, .App {
+  height: 100vh;
+  
+}
+
+@media screen and (min-width: 390px) {
+  html, body, #root, .App {
+    height: 100vh;
+    min-height: 100%;
+  }
+  
+} */

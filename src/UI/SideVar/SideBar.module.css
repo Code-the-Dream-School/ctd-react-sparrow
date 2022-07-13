@@ -1,0 +1,141 @@
+/*Icons, just icon_sideBar is being used */
+ 
+.icon_menu {
+    color: #393d40;
+    width: 24px;
+    height: 24px;
+}
+
+.icon_x {
+    color: #393d40;
+    width: 24px;
+    height: 24px;
+}
+
+.icon_sideBar {
+    color: #393d40;
+    width: 24px;
+    height: 24px;
+} 
+
+.icon_sideBar:hover {
+    color: #000000;
+}
+
+  
+/*sidebar*/
+
+/* conditional redenring in the class name inside the nav tag */
+
+.nav_menu_done {
+    background-color: #fdfdff;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    top: 50px;
+    left: -100%;
+    transition: left .25s;
+}
+.nav_menu_active {
+    /* background-color: #fdfdff; */
+    background-color: #f3f3f4;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    transition: right .25s;
+    padding-top: 25px;
+}
+
+/* ul inside of nav tag */
+
+.nav_menu_items {
+    width: 100%;
+    
+}
+
+
+/* li tag with the map method */
+
+.items_sideBar {
+  display: flex;
+  align-items: row;
+  justify-content: start;
+  padding: 10px 30px 0px 40px;
+  list-style: none;
+  height: 35px;
+
+}
+ 
+.items_sideBar a{
+    text-decoration: none;
+    color: #393d40;
+    font-size: 18px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap:30px;
+    padding: 0 7px;
+    border-radius: 4px;
+
+}
+
+.items_sideBar a:hover {
+    background-color: #8cabb2;
+    width: 100%;
+    color: #000000;
+    cursor: pointer;
+}
+
+
+/*Media query*/
+
+@media (max-width: 51em) { 
+    .nav_menu_done {
+        background-color: #fdfdff;
+        width: 250px;
+        height: 100vh;
+        position: absolute;
+        top: 50px;
+        left: -100%;
+        transition: left .25s;
+    }
+    .nav_menu_active {
+        /* background-color: #f3f3f4; */
+        background-color: #AFC7CD;
+        width: 250px;
+        height: 100vh;
+        position: absolute;
+        top: 49px;
+        left: 0px;
+        transition: right .25s;
+        padding-top: 25px;
+        z-index: 1;
+        border-right: 1px solid var(--borders);
+    }
+
+    .items_sideBar a:hover {
+        background-color: #C8D9DD;
+        width: 100%;
+        color: #000000;
+        cursor: pointer;
+    }
+
+}
+
+/*Media query for phone 330px*/
+
+@media (max-width: 25em) { 
+    .nav_menu_active {
+        height: 130%;
+    }
+}
+
+
+/*This for mobile 530 px*/
+@media (max-width: 35em) { 
+    .nav_menu_active {
+        height: 128%;
+    }
+}

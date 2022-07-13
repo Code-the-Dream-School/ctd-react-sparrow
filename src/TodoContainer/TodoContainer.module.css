@@ -1,0 +1,86 @@
+/* ----grid from the div tag ----*/
+
+.split_box {
+    display: grid;
+    grid-template-columns: 1fr 270px;
+    height: 100vh;
+}
+
+/*--- this is the item description component---*/
+.right_pane {
+    background-color: #fdfdff;
+    
+    
+}
+
+/*--- this the AddForm and TodoLis component ---*/
+
+.left_pane {
+    background-color: #fdfdff;
+    border: 1px solid #c2c2c2;
+    border-top: none;
+    border-left: none;
+    margin-left: 4rem;
+    padding-right: 3rem;
+}  
+
+/*todo list title*/
+
+.tableId {
+    font-weight: 250;
+    font-size: 23px;
+    padding-top: 15px;
+    padding-left: 15px;
+    position: absolute;
+    top: 50px;
+}
+
+/*Middle pane todoLis and ItemDescription components*/
+
+ .todo_container {
+    transition: left .25s;
+  }
+  
+  .todo_container.active {
+    padding-left: 250px;
+    overflow: hidden;
+    transition: left .25s;
+    margin-right: 200px;
+  }
+
+
+
+/*Sort button*/
+
+.sort_button {
+  color: #393d40;
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/*------ loading text -------*/
+
+.loading_text {
+  display: block;
+  margin-left: 1rem;
+  margin-top: 3px;
+}
+
+@media (max-width: 70em) {
+   .left_pane {
+    margin-left: 0;
+    padding-right: 0;
+   } 
+}
+
+
+/*This for mobile 330 px*/
+@media (max-width: 35em) { 
+  .split_box {
+      grid-template-columns: 1fr;
+  }
+}
