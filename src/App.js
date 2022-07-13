@@ -1,25 +1,23 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import styles from "./App.module.css";
-import TodoContainer from "./TodoContainer/TodoContainer";
-import NavMain from "./UI/NavMain/NavMain.js";
-import SideBar from "./UI/SideVar/SideBar";
+import React from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import styles from "./App.module.css"
+import TodoContainer from "./TodoContainer/TodoContainer"
+import NavMain from "./UI/NavMain/NavMain.js"
+import SideBar from "./UI/SideVar/SideBar"
 
 const App = () => {
   //sidebar state
-  const [sideBar, setSideBar] = React.useState(false);
-  console.log(sideBar);
+  const [sideBar, setSideBar] = React.useState(false)
 
   //sidebar state for work and personal
-  const [currentLink, setCurrentLink] = React.useState("work");
-  console.log(currentLink);
+  const [currentLink, setCurrentLink] = React.useState(false)
+  console.log("current link", currentLink)
 
   //----------> Search Seaction (Navbar) <--------------//
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchTerm, setSearchTerm] = React.useState("")
   const handleSearch = (e) => {
-    console.log("SEARCH NAV", e);
-    setSearchTerm(e.target.value);
-  };
+    setSearchTerm(e.target.value)
+  }
 
   return (
     <Router>
@@ -35,7 +33,8 @@ const App = () => {
           <SideBar
             sideBar={sideBar}
             onSideBar={setSideBar}
-            onCurrentLink={setCurrentLink}
+            setCurrentLink={setCurrentLink}
+            currentLink={currentLink}
           />
         </div>
         <div className={sideBar ? styles["todo_container"] : styles["active"]}>
@@ -47,7 +46,7 @@ const App = () => {
                   <TodoContainer
                     sideBar={sideBar}
                     tableName={"TodoList"}
-                    // setCurrentLink={setCurrentLink}
+                    setCurrentLink={setCurrentLink}
                     searchTerm={searchTerm}
                   />
                 }
@@ -78,7 +77,7 @@ const App = () => {
         </div>
       </div>
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App

@@ -1,8 +1,8 @@
-import React from "react";
-import style from "./TodoListItem.module.css";
-import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
-import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
-import PropTypes from "prop-types";
+import React from "react"
+import style from "./TodoListItem.module.css"
+import { ReactComponent as XIcon } from "../IconsComponents/x.svg"
+import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg"
+import PropTypes from "prop-types"
 
 //This component renders each element of the list, edit, and remove button.
 const TodoListItem = ({
@@ -13,30 +13,29 @@ const TodoListItem = ({
   tableName,
   handleCheckBox,
 }) => {
-  console.log(handleCheckBox);
   //Shows the input field when the user clicks on an item
   //to edit the task
-  const [isToggle, setToggle] = React.useState(false);
+  const [isToggle, setToggle] = React.useState(false)
 
   //controls input field for the edit button
   const [todoEditTitle, setTodoEditTitle] = React.useState(
     todoList.fields.Title
-  );
+  )
 
   //Edit button authentication
 
   //handles for edit:
   // get the value from the user input to edit the current item
   const onChangeEdit = (e) => {
-    const editTodo = e.target.value;
-    setTodoEditTitle(editTodo);
-  };
+    const editTodo = e.target.value
+    setTodoEditTitle(editTodo)
+  }
 
   //updates the value, when the user edits it and sends it up to todoContainer
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (todoEditTitle.trim().length === 0) {
-      alert("Task cannot be blank");
+      alert("Task cannot be blank")
     } else {
       onEditTodo(
         todoList.id,
@@ -47,20 +46,20 @@ const TodoListItem = ({
           },
         },
         tableName
-      );
-      setToggle(false);
+      )
+      setToggle(false)
     }
-  };
+  }
 
   //Checkbox section
   //To do:
   //Try to Link the state with airtable with Done field
-  const [isChecked, setIsChecked] = React.useState("false");
+  const [isChecked, setIsChecked] = React.useState("false")
   const handleCheckBoxChange = () => {
-    setIsChecked(!isChecked);
-    if (todoList.done === true) return null;
-    handleCheckBox(todoList.id);
-  };
+    setIsChecked(!isChecked)
+    if (todoList.done === true) return null
+    handleCheckBox(todoList.id)
+  }
 
   return (
     <div className={style.listItem_container}>
@@ -84,7 +83,7 @@ const TodoListItem = ({
           <p
             className={style.item_text}
             onClick={() => {
-              setToggle(true);
+              setToggle(true)
             }}
             style={!isChecked ? { textDecoration: "line-through" } : null}
           >
@@ -99,14 +98,14 @@ const TodoListItem = ({
           <XIcon
             className={style.icons}
             onClick={() => {
-              onRemoveTodo(todoList.id, tableName);
+              onRemoveTodo(todoList.id, tableName)
             }}
           />
         </div>
       </li>
     </div>
-  );
-};
+  )
+}
 
 TodoListItem.prototype = {
   todoList: PropTypes.array,
@@ -114,6 +113,6 @@ TodoListItem.prototype = {
   onEditTodo: PropTypes.func,
   handleDescription: PropTypes.func,
   tableName: PropTypes.string,
-};
+}
 
-export default TodoListItem;
+export default TodoListItem

@@ -1,6 +1,6 @@
-import React from "react";
-import TodoListItem from "../TodoListItem/TodoListItem";
-import PropTypes from "prop-types";
+import React from "react"
+import TodoListItem from "../TodoListItem/TodoListItem"
+import PropTypes from "prop-types"
 
 //This component renders the entire list
 const TodoList = ({
@@ -12,10 +12,9 @@ const TodoList = ({
   searchTerm,
   handleCheckBox,
 }) => {
-  console.log(handleCheckBox);
   const filteredList = todoList.filter((items) => {
-    return items.fields.Title.toLowerCase().includes(searchTerm.toLowerCase());
-  });
+    return items.fields.Title.toLowerCase().includes(searchTerm.toLowerCase())
+  })
 
   return (
     <>
@@ -30,11 +29,11 @@ const TodoList = ({
             tableName={tableName}
             handleCheckBox={handleCheckBox}
           />
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
 TodoList.propType = {
   todoList: PropTypes.array,
@@ -42,6 +41,6 @@ TodoList.propType = {
   onEditTodo: PropTypes.func,
   handleDescription: PropTypes.func,
   tableName: PropTypes.string,
-};
+}
 
-export default TodoList;
+export default TodoList

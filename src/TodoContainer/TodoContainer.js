@@ -13,7 +13,7 @@ import {
 } from "./API"
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg"
 
-const TodoContainer = ({ tableName, sideBar, searchTerm }) => {
+const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
   const [todoList, setTodoList] = React.useState([])
   const [isLoading, setIsloading] = React.useState(true)
   const [direction, setDirection] = React.useState("asc")
@@ -43,7 +43,7 @@ const TodoContainer = ({ tableName, sideBar, searchTerm }) => {
         setIsloading(false)
       })
       .catch((error) => console.log(error))
-  }, [])
+  }, [tableName])
 
   //-----------> Sort Section <--------------//
   const handleSort = () => {
@@ -71,7 +71,6 @@ const TodoContainer = ({ tableName, sideBar, searchTerm }) => {
   const removeTodo = (id, tableName) => {
     fetchRequestDeleteTodo(id, tableName).then((data) => {
       const removedItem = todoList.filter((todo) => todo.id !== data.id)
-      console.log(removedItem)
       setTodoList(removedItem)
     })
   }
