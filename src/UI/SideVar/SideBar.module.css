@@ -136,6 +136,6 @@
 /*This for mobile 530 px*/
 @media (max-width: 35em) { 
     .nav_menu_active {
-        height: 128%;
+        height: 115%;
     }
 }

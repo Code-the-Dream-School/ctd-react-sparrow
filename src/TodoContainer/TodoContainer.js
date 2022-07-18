@@ -101,10 +101,11 @@ const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
   const editDescription = (id, newEditDescription, tableName) => {
     fetchRequestEditDescription(id, newEditDescription, tableName).then(
       (data) => {
-        const editedTodoList = todoList.map((todoItem) => {
+        //Make a new list
+        const editedDescription = todoList.map((todoItem) => {
           if (todoItem.id === data.id) {
             return {
-              ...todoItem,
+              ...todoItem, // old list
               fields: {
                 ...todoItem.fields,
                 Title: data.fields.Title,
@@ -114,7 +115,7 @@ const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
           }
           return todoItem
         })
-        setTodoList(editedTodoList)
+        setTodoList(editedDescription)
       }
     )
   }
