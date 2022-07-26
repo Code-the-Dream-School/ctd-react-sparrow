@@ -1,0 +1,122 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@100&display=swap');
+
+/*Universal style*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box; 
+}
+
+/*Hide scrollbar*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+/*Main layout with grid*/
+
+.todoCont_split_box {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+    height: 100vh;
+    /* width: 100vw; */
+    grid-template-areas: "todoCont_lelf_pane_sideBar"
+
+}
+
+.todoCont_MainNav {
+    background-color: #62929e;
+    grid-column: 1 / -1;
+
+}
+
+/*Sidebar style*/
+.todoCont_lelf_pane_sideBar {
+    background-color: #fdfdff;
+    grid-row: 2/ -1;
+
+    
+}
+ 
+.todoCon_middle_pane_todoList {
+    background-color: #fdfdff;
+    padding-left: 55px;
+    position: relative;
+}
+
+/*Try moving midldle pane when the sidebar appears*/
+.todo_container {
+    margin-left: 250px;
+    transition: left .25s;
+    
+  }
+  .todo_container.active {
+    padding-left: 250px;
+    overflow: hidden;
+    transition: left .25s;
+    
+    
+   
+  } 
+
+/*Media queries*/
+/*
+ rem and em do Not depend on html font-size in media queries, instead
+ 1rem = 1em = 16px
+*/
+
+/* Desktop styles*/
+/* Below 820px  smaller compouter to get this value divide 820 and 16px*/
+
+@media (max-width: 51em) {
+    .todo_container {
+        margin-left: 55px;
+        
+        
+      }
+      .todo_container.active {
+        padding-left: 1px;
+        
+       
+      } 
+
+      .todoCon_middle_pane_todoList {
+        background-color: #fdfdff;
+        grid-row: 2/ -1;
+        padding-left: 1px;
+        position: relative;
+    }
+
+    .todoCont_lelf_pane_sideBar {
+        background-color: #fdfdff;
+        
+    }
+
+
+}
+
+/*This is 1112px */
+
+@media (max-width: 70em) {
+    .todoCon_middle_pane_todoList {
+        padding-left: 0px;
+    }
+}
+
+
+/*Mobile styles*/
+
+
+/*Table styles*/
+@media screen and (min-width: 620px) {
+
+}
+
+/*Large tablets and laptops*/
+
+@media screen and (min-width: 960px) {
+
+}
+
