@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const tableName = "Default";
 const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view`;
@@ -9,9 +10,6 @@ const urlPostDelete = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTA
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
-  /*(
-        JSON.parse(localStorage.getItem("savedTodoList")) || []
-    );*/
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -66,10 +64,6 @@ const App = () => {
       });
   };
 
-  /*
-    remove todo functions takes id and filters out items that are not equal to item id, sends
-    delete request using fetch to airtable and deletes that record on airtable
-    */
   const removeTodo = async (id) => {
     await fetch(urlPostDelete + id, {
       method: "DELETE",
@@ -86,19 +80,27 @@ const App = () => {
   };
 
   return (
-    <>
-      <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} />
-      {isLoading ? (
-        <p>Loading ...</p>
-      ) : (
-        <TodoList
-          className="wrapper"
-          onRemoveTodo={removeTodo}
-          todoList={todoList}
+    <Router>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <h1>Todo List</h1>
+              <AddTodoForm onAddTodo={addTodo} />
+              {isLoading ? (
+                <p>Loading</p>
+              ) : (
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+              )}
+            </>
+          }
         />
-      )}
-    </>
+        <Route path="/work" element={<h1>Work Todo List</h1>} />
+        <Route path="/new" element={<h1>New Todo List</h1>} />
+      </Routes>
+    </Router>
   );
 };
 
