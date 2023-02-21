@@ -12,13 +12,17 @@
       monospace;
   }
 
-  .wrapper {
+  html {
+  background-color: rgb(245, 246, 244);
+}
+
+  /* .wrapper {
     padding-top: 5 rem;
     margin: 0 auto;
     width: 600px;
-  }
+  } */
 
-  .rm {
+  /* .rm {
     background: red;
     border-radius: 50%;
     color: #fff;
@@ -35,4 +39,4 @@
     borderradius: 4px;
     marginbottom: 0.5rem;
     width: 500px;
-  }
+  } */

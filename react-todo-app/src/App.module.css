@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.title {
+  text-decoration: underline;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+@media (min-width: 768px) {
+  body {
+    background-color: lightblue;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* for iPad sizes */
+  /* your styles for iPad */
+}
+
+@media only screen and (max-width: 414px) {
+  /* for iPhone sizes */
+  /* your styles for iPhone */
+}
+/*Table styles*/
+@media screen and (min-width: 620px) {
+}
+
+/*Large tablets and laptops*/
+
+@media screen and (min-width: 960px) {
+}
