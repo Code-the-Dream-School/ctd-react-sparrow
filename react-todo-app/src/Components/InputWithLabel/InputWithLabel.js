@@ -1,6 +1,11 @@
 import * as React from "react";
 
-const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
+const InputWithLabel = ({
+  todoTitle,
+  handleTitleChange,
+  children,
+  labelStyle,
+}) => {
   //useRef and useEffect hook keep the focus on the input field
   const inputRef = React.useRef();
   React.useEffect(() => {
@@ -9,7 +14,9 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
 
   return (
     <>
-      <label htmlFor="todoTitle">{children}</label>
+      <label htmlFor="todoTitle" style={labelStyle}>
+        {children}
+      </label>
       <input
         id="todoTitle"
         name="title"

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
+import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
+import TodoList from "./Components/TodoList/TodoList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import style from "./App.module.css";
 
 const tableName = "Default";
 const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view`;
@@ -86,15 +86,15 @@ const App = () => {
           exact
           path="/"
           element={
-            <>
-              <h1>Todo List</h1>
+            <div className={style.container}>
+              <h1 className={style.title}>Todo List</h1>
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
                 <p>Loading</p>
               ) : (
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
               )}
-            </>
+            </div>
           }
         />
         <Route path="/work" element={<h1>Work Todo List</h1>} />
