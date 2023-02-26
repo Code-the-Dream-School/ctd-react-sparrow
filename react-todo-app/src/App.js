@@ -3,6 +3,8 @@ import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 import TodoList from "./Components/TodoList/TodoList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import style from "./App.module.css";
+import PropTypes from "prop-types";
+import axios from "axios";
 
 const tableName = "Default";
 const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${tableName}?view=Grid%20view`;
@@ -10,18 +12,20 @@ const urlPostDelete = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTA
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
-
   const [isLoading, setIsLoading] = useState(true);
 
   const getData = async () => {
-    await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-      },
-    })
-      .then((result) => result.json())
-      .then((result) => setTodoList(result.records));
-    setIsLoading(false);
+    try {
+      const result = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        },
+      });
+      setTodoList(result.data.records);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -37,46 +41,44 @@ const App = () => {
   // POST method
 
   const addTodo = async (newTodo, tableName) => {
-    await fetch(urlPostDelete, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        records: [
-          {
-            fields: {
-              Title: newTodo.fields.Title,
+    try {
+      const result = await axios.post(
+        urlPostDelete,
+        {
+          records: [
+            {
+              fields: {
+                Title: newTodo.fields.Title,
+              },
             },
+          ],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+            "Content-Type": "application/json",
           },
-        ],
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        setTodoList([...todoList, ...result.records]);
-      })
-
-      .catch((error) => {
-        console.log("Error:", error);
-      });
+        }
+      );
+      setTodoList([...todoList, ...result.data.records]);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const removeTodo = async (id) => {
-    await fetch(urlPostDelete + id, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((res) => console.log("DELETE: ", res));
-
-    const newTodoList = todoList.filter((todo) => id !== todo.id);
-    setTodoList(newTodoList);
+    try {
+      await axios.delete(urlPostDelete + id, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const newTodoList = todoList.filter((todo) => id !== todo.id);
+      setTodoList(newTodoList);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -102,6 +104,11 @@ const App = () => {
       </Routes>
     </Router>
   );
+};
+
+App.propTypes = {
+  todoList: PropTypes.array,
+  onRemoveTodo: PropTypes.func,
 };
 
 export default App;
