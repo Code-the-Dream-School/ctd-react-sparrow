@@ -1,16 +1,27 @@
 .App {
   text-align: center;
 }
+.error {
+  color: red;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .title {
-  text-decoration: underline;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.2;
 }
 
 .App-header {
@@ -20,28 +31,68 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1.5vmin);
   color: white;
+}
+
+.sort-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.sort-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none;
+  border: 2px solid #007bff;
+}
+
+.sort-button:hover:not(.active) {
+  background-color: #0077cc;
+}
+
+.sort-button.active {
+  background-color: #0056b3;
+}
+.sort-button:focus {
+  outline: none;
+  border-color: #0056b3;
 }
 @media (min-width: 768px) {
   body {
     background-color: lightblue;
   }
 }
+
 @media only screen and (max-width: 768px) {
-  /* for iPad sizes */
-  /* your styles for iPad */
+  /* styles for tablet-sized devices */
 }
 
 @media only screen and (max-width: 414px) {
-  /* for iPhone sizes */
-  /* your styles for iPhone */
-}
-/*Table styles*/
-@media screen and (min-width: 620px) {
+  /* styles for mobile devices */
 }
 
-/*Large tablets and laptops*/
+@media screen and (min-width: 620px) {
+  /* styles for medium-sized screens */
+}
 
 @media screen and (min-width: 960px) {
+  /* styles for large screens */
+}
+
+@media only screen and (max-width: 320px) {
+  /* styles for iPhone SE */
+}
+
+@media only screen and (max-width: 360px) and (max-height: 740px) {
+  /* styles for Samsung S8 */
 }

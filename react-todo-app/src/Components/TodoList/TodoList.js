@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
-    <ul className={style.ul}>
+    <ul className={style.todoList}>
       {todoList.map((todo) => {
         return (
           <TodoListItem onRemoveTodo={onRemoveTodo} key={todo.id} todo={todo} />
