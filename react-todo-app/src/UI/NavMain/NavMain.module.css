@@ -1,0 +1,48 @@
+/*Icon menu*/
+.icon_menu {
+  stroke: rgba(52, 49, 49, 0.975);
+  width: 24px;
+  height: 24px;
+}
+
+.icon_menu:hover {
+  opacity: 0.5;
+}
+
+/*li elements inside of the navBar*/
+.nav_list {
+  list-style: none;
+  margin-left: 5rem;
+  padding-top: 13px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/*icon keeps moving down*/
+.menu {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  padding-top: 15px;
+}
+
+/*Navbar container*/
+.nav_container {
+  border-bottom: 1px solid #c2c2c2;
+  height: 50px;
+}
+
+/*Logo*/
+.Logo {
+  width: 40px;
+  height: 40px;
+}
+
+/*App Name*/
+.app_name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  margin-left: 10px;
+}

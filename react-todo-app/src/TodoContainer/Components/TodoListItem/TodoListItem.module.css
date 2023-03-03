@@ -1,0 +1,88 @@
+/* -------li tag --------*/
+.listItem {
+  background-color: #f3f3f3;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #393d40;
+  font-size: 14px;
+  min-height: 40px; /* set minimum height */
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-bottom: 1px solid #c2c2c2;
+  border-radius: 3px;
+  gap: 10px;
+}
+
+.listItem_container {
+}
+
+.item_text {
+  align-self: flex-start;
+  margin-right: auto;
+  text-align: left;
+  padding-top: 8px;
+  overflow: auto;
+}
+
+.item_text:hover {
+  opacity: 0.5;
+}
+
+/* ------ buttons and icons ------*/
+
+.icons {
+  color: #393d40;
+  width: 23px;
+  height: 23px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.icons:hover {
+  opacity: 0.5;
+}
+
+/* -----input tag this css triggers when the user wants to edit a task -----*/
+
+.edit_input {
+  background-color: #f3f3f3;
+  border: none;
+  outline: none;
+  min-width: 50px;
+  width: 35rem;
+  height: 30px;
+  min-height: 40px;
+  color: black;
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+.form {
+  cursor: pointer;
+  position: absolute;
+  left: 10rem;
+}
+
+/* ---------- checkbox -----------*/
+
+.checkbox {
+  accent-color: var(--primary);
+}
+
+/*Media Queries*/
+/*Mobile view 330px*/
+@media (max-width: 25em) {
+  .listItem {
+    padding-top: 1px;
+  }
+}
+
+@media (max-width: 68em) {
+  .form {
+    position: absolute;
+    left: 2.5rem;
+  }
+}
