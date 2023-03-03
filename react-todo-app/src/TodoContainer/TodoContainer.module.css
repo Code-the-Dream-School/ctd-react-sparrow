@@ -1,0 +1,103 @@
+/* ----user errors ----*/
+.error {
+  color: red;
+  font-size: 1.125rem; /* equivalent to 18px */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center; /* Aligns the error message in the center */
+  text-decoration: underline; /* Underlines the error message */
+  font-weight: 700; /* Makes the error message bold */
+}
+
+/* ----grid from the div tag ----*/
+.split_box {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  height: 100vh;
+}
+
+/*--- this is the item description component---*/
+.right_pane {
+  background-color: #fdfdff;
+}
+
+/*--- this the AddForm and TodoList component ---*/
+.left_pane {
+  background-color: #fdfdff;
+  border: 1px solid #c2c2c2;
+  border-top: none;
+  border-left: none;
+  margin-left: 4rem;
+  padding-right: 3rem;
+}
+
+.banner {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-family: "Roboto", sans-serif; /* add a custom font */
+  text-decoration: none; /* add underline */
+  cursor: pointer; /* add cursor on hover */
+  transition: all 0.2s ease-in-out; /* add transition effect */
+}
+
+.banner:hover {
+  color: #ff4500; /* change text color on hover */
+  text-shadow: 1px 1px 3px #999; /* add text shadow on hover */
+  transform: scale(1.1); /* add scale effect on hover */
+}
+
+/*todo list title*/
+.tableId {
+  font-weight: 250;
+  font-size: 1.4375rem; /* equivalent to 23px */
+  padding-top: 5px;
+  padding-left: 15px;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 10px; /* Adds more margin to the bottom */
+  width: 100%; /* Takes up the full width of its container */
+}
+
+/*Middle pane todoList and ItemDescription components*/
+.todo_container {
+  transition: left 0.25s;
+}
+.todo_container.active {
+  padding-left: 20%; /* Use percentage value */
+  overflow: hidden;
+  transition: left 0.25s;
+  margin-right: 10%; /* Use percentage value */
+}
+
+/*Sort button*/
+.sort_button {
+  color: #393d40;
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/*------ loading text -------*/
+.loading_text {
+  display: block;
+  margin-left: 1rem;
+  margin-top: 3px;
+}
+
+@media (max-width: 70em) {
+  .left_pane {
+    margin-left: 0;
+    padding-right: 0;
+  }
+}
+
+/*This for mobile 330px*/
+@media (max-width: 35em) {
+  .split_box {
+    grid-template-columns: 1fr;
+  }
+}

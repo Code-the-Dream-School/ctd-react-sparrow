@@ -1,0 +1,36 @@
+.input {
+  padding: 5px 5px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  /* width: 100%;  */
+  outline: 0;
+  background-color: #a7c1c8;
+  /* transition: width 2s ; */
+  /* margin-left: 1rem; */
+}
+
+.input:hover {
+  /* width: 25%; */
+  background-color: #fff;
+}
+
+/* Adjust the Search component to align with the other items in the navbar */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.search-container input[type="text"] {
+  margin-right: 10px;
+}
+
+.search-container button[type="submit"] {
+  padding: 5px 10px;
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+}

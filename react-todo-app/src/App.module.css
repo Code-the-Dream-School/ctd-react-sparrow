@@ -1,98 +1,120 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #1c1cf0;
+  --background-color: #f0e5cf;
+  --transition-duration: 0.25s;
 }
-.error {
-  color: red;
-  font-size: 18px;
-  margin-bottom: 10px;
+/*background-color: var(--secondary-color);*/
+
+/*Fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@100&display=swap");
+
+/*Universal style*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
-.container {
+/*Hide scrollbar*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+/*Main layout with grid*/
+
+.todoCont_split_box {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+  height: 100vh;
+  /* width: 100vw; */
+  grid-template-areas: "todoCont_lelf_pane_sideBar";
+}
+
+.todoCont_MainNav {
+  background-color: #8da6cb;
+  grid-column: 1 / -1;
+}
+
+/*Sidebar style*/
+.todoCont_left_pane_sideBar {
+  background-color: #fdfdff;
+  grid-row: 2/ -1;
+}
+
+.todoCon_middle_pane_todoList {
+  background-color: #fdfdff;
+  padding-left: 55px;
+  position: relative;
+}
+
+/*Try moving middle pane when the sidebar appears*/
+.todo_container {
+  margin-left: 250px;
+  transition: left 0.25s;
+}
+.todo_container.active {
+  padding-left: 250px;
+  overflow: hidden;
+  transition: left 0.25s;
+}
+.imageContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin-bottom: 32px;
-  line-height: 1.2;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 1.5vmin);
-  color: white;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.sort-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-  font-size: 18px;
-  margin-top: 20px;
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  animation-name: fadeOut;
+  animation-duration: 1s;
+  animation-delay: 29s;
+  animation-fill-mode: forwards;
 }
 
-.sort-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  outline: none;
-  border: 2px solid #007bff;
-}
-
-.sort-button:hover:not(.active) {
-  background-color: #0077cc;
-}
-
-.sort-button.active {
-  background-color: #0056b3;
-}
-.sort-button:focus {
-  outline: none;
-  border-color: #0056b3;
-}
-@media (min-width: 768px) {
-  body {
-    background-color: lightblue;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  /* styles for tablet-sized devices */
+@media (max-width: 51em) {
+  .todo_container {
+    margin-left: 55px;
+  }
+  .todo_container.active {
+    padding-left: 1px;
+  }
+
+  .todoCon_middle_pane_todoList {
+    background-color: #fdfdff;
+    grid-row: 2/ -1;
+    padding-left: 1px;
+    position: relative;
+  }
+
+  .todoCont_left_pane_sideBar {
+    background-color: #fdfdff;
+  }
 }
 
-@media only screen and (max-width: 414px) {
-  /* styles for mobile devices */
+@media (max-width: 70em) {
+  .todoCon_middle_pane_todoList {
+    padding-left: 0px;
+  }
 }
 
 @media screen and (min-width: 620px) {
-  /* styles for medium-sized screens */
-}
-
-@media screen and (min-width: 960px) {
-  /* styles for large screens */
-}
-
-@media only screen and (max-width: 320px) {
-  /* styles for iPhone SE */
-}
-
-@media only screen and (max-width: 360px) and (max-height: 740px) {
-  /* styles for Samsung S8 */
 }
