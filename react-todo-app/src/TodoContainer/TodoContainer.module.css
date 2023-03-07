@@ -29,6 +29,7 @@
   border-left: none;
   margin-left: 4rem;
   padding-right: 3rem;
+  padding-left: 3rem;
 }
 
 .banner {
@@ -62,12 +63,22 @@
 /*Middle pane todoList and ItemDescription components*/
 .todo_container {
   transition: left 0.25s;
+  padding-left: 5px;
 }
 .todo_container.active {
-  padding-left: 20%; /* Use percentage value */
+  padding-left: 0; /* Use percentage value */
   overflow: hidden;
   transition: left 0.25s;
   margin-right: 10%; /* Use percentage value */
+}
+
+/*Image Component*/
+.image_link {
+  width: 14rem;
+  height: 10rem;
+  display: block;
+  margin: 0 auto;
+  padding-top: 15px;
 }
 
 /*Sort button*/

@@ -1,0 +1,5 @@
+Fonts used in this design:
+
+Font: Playfair Display
+Author: Claus Eggers Sørensen
+Url: http://www.fontsquirrel.com/fonts/playfair-display

@@ -4,6 +4,10 @@ import styles from "./App.module.css";
 import TodoContainer from "./TodoContainer/TodoContainer";
 import NavMain from "./UI/NavMain/NavMain.js";
 import SideBar from "./UI/SideBar/SideBar";
+import MatrixImg from "./UI/Images/the-matrix.png";
+import PointBreakImg from "./UI/Images/pointbreak1.png";
+import BucketListImg from "./UI/Images/bucket-list.png";
+import InceptionImg from "./UI/Images/inception.png";
 
 const App = () => {
   //sidebar state
@@ -47,6 +51,7 @@ const App = () => {
                     tableName={"The Matrix"}
                     setCurrentLink={setCurrentLink}
                     searchTerm={searchTerm}
+                    image={MatrixImg}
                   />
                 }
               ></Route>
@@ -56,6 +61,7 @@ const App = () => {
                   <TodoContainer
                     tableName={"Point Break"}
                     searchTerm={searchTerm}
+                    image={PointBreakImg}
                   />
                 }
               />
@@ -65,6 +71,7 @@ const App = () => {
                   <TodoContainer
                     tableName={"The Bucket List"}
                     searchTerm={searchTerm}
+                    image={BucketListImg}
                   />
                 }
               />
@@ -74,6 +81,7 @@ const App = () => {
                   <TodoContainer
                     tableName={"Inception"}
                     searchTerm={searchTerm}
+                    image={InceptionImg}
                   />
                 }
               />

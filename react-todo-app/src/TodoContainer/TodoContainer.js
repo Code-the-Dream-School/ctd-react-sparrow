@@ -15,7 +15,13 @@ import {
 
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
 
-const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
+const TodoContainer = ({
+  tableName,
+  sideBar,
+  searchTerm,
+  setCurrentLink,
+  image,
+}) => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [direction, setDirection] = useState("asc");
@@ -146,6 +152,7 @@ const TodoContainer = ({ tableName, sideBar, searchTerm, setCurrentLink }) => {
           {errorMessage && <p className={style.error}>{errorMessage}</p>}{" "}
           {/* User error message */}
           <h1 className={style.banner}>To Do or Not To Do !</h1>
+          <img src={image} alt="" className={style.image_link} />
           <h5 className={style.tableId}>{tableName}</h5>
           <AddTodoForm
             onAddTodo={addTodo}
