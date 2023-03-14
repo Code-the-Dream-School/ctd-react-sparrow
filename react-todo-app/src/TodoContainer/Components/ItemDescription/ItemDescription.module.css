@@ -18,7 +18,7 @@
   background-color: var(--primary-color);
   border: none;
   color: var(--secondary);
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 5px;
   width: 12rem;
   margin-left: 3rem;
@@ -28,6 +28,8 @@
 .button:hover {
   background-color: #ff4500;
 }
+
+
 
 .title {
   /* font-style: oblique;  */

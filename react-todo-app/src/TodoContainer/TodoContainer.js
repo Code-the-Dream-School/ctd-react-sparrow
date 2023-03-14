@@ -4,6 +4,7 @@ import TodoList from "./Components/TodoList/TodoList.js";
 import ItemDescription from "./Components/ItemDescription/ItemDescription";
 import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
+import RedPillImg from "../UI/Images/red-pill.png";
 import {
   requestGetTodo,
   requestAddTodo,
@@ -12,7 +13,7 @@ import {
   requestSortData,
   requestEditDescription,
 } from "./API";
-
+// import {    handleImageClick  } from '../App'
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
 
 const TodoContainer = ({
@@ -20,6 +21,8 @@ const TodoContainer = ({
   sideBar,
   searchTerm,
   setCurrentLink,
+  setModalOpen,
+  handleImageClick,
   image,
 }) => {
   const [todoList, setTodoList] = useState([]);
@@ -28,6 +31,7 @@ const TodoContainer = ({
   const [itemDescription, setItemDescription] = useState("");
   const [showDescription, setShowDescription] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  // const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -145,14 +149,29 @@ const TodoContainer = ({
     setItemDescription(id);
   };
 
+  // const handleImageClick = (image) => {
+  //   setSelectedImage(image);
+  //   setModalOpen(true);
+  // };
+
   return (
     <div className={sideBar ? style["todo_container"] : style["active"]}>
       <div className={style.split_box}>
         <div className={style.left_pane}>
           {errorMessage && <p className={style.error}>{errorMessage}</p>}{" "}
           {/* User error message */}
-          <h1 className={style.banner}>To Do or Not To Do !</h1>
-          <img src={image} alt="" className={style.image_link} />
+          <h1
+            className={style.banner}
+            onClick={() => handleImageClick(RedPillImg)}
+          >
+            To Do or Not To Do !
+          </h1>
+          <img
+            src={image}
+            alt="{tableId}"
+            className={style.image_link}
+            onClick={() => handleImageClick(image)}
+          />
           <h5 className={style.tableId}>{tableName}</h5>
           <AddTodoForm
             onAddTodo={addTodo}
