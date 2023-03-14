@@ -41,7 +41,7 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
             id="textDescription"
             value={textDescription}
             onChange={onChangeDescription}
-            placeholder="Add algorithm"
+            placeholder="Add Action Steps ..."
           ></textarea>
           <button className={styles.button} type="submit">
             Add Algorithm

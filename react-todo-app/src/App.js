@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import TodoContainer from "./TodoContainer/TodoContainer";
@@ -20,6 +21,23 @@ const App = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+  };
+
+  // State for modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const handleImageClick = (image) => {
+    console.log("handleImageClick called with image:", image);
+    setSelectedImage(image);
+    console.log("selectedImage state updated to:", selectedImage);
+    setModalOpen(true);
+    console.log("modalOpen state updated to:", modalOpen);
+  };
+
+  const closeModal = () => {
+    setSelectedImage("");
+    setModalOpen(false);
   };
 
   return (
@@ -52,45 +70,59 @@ const App = () => {
                     setCurrentLink={setCurrentLink}
                     searchTerm={searchTerm}
                     image={MatrixImg}
+                    handleImageClick={handleImageClick}
                   />
                 }
               ></Route>
               <Route
-                path="pointbreak"
+                path="/pointbreak"
                 element={
                   <TodoContainer
                     tableName={"Point Break"}
                     searchTerm={searchTerm}
                     image={PointBreakImg}
+                    handleImageClick={handleImageClick}
                   />
                 }
               />
               <Route
-                path="bucket"
+                path="/bucket"
                 element={
                   <TodoContainer
                     tableName={"The Bucket List"}
                     searchTerm={searchTerm}
                     image={BucketListImg}
+                    handleImageClick={handleImageClick}
                   />
                 }
               />
               <Route
-                path="inception"
+                path="/inception"
                 element={
                   <TodoContainer
                     tableName={"Inception"}
                     searchTerm={searchTerm}
                     image={InceptionImg}
+                    handleImageClick={handleImageClick}
                   />
                 }
               />
             </Routes>
           </div>
         </div>
+        {/* Modal */}
+        {modalOpen && (
+          <div className={styles.modalContainer} onClick={closeModal}>
+            <div className={styles.modal}>
+              <button className={styles.closeButton} onClick={closeModal}>
+                X
+              </button>
+              <img className={styles.modalImage} src={selectedImage} alt="" />
+            </div>
+          </div>
+        )}
       </div>
     </Router>
   );
 };
-
 export default App;
