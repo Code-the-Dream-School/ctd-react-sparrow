@@ -43,16 +43,18 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
             onChange={onChangeDescription}
             placeholder="Add Action Steps ..."
           ></textarea>
-          <button className={styles.button} type="submit">
-            Add Algorithm
-          </button>
+          <div class="button-wrapper">
+            <button className={styles.button} type="submit">
+              Add Algorithm
+            </button>
+          </div>
         </form>
       </li>
     </div>
   );
 };
 
-DescriptionText.prototype = {
+DescriptionText.propTypes = {
   todoList: PropTypes.array,
   onEditDescription: PropTypes.func,
   tableId: PropTypes.string,
