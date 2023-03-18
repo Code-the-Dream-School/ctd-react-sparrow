@@ -12,22 +12,26 @@
 /* ----grid from the div tag ----*/
 .split_box {
   display: grid;
-  grid-template-columns: 1fr 270px;
+  grid-template-columns: 1fr 330px;
   height: 100vh;
 }
 
 /*--- this is the item description component---*/
 .right_pane {
-  background-color: #fdfdff;
+  background-color: #f3f3f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
 
 /*--- this the AddForm and TodoList component ---*/
 .left_pane {
   background-color: #fdfdff;
-  border: 1px solid #c2c2c2;
+  /* border: 1px solid #c2c2c2; */
   border-top: none;
   border-left: none;
-  margin-left: 4rem;
+  margin-left: 3rem;
   padding-right: 3rem;
   padding-left: 3rem;
 }
@@ -36,6 +40,7 @@
   font-size: 2rem;
   text-align: center;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   font-family: "Roboto", sans-serif; /* add a custom font */
   text-decoration: none; /* add underline */
   cursor: pointer; /* add cursor on hover */
@@ -43,8 +48,8 @@
 }
 
 .banner:hover {
-  color: #ff4500; /* change text color on hover */
-  text-shadow: 1px 1px 3px #999; /* add text shadow on hover */
+  color: #d61215; /* change text color on hover */
+  text-shadow: 3px 2px 3px #68dcc5; /* add text shadow on hover */
   transform: scale(1.1); /* add scale effect on hover */
 }
 
@@ -63,23 +68,38 @@
 /*Middle pane todoList and ItemDescription components*/
 .todo_container {
   transition: left 0.25s;
-  padding-left: 5px;
+  /* margin-left: 330px; */
+  /* width: calc(100% - 330px); */
+  left: 0;
 }
 .todo_container.active {
   padding-left: 0; /* Use percentage value */
+  width: 700px;
   overflow: hidden;
   transition: left 0.25s;
   margin-right: 10%; /* Use percentage value */
+  /* margin-left: 330px; */
 }
 
 /*Image Component*/
 .image_link {
-  width: 11rem;
+  width: 10rem;
   height: 10rem;
   display: block;
-  margin: 0 auto;
-  padding-top: 15px;
+  margin: auto;
   cursor: pointer;
+  border: 4px solid #b0b0ea;
+  border-radius: 50%; /* make the border circular */
+  overflow: hidden; /* ensure that the image stays within the circular border */
+  padding: 4px; /* add some padding to make room for the inner border */
+}
+
+.image_link img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid white; /* add the inner white border to the image */
+  border-radius: 50%; /* make the image circular */
 }
 
 /*Sort button*/
