@@ -2,22 +2,22 @@
   margin-top: 20px;
   margin-left: 5px;
   margin-right: 5px;
-  /* border: 2px solid black; */
+  border: 1px solid black;
   display: flex;
   justify-content: flex-start;
-  padding: 5px 5px 5px 5px;
+  padding: 5px;
 }
 
 .add_button {
-  /* margin-left: 173px; */
   background-color: #f3f3f3;
   color: #393d40;
   width: 30px;
   height: 30px;
   border-color: #62929e;
   border-top: 1px;
-  border-left: none;
+  border-left: 1px;
   border-bottom: 1px;
   border-right: 1px;
   cursor: pointer;
+  margin-left: 1px;
 }

@@ -1,40 +1,64 @@
 .listItem {
-  background-color: #f3f3f3;
-  margin-left: 10px;
-  margin-right: 10px;
-  color: #393d40;
-  font-size: 14px;
-  min-height: 45px; /* set minimum height */
-  padding: 8px;
-  padding-bottom: 5px;
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  border-bottom: 1px solid #c2c2c2;
+  align-items: center;
+  background-color: var(--background-color);
+  margin: 5px;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 40px; /* set minimum height */
+  justify-content: center;
+  border-bottom: 1px solid var(--border-color-base);
   border-radius: 3px;
+  padding-bottom: 1px;
+  padding-top: 8px;
   gap: 10px;
   width: 100%;
+  flex-grow: 1;
+  text-align: left;
 }
+/* .listItem > * {
+  align-self: center;
+} */
 
 .listItem_container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  min-height: 30px;
   width: 100%;
-  align-self: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  min-width: 30px;
+}
+
+.checkbox {
+  accent-color: var(--primary-color);
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .item_text {
-  align-self: flex-start;
-  margin-right: auto;
+  display: flex;
   text-align: left;
-  padding-top: 8px;
-  overflow: auto;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
 }
 
 .item_text:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 /* ------ buttons and icons ------*/
@@ -48,40 +72,60 @@
 }
 
 .icons:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 /* -----input tag this css triggers when the user wants to edit a task -----*/
 
 .edit_input {
-  background-color: #f3f3f3;
+  background-color: var(--background-color);
   border: none;
   outline: none;
-  min-width: 50px;
-  width: 35rem;
-  height: 30px;
-  min-height: 40px;
+  width: 100%;
+  max-width: 100%;
   color: black;
   font-weight: bold;
-  padding-left: 5px;
-  font-size: 14px;
+  padding: 8px 8px 5px;
+  font-size: 15px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  flex-grow: 1;
+  min-height: 35px;
+  word-break: break-all;
+}
+
+.edit_text {
+  align-self: flex-start;
+  margin-right: auto;
+  text-align: left;
+  padding-top: 8px;
+  overflow: auto;
 }
 
 .form {
-  cursor: pointer;
-  position: absolute;
-  left: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-all;
+  width: 100%;
+  overflow: auto;
+  align-self: flex-start;
 }
 
-/* ---------- checkbox -----------*/
-
-.checkbox {
-  accent-color: var(--primary);
+.edit_container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  word-break: break-all;
+  overflow: auto;
+  align-self: flex-start;
 }
 
-/*Media Queries*/
-/*Mobile view 330px*/
-@media (max-width: 25em) {
+Media Queries Mobile view 330px @media (max-width: 25em) {
   .listItem {
     padding-top: 1px;
   }

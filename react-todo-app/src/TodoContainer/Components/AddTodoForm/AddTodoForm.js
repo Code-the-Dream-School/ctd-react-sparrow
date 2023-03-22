@@ -3,6 +3,7 @@ import InputWithLabel from "../InputWithLabel/InputWithLabel";
 import style from "./AddTodoForm.module.css";
 import { ReactComponent as AddIcon } from "../IconsComponents/addTask+.svg";
 import PropTypes from "prop-types";
+import { Tooltip } from "antd";
 
 const AddTodoForm = ({ onAddTodo, tableName }) => {
   let [todoTitle, setTodoTitle] = React.useState("");
@@ -37,9 +38,11 @@ const AddTodoForm = ({ onAddTodo, tableName }) => {
         todoTitle={todoTitle}
         handleTitleChange={handleTitleChange}
       ></InputWithLabel>
-      <button type="submit" className={style.add_button}>
-        <AddIcon className={style.add_button} />
-      </button>
+      <Tooltip title="Add Action">
+        <button type="submit" className={style.add_button}>
+          <AddIcon className={style.add_button} />
+        </button>
+      </Tooltip>
     </form>
   );
 };

@@ -4,6 +4,7 @@ import TodoList from "./Components/TodoList/TodoList.js";
 import ItemDescription from "./Components/ItemDescription/ItemDescription";
 import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
+import { Tooltip } from "antd";
 import RedPillImg from "../UI/Images/red-pill.png";
 import {
   requestGetTodo,
@@ -160,25 +161,31 @@ const TodoContainer = ({
         <div className={style.left_pane}>
           {errorMessage && <p className={style.error}>{errorMessage}</p>}{" "}
           {/* User error message */}
-          <h1
-            className={style.banner}
-            onClick={() => handleImageClick(RedPillImg)}
-          >
-            To Do or Not To Do !
-          </h1>
-          <img
-            src={image}
-            alt="{tableId}"
-            className={style.image_link}
-            onClick={() => handleImageClick(image)}
-          />
+          <Tooltip title="Enter the Matrix!">
+            <h1
+              className={style.banner}
+              onClick={() => handleImageClick(RedPillImg)}
+            >
+              To Do or Not To Do !
+            </h1>
+          </Tooltip>
+          <Tooltip title="Click Me!">
+            <img
+              src={image}
+              alt="{tableId}"
+              className={style.image_link}
+              onClick={() => handleImageClick(image)}
+            />
+          </Tooltip>
           <h5 className={style.tableId}>{tableName}</h5>
           <AddTodoForm
             onAddTodo={addTodo}
             todoList={todoList}
             tableName={tableName}
           />
-          <SortButton className={style.sort_button} onClick={handleSort} />
+          <Tooltip title="Sort Actions">
+            <SortButton className={style.sort_button} onClick={handleSort} />
+          </Tooltip>
           {isLoading ? (
             <span className={style.loading_text}>Is loading...</span>
           ) : (

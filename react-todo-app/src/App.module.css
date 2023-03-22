@@ -1,20 +1,3 @@
-:root {
-  --primary-color: #1c1cf0;
-  --background-color: #f0e5cf;
-  --transition-duration: 0.25s;
-}
-
-/*Fonts*/
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@100&display=swap");
-
-/*Universal style*/
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  box-sizing: border-box;
-}
-
 /*Hide scrollbar*/
 ::-webkit-scrollbar {
   display: none;
@@ -27,23 +10,23 @@
   grid-template-columns: 1fr;
   grid-template-rows: 50px 1fr;
   height: 100vh;
-  /* width: 100vw; */
-  grid-template-areas: "todoCont_lelf_pane_sideBar";
+  width: 100vw;
+  grid-template-areas: "todoCont_left_pane_sideBar";
 }
 
 .todoCont_MainNav {
-  background-color: #8da6cb;
+  background-color: var(--primary-color);
   grid-column: 1 / -1;
 }
 
 /*Sidebar style*/
 .todoCont_left_pane_sideBar {
-  background-color: #fdfdff;
+  background-color: var(--sidebar-color);
   grid-row: 2/ -1;
 }
 
 .todoCon_middle_pane_todoList {
-  background-color: #fdfdff;
+  /* background-color: var(--background-color); */
   padding-left: 55px;
   position: relative;
 }
@@ -104,14 +87,14 @@
   }
 
   .todoCon_middle_pane_todoList {
-    background-color: #fdfdff;
+    /* background-color: var(--background-color); */
     grid-row: 2/ -1;
     padding-left: 1px;
     position: relative;
   }
 
   .todoCont_left_pane_sideBar {
-    background-color: #fdfdff;
+    background-color: var(--background-color);
   }
 }
 

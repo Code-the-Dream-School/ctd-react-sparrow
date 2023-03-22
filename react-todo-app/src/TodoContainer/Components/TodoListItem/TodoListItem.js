@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import style from "./TodoListItem.module.css";
 import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
 import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
 import PropTypes from "prop-types";
-import { requestEditCheck } from "../../API";
+import { Tooltip } from "antd";
+
+// import { requestEditCheck } from "../../API";
 
 const TodoListItem = ({
   todoList,
@@ -12,10 +14,12 @@ const TodoListItem = ({
   handleDescription,
   tableName,
 }) => {
-  const [isToggle, setToggle] = React.useState(false);
-  const [todoEditTitle, setTodoEditTitle] = React.useState(
+  const [isToggle, setToggle] = useState(false);
+  const [todoEditTitle, setTodoEditTitle] = useState(
     todoList.fields.Title || ""
   );
+  const editInputRef = useRef(null);
+  const listItemRef = useRef(null);
 
   const onChangeEdit = (e) => {
     const editTodo = e.target.value;
@@ -42,62 +46,120 @@ const TodoListItem = ({
     }
   };
 
-  const [isChecked, setIsChecked] = React.useState(todoList.fields.Done);
-  const handleCheckBoxChange = async () => {
-    setIsChecked(!isChecked);
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        listItemRef.current &&
+        !listItemRef.current.contains(e.target) &&
+        editInputRef.current !== e.target
+      ) {
+        setToggle(false);
+      }
+    };
 
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const [isChecked, setIsChecked] = useState(todoList.fields.Done);
+
+  const handleCheckBoxChange = async () => {
+    const done = !todoList.fields.Done;
     try {
-      await requestEditCheck(tableName, todoList.id, {
-        fields: {
-          Done: !isChecked,
+      await onEditTodo(
+        todoList.id,
+        {
+          fields: {
+            Title: todoList.fields.Title,
+            Description: todoList.fields.Description,
+            Done: done,
+          },
         },
-      });
+        tableName
+      );
+      setIsChecked(done);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleListItemClick = () => {
+    if (!isToggle) {
+      setToggle(true);
+    }
+  };
+
+  const handleInputKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onSubmit(event);
+    } else if (event.key === "Escape") {
+      setTodoEditTitle(todoList.fields.Title);
+      setToggle(false);
+    }
+  };
+
   return (
     <div className={style.listItem_container}>
-      <li className={style.listItem}>
-        <input
-          className={style.checkbox}
-          type="checkbox"
-          onChange={() => handleCheckBoxChange()}
-          checked={isChecked}
-        />
-        {isToggle ? (
-          <form onSubmit={onSubmit} className={style.form}>
-            <label htmlFor="editTodo"></label>
-            <input
-              id="editTodo"
-              value={todoEditTitle || ""}
-              onChange={onChangeEdit}
-              className={style.edit_input}
-            />
-          </form>
-        ) : (
-          <p
-            className={style.item_text}
-            onClick={() => {
-              setToggle(true);
-            }}
-            style={isChecked ? { textDecoration: "line-through" } : null}
-          >
-            {todoList.fields.Title}
-          </p>
-        )}
+      <li
+        className={style.listItem}
+        onClick={handleListItemClick}
+        ref={listItemRef}
+      >
+        <div className={style.checkbox_container}>
+          <input
+            className={style.checkbox}
+            type="checkbox"
+            onChange={() => handleCheckBoxChange()}
+            checked={isChecked}
+          />
+        </div>
+        <div className={style.edit_container}>
+          {isToggle ? (
+            <form onSubmit={onSubmit} className={style.form}>
+              <label htmlFor="editTodo"></label>
+              <Tooltip title="Scroll Left to Right to Edit this Action, then hit Enter to Save It">
+                <input
+                  id="editTodo"
+                  value={todoEditTitle || ""}
+                  onChange={onChangeEdit}
+                  className={style.edit_input}
+                  ref={editInputRef}
+                  onKeyDown={handleInputKeyDown}
+                  onBlur={() => setToggle(false)}
+                />
+              </Tooltip>
+            </form>
+          ) : (
+            <p
+              className={style.item_text}
+              style={
+                isChecked
+                  ? { textDecoration: "line-through" }
+                  : { textDecoration: "none" }
+              }
+            >
+              {todoList.fields.Title}
+            </p>
+          )}
+        </div>
         <div>
-          <NoteIcon
-            className={style.icons}
-            onClick={() => handleDescription(todoList.id)}
-          />
-          <XIcon
-            className={style.icons}
-            onClick={() => {
-              onRemoveTodo(todoList.id, tableName);
-            }}
-          />
+          <Tooltip title="Add Action Steps">
+            <NoteIcon
+              className={style.icons}
+              onClick={() => handleDescription(todoList.id)}
+            />
+          </Tooltip>
+          <Tooltip title="Delete Action">
+            <XIcon
+              className={style.icons}
+              onClick={() => {
+                onRemoveTodo(todoList.id, tableName);
+              }}
+            />
+          </Tooltip>
         </div>
       </li>
     </div>
