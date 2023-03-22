@@ -28,11 +28,11 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState("");
 
   const handleImageClick = (image) => {
-    console.log("handleImageClick called with image:", image);
+    // console.log("handleImageClick called with image:", image);
     setSelectedImage(image);
-    console.log("selectedImage state updated to:", selectedImage);
+    // console.log("selectedImage state updated to:", selectedImage);
     setModalOpen(true);
-    console.log("modalOpen state updated to:", modalOpen);
+    // console.log("modalOpen state updated to:", modalOpen);
   };
 
   const closeModal = () => {

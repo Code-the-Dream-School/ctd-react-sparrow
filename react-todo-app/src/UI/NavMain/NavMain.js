@@ -6,7 +6,7 @@ import { ReactComponent as IconX } from "../SideBar/IconsSideBar/x.svg";
 import PropTypes from "prop-types";
 import Search from "../../TodoContainer/Components/Search/Search.js";
 import { ReactComponent as IconHome } from "../SideBar/IconsSideBar/home.svg";
-// import { ReactComponent as Logo} from "../SideBar/IconsSideBar/mind.svg"
+import { Tooltip } from "antd";
 
 const NavMain = ({ setSideBar, sideBar, handleSearch }) => {
   //Hamburger state
@@ -19,26 +19,31 @@ const NavMain = ({ setSideBar, sideBar, handleSearch }) => {
 
   return (
     <nav className={style.nav_container}>
-      {/*<div className={style.logo_container}>*/}
-      {/*  <Logo className={style.Logo} src={Logo} alt="MindFoc Logo" />*/}
-      {/*  <span className={style.app_name}>MindFoc</span>*/}
-      {/*</div>*/}
       <ul className={style.nav_list}>
         <li className={style.menu}>
           {hamburgerMenu ? (
-            <Link to="#">
-              <IconMenu className={style.icon_menu} onClick={handleIconMenu} />
-            </Link>
+            <Tooltip title="Sidebar Menu">
+              <Link to="#">
+                <IconMenu
+                  className={style.icon_menu}
+                  onClick={handleIconMenu}
+                />
+              </Link>
+            </Tooltip>
           ) : (
-            <Link to="#">
-              <IconX className={style.icon_menu} onClick={handleIconMenu} />
-            </Link>
+            <Tooltip title="Close Menu">
+              <Link to="#">
+                <IconX className={style.icon_menu} onClick={handleIconMenu} />
+              </Link>
+            </Tooltip>
           )}
         </li>
         <li>
-          <Link to="/">
-            <IconHome className={style.icon_menu} />
-          </Link>
+          <Tooltip title="Matrix Home">
+            <Link to="/">
+              <IconHome className={style.icon_menu} />
+            </Link>
+          </Tooltip>
         </li>
         <div className={style["search-container"]}>
           <li>
