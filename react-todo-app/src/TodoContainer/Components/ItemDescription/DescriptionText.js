@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ItemDescription.module.css";
+import { Button } from "antd";
 
 const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
   //State controls the text area, and makes this a controlled component
@@ -44,9 +45,9 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
             placeholder="Add Action Steps ..."
           ></textarea>
           <div class="button-wrapper">
-            <button className={styles.button} type="submit">
+            <Button className={styles.button} type="primary" htmlType="submit">
               Add Algorithm
-            </button>
+            </Button>
           </div>
         </form>
       </li>

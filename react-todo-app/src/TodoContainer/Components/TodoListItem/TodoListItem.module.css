@@ -1,25 +1,29 @@
 .listItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-color: var(--background-color);
   margin: 5px;
   color: var(--text-color);
   font-size: 14px;
   font-weight: 500;
-  min-height: 40px; /* set minimum height */
-  justify-content: center;
+  min-height: 10px; /* set minimum height */
+  justify-content: space-between;
   border-bottom: 1px solid var(--border-color-base);
   border-radius: 3px;
-  padding-bottom: 1px;
-  padding-top: 8px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   gap: 10px;
   width: 100%;
-  flex-grow: 1;
+  flex: 1;
+  /* margin-bottom: 5px; */
   text-align: left;
 }
-/* .listItem > * {
+.listItem > * {
   align-self: center;
-} */
+}
 
 .listItem_container {
   display: flex;
@@ -28,15 +32,18 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex: 1;
 }
 
 .checkbox_container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  margin-right: 5px;
-  min-width: 30px;
+  justify-content: flex-start;
+  margin-right: 10px;
+  width: 30px;
+  min-width: 40px; /* adjust this value as needed */
+  flex: 1;
 }
 
 .checkbox {
@@ -46,15 +53,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 12px;
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
 }
 
 .item_text {
   display: flex;
   text-align: left;
-  flex-grow: 1;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: 20px;
+  flex: 1;
 }
 
 .item_text:hover {
@@ -93,24 +105,32 @@
   flex-grow: 1;
   min-height: 35px;
   word-break: break-all;
+  flex: 1;
+  flex-direction: column;
 }
 
 .edit_text {
-  align-self: flex-start;
+  /* align-self: flex-start; */
   margin-right: auto;
   text-align: left;
-  padding-top: 8px;
+  padding-top: auto;
+  padding-bottom: auto;
   overflow: auto;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
 }
 
 .form {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   word-break: break-all;
   width: 100%;
   overflow: auto;
   align-self: flex-start;
+  /* flex: 1; */
+  flex-direction: column;
 }
 
 .edit_container {
@@ -123,15 +143,20 @@
   word-break: break-all;
   overflow: auto;
   align-self: flex-start;
+  flex: 1;
+  padding-bottom: 20;
+  margin-bottom: 15px;
 }
 
-Media Queries Mobile view 330px @media (max-width: 25em) {
+
+
+ @media (max-width: 25em) {
   .listItem {
     padding-top: 1px;
   }
-}
+} 
 
-@media (max-width: 68em) {
+ @media (max-width: 68em) {
   .form {
     position: absolute;
     left: 2.5rem;

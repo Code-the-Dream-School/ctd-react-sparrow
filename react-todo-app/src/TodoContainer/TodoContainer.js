@@ -187,7 +187,7 @@ const TodoContainer = ({
             <SortButton className={style.sort_button} onClick={handleSort} />
           </Tooltip>
           {isLoading ? (
-            <span className={style.loading_text}>Is loading...</span>
+            <span className={style.loading_text}>Is Loading...</span>
           ) : (
             <TodoList
               searchTerm={searchTerm}

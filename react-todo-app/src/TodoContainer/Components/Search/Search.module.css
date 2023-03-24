@@ -1,36 +1,19 @@
 .input {
-  padding: 5px 5px;
+  padding: 3px;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 5px;
   width: 100%;
-  outline: 0;
+  /* outline: 0; */
   background-color: var(--background-color);
-  transition: width 2s;
-  margin-left: 1rem;
+  transition: width 1s;
+  margin: 100px auto auto 20;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  min-height: 20px;
 }
 
 .input:hover {
-  width: 75%;
-  background-color: #fff;
-}
-
-/* Adjust the Search component to align with the other items in the navbar */
-.search-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  margin-right: 10px;
-}
-
-.search-container input[type="text"] {
-  margin-right: 10px;
-}
-
-.search-container button[type="submit"] {
-  padding: 5px 10px;
+  width: 85%;
   background-color: var(--background-color);
-  border: none;
-  border-radius: 3px;
-  color: #fff;
-  cursor: pointer;
 }
