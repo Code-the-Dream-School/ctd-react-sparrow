@@ -3,7 +3,7 @@ import style from "./TodoListItem.module.css";
 import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
 import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
 import PropTypes from "prop-types";
-import { Tooltip } from "antd";
+import { Tooltip, List, Checkbox, Input } from "antd";
 
 // import { requestEditCheck } from "../../API";
 
@@ -103,25 +103,23 @@ const TodoListItem = ({
 
   return (
     <div className={style.listItem_container}>
-      <li
+      <List.Item
         className={style.listItem}
         onClick={handleListItemClick}
         ref={listItemRef}
       >
-        <div className={style.checkbox_container}>
-          <input
-            className={style.checkbox}
-            type="checkbox"
-            onChange={() => handleCheckBoxChange()}
-            checked={isChecked}
-          />
-        </div>
+        <Checkbox
+          className={style.checkbox}
+          type="checkbox"
+          onChange={() => handleCheckBoxChange()}
+          checked={isChecked}
+        />
         <div className={style.edit_container}>
           {isToggle ? (
             <form onSubmit={onSubmit} className={style.form}>
               <label htmlFor="editTodo"></label>
               <Tooltip title="Scroll Left to Right to Edit this Action, then hit Enter to Save It">
-                <input
+                <Input
                   id="editTodo"
                   value={todoEditTitle || ""}
                   onChange={onChangeEdit}
@@ -129,6 +127,7 @@ const TodoListItem = ({
                   ref={editInputRef}
                   onKeyDown={handleInputKeyDown}
                   onBlur={() => setToggle(false)}
+                  autofocus
                 />
               </Tooltip>
             </form>
@@ -161,7 +160,7 @@ const TodoListItem = ({
             />
           </Tooltip>
         </div>
-      </li>
+      </List.Item>
     </div>
   );
 };

@@ -29,13 +29,13 @@ li {
   width: 10rem;
   cursor: pointer;
   font-size: 15px;
-  text-align: center; /* Center text horizontally */
+  text-align: center;
   text-decoration: none;
   transition: background-color var(--transition-duration),
     transform var(--transition-duration);
-  display: flex; /* Make the button a flex container */
-  justify-content: center; /* Center the child element (text) horizontally */
-  align-items: center; /* Center the child element (text) vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:hover {
@@ -48,16 +48,15 @@ li {
 }
 
 .title {
-  /* font-style: oblique;  */
   font-size: 16px;
   font-weight: bold;
-  display: block;
-  padding: 15px;
-  margin-left: 5px;
-  padding-left: 5px;
+  display: flex;
+  padding-left: auto;
+  padding-right: auto;
   text-align: center;
   justify-content: center;
-  margin-right: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 ::placeholder {
@@ -67,10 +66,10 @@ li {
 .text_area {
   margin-top: 10px;
   margin-right: 20px;
-  margin-left: 10px;
-  padding: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin-left: 20px;
+  padding: 20px;
+  padding-left: auto;
+  padding-right: auto;
   line-height: 1.5;
   content: center;
   min-height: 55vh;
@@ -79,7 +78,7 @@ li {
   outline: none;
   resize: none;
   border: 1px solid var(--border-color-base);
-  border: none;
+  /* border: none; */
   font-size: 14px;
 }
 
