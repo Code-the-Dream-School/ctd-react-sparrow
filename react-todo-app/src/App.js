@@ -21,8 +21,6 @@ import InceptionImg from "./UI/Images/inception.png";
 
 const { Content, Sider } = Layout;
 
-const color = ["cyan", "green", "blue", "purple", "geekblue"];
-
 const App = () => {
   //sidebar state
   const [collapsed, setCollapsed] = useState(false);
@@ -53,6 +51,8 @@ const App = () => {
     setModalOpen(false);
   };
 
+  const siderRef = React.useRef(null);
+
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
@@ -60,6 +60,8 @@ const App = () => {
           collapsible
           collapsed={collapsed}
           onCollapse={() => setCollapsed(!collapsed)}
+          className={`${styles.sider} ${collapsed ? styles.collapsed : ""}`}
+          ref={siderRef}
           currentLink={currentLink}
           setCurrentLink={setCurrentLink}
           // style={{ backgroundColor: "var(--primary-color)" }}
@@ -67,8 +69,8 @@ const App = () => {
           <div className="logo" />
           <Menu
             theme="dark"
-            defaultSelectedKeys={["1"]}
-            selectedKeys={[currentLink]}
+            defaultselectedkeys={["1"]}
+            selectedkeys={[currentLink]}
             onSelect={(item) => setCurrentLink(item.key)}
             mode="inline"
           >
@@ -81,8 +83,6 @@ const App = () => {
               <Tooltip
                 title="Daily Hacks"
                 placement="top"
-                color={color}
-                key={color}
                 style={{ marginLeft: "30px" }}
               >
                 <NavLink to="/">The Matrix</NavLink>
@@ -129,13 +129,13 @@ const App = () => {
             </Menu.Item>
             <Menu.Item key="5">
               {/* <div style={{ paddingTop: "50px", zIndex: 10 }}> */}
-                <Tooltip
-                  title="Search Actions"
-                  placement="top"
-                  style={{ marginTop: "40px" }}
-                >
-                  <Search handleSearch={handleSearch} />
-                </Tooltip>
+              <Tooltip
+                title="Search Actions"
+                placement="top"
+                style={{ marginTop: "40px" }}
+              >
+                <Search handleSearch={handleSearch} />
+              </Tooltip>
               {/* </div> */}
             </Menu.Item>
           </Menu>

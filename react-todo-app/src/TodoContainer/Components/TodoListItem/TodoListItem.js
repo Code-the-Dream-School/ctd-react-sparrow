@@ -123,11 +123,11 @@ const TodoListItem = ({
                   id="editTodo"
                   value={todoEditTitle || ""}
                   onChange={onChangeEdit}
-                  className={style.ant_edit}
+                  className={style.edit_input}
                   ref={editInputRef}
                   onKeyDown={handleInputKeyDown}
                   onBlur={() => setToggle(false)}
-                  autoFocus
+                  autofocus
                 />
               </Tooltip>
             </form>

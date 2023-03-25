@@ -1,7 +1,7 @@
 .input_label {
-  background-color: #f3f3f3;
+  background-color: #e6f7ff;
   border: none;
-  outline-color: #62929e;
+  outline-color: var(--border-color-base);
   width: 100%;
   height: 30px;
   padding-left: 8px;

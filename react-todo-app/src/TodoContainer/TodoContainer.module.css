@@ -45,7 +45,7 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: 500;
-  /* font-family: "Roboto", sans-serif; add a custom font */
+  /* font-family: "Roboto", sans-serif; */
   text-decoration: none; /* add underline */
   cursor: pointer; /* add cursor on hover */
   transition: all 0.2s ease-in-out; /* add transition effect */
@@ -53,7 +53,7 @@
 
 .banner:hover {
   color: var(--error-color); /* change text color on hover */
-  text-shadow: 3px 2px 3px #68dcc5; /* add text shadow on hover */
+  text-shadow: 3px 2px 3px #91d5ff; /* add text shadow on hover */
   transform: scale(1.1); /* add scale effect on hover */
 }
 
@@ -128,16 +128,100 @@
   margin-top: 3px;
 }
 
-@media (max-width: 70em) {
-  .left_pane {
-    margin-left: 0;
-    padding-right: 0;
-  }
+
+
+/* iPhone XR */
+@media only screen and (max-width: 414px) {
+.split_box {
+grid-template-columns: 1fr;
+}
+.right_pane {
+margin-left: 0;
+padding-left: 0;
+}
+.left_pane {
+margin-left: 0;
+padding-right: 0;
+padding-left: 0;
+}
+.tableId {
+font-size: 1.25rem;
+}
 }
 
-/*This for mobile 330px*/
-@media (max-width: 35em) {
-  .split_box {
-    grid-template-columns: 1fr;
-  }
+/* iPad Air */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+.split_box {
+grid-template-columns: 1fr 330px;
+}
+.right_pane {
+margin-left: 0;
+padding-left: 0;
+}
+.left_pane {
+margin-left: 0;
+padding-right: 0;
+padding-left: 0;
+}
+.tableId {
+font-size: 1.25rem;
+}
+}
+
+/* iPad Mini */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi) {
+.split_box {
+grid-template-columns: 1fr 330px;
+}
+.right_pane {
+margin-left: 0;
+padding-left: 0;
+}
+.left_pane {
+margin-left: 0;
+padding-right: 0;
+padding-left: 0;
+}
+.tableId {
+font-size: 1.25rem;
+}
+}
+
+/* iMac 14' */
+@media only screen and (min-width: 1920px) and (max-width: 2560px) {
+.split_box {
+grid-template-columns: 1fr 330px;
+}
+.right_pane {
+margin-left: 20px;
+padding-left: 20px;
+}
+.left_pane {
+margin-left: 3rem;
+padding-right: auto;
+padding-left: auto;
+}
+.tableId {
+font-size: 1.4375rem;
+}
+}
+
+/* iMac 16' */
+@media only screen and (min-width: 2560px) {
+.split_box {
+grid-template-columns: 1fr 330px;
+}
+.right_pane {
+margin-left: 20px;
+padding-left: 20px;
+}
+.left_pane {
+margin-left: 3rem;
+padding-right: auto;
+padding-left: auto;
+}
+.tableId {
+font-size: 1.4375rem;
+}
 }
