@@ -26,10 +26,9 @@
 }
 
 .todoCon_middle_pane_todoList {
-  /* background-color: var(--background-color); */
+  background-color: var(--background-color);
   padding-left: 55px;
   position: relative;
-  width: 100%;
 }
 
 /*Try moving middle pane when the sidebar appears*/
@@ -89,9 +88,9 @@
 
   .todoCon_middle_pane_todoList {
     /* background-color: var(--background-color); */
-    /* grid-row: 2/ -1; */
-    /* padding-left: 1px; */
-    /* position: relative; */
+    grid-row: 2/ -1;
+    padding-left: 1px;
+    position: relative;
   }
 
   .todoCont_left_pane_sideBar {
@@ -156,12 +155,5 @@
 @media screen and (min-width: 960px) {
   .todoCon_middle_pane_todoList {
     padding-left: 5px;
-  }
-}
-/* Collapsible Sidebar on Small screens */
-
-@media screen and (max-width: 768px) {
-  .collapsed {
-    display: none;
   }
 }

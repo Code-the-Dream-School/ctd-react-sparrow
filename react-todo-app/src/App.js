@@ -12,6 +12,7 @@ import {
   ThunderboltOutlined,
   FireOutlined,
   GlobalOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
 
 import MatrixImg from "./UI/Images/the-matrix.png";
@@ -61,10 +62,13 @@ const App = () => {
           collapsed={collapsed}
           onCollapse={() => setCollapsed(!collapsed)}
           className={`${styles.sider} ${collapsed ? styles.collapsed : ""}`}
+          breakpoint="md"
+          trigger={<MenuOutlined />}
+          collapsedWidth="50"
           ref={siderRef}
           currentLink={currentLink}
           setCurrentLink={setCurrentLink}
-          // style={{ backgroundColor: "var(--primary-color)" }}
+          style={{ position: "fixed", zIndex: 1, height: "100vh" }}
         >
           <div className="logo" />
           <Menu
