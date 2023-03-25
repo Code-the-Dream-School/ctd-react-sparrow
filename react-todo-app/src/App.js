@@ -23,7 +23,7 @@ const { Content, Sider } = Layout;
 
 const App = () => {
   //sidebar state
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   //sidebar state to activate routing links
   const [currentLink, setCurrentLink] = useState(false);
