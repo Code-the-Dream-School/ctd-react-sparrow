@@ -127,7 +127,7 @@ const TodoListItem = ({
                   ref={editInputRef}
                   onKeyDown={handleInputKeyDown}
                   onBlur={() => setToggle(false)}
-                  autofocus
+                  autoFocus
                 />
               </Tooltip>
             </form>

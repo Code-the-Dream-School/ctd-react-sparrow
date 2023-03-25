@@ -14,6 +14,9 @@
   display: grid;
   grid-template-columns: 1fr 330px;
   height: 100vh;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 /*--- this is the item description component---*/
@@ -73,6 +76,12 @@
 .todo_container {
   transition: left 0.25s;
   padding-left: 2rem;
+  .todo_container {
+  transition: left 0.25s;
+  padding-left: 10%;
+  margin-left: 70px; /* replace with the width of the sider */
+}
+
 }
 .todo_container.active {
   padding-left: 10%; /* Use percentage value */
@@ -128,16 +137,123 @@
   margin-top: 3px;
 }
 
-@media (max-width: 70em) {
-  .left_pane {
-    margin-left: 0;
-    padding-right: 0;
-  }
-}
-
-/*This for mobile 330px*/
-@media (max-width: 35em) {
+/* iPhone XR */
+@media only screen and (max-width: 414px) {
   .split_box {
     grid-template-columns: 1fr;
   }
+  .right_pane {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .todo_container {
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .tableId {
+    font-size: 1rem;
+  }
 }
+
+/* iPad Air */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .split_box {
+    grid-template-columns: 1fr;
+  }
+  .right_pane {
+    margin: auto;
+    padding: auto;
+  }
+  .todo_container {
+    margin-left: 0;
+    padding-right: auto;
+    padding-left: auto;
+  }
+  .tableId {
+    font-size: 1.25rem;
+  }
+}
+
+/* iPad Mini */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
+  (min-resolution: 144dpi) {
+  .split_box {
+    grid-template-columns: 1fr;
+  }
+  .right_pane {
+    margin: auto;
+    padding: auto;
+  }
+  .todo_container {
+    margin-left: 0;
+    padding-right: auto;
+    padding-left: auto;
+  }
+  .tableId {
+    font-size: 1.25rem;
+  }
+}
+
+/* iMac 14' */
+@media only screen and (min-width: 920px) and (max-width: 2560px) {
+  .split_box {
+    grid-template-columns: 1fr;
+  }
+  .right_pane {
+    margin: auto;
+    padding: auto;
+  }
+  .todo_container {
+    margin-left: 0;
+    padding-right: auto;
+    padding-left: auto;
+  }
+  .tableId {
+    font-size: 1.4375rem;
+  }
+}
+
+/* iMac 16' */
+@media only screen and (min-width: 2560px) {
+  .split_box {
+    grid-template-columns: 1fr;
+  }
+  .right_pane {
+    margin: 1rem;
+    padding: auto;
+  }
+  .todo_container {
+    margin-left: auto;
+    padding-right: auto;
+    padding-left: auto;
+  }
+  .tableId {
+    font-size: 1.4375rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .image_link {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .left_pane,
+  .right_pane {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+/* @media only screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .left_pane,
+  .right_pane {
+    flex: 0 0 calc(50% - 10px);
+    padding: 10px;
+  }
+} */

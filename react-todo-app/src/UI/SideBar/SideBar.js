@@ -19,7 +19,7 @@
 //       className={sideBar ? style.nav_menu_active : style.nav_menu_done}
 //     >
 //       <div className={style.logo} />
-//       <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
+//       <Menu theme="light" mode="inline" defaultselectedkeys={["1"]}>
 //         <Menu.Item key="1" icon={<HomeOutlined />}>
 //           <Tooltip title="Daily Hacks">
 //             <Link to="/">The Matrix</Link>

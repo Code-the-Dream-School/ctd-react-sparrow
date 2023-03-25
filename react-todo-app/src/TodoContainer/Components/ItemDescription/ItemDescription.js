@@ -38,7 +38,7 @@ ItemDescription.propTypes = {
   todoList: PropTypes.array,
   itemDescription: PropTypes.string,
   onEditDescription: PropTypes.func,
-  tableId: PropTypes.string,
+  tableName: PropTypes.string,
 };
 
 export default ItemDescription;
