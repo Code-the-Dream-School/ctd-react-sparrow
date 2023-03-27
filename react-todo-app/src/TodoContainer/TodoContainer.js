@@ -156,7 +156,7 @@ const TodoContainer = ({
   // };
 
   return (
-    <div className={sideBar ? style["todo_container"] : style["active"]}>
+    
       <div className={style.split_box}>
         <div className={style.left_pane}>
           {errorMessage && <p className={style.error}>{errorMessage}</p>}{" "}
@@ -172,12 +172,12 @@ const TodoContainer = ({
           <Tooltip title="Click Me!">
             <img
               src={image}
-              alt="{tableId}"
+              alt="{table_name}"
               className={style.image_link}
               onClick={() => handleImageClick(image)}
             />
           </Tooltip>
-          <h5 className={style.tableId}>{tableName}</h5>
+          <h5 className={style.table_name}>{tableName}</h5>
           <AddTodoForm
             onAddTodo={addTodo}
             todoList={todoList}
@@ -211,7 +211,7 @@ const TodoContainer = ({
           </div>
         ) : null}
       </div>
-    </div>
+    
   );
 };
 

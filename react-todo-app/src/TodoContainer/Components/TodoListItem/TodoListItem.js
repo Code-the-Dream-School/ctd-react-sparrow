@@ -3,7 +3,9 @@ import style from "./TodoListItem.module.css";
 import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
 import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
 import PropTypes from "prop-types";
-import { Tooltip, List, Checkbox, Input } from "antd";
+import { Tooltip, List, Checkbox, Input, Typography } from "antd";
+
+const { TextArea } = Input;
 
 // import { requestEditCheck } from "../../API";
 
@@ -118,8 +120,8 @@ const TodoListItem = ({
           {isToggle ? (
             <form onSubmit={onSubmit} className={style.form}>
               <label htmlFor="editTodo"></label>
-              <Tooltip title="Scroll Left to Right to Edit this Action, then hit Enter to Save It">
-                <Input
+              <Tooltip title="Edit this Action, Enter to Save It">
+                <TextArea
                   id="editTodo"
                   value={todoEditTitle || ""}
                   onChange={onChangeEdit}
@@ -132,7 +134,7 @@ const TodoListItem = ({
               </Tooltip>
             </form>
           ) : (
-            <p
+            <Typography.Paragraph
               className={style.item_text}
               style={
                 isChecked
@@ -141,7 +143,7 @@ const TodoListItem = ({
               }
             >
               {todoList.fields.Title}
-            </p>
+            </Typography.Paragraph>
           )}
         </div>
         <div>

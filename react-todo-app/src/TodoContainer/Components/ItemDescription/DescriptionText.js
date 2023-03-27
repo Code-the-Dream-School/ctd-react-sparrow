@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ItemDescription.module.css";
-import { Button } from "antd";
+import { Button, Input } from "antd";
+
+const { TextArea } = Input;
 
 const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
   //State controls the text area, and makes this a controlled component
@@ -37,13 +39,13 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
           <label htmlFor="textDescription" className={styles.title}>
             {todoList.fields.Title}:
           </label>
-          <textarea
+          <TextArea
             className={styles.text_area}
             id="textDescription"
             value={textDescription}
             onChange={onChangeDescription}
             placeholder="Add Action Steps ..."
-          ></textarea>
+          ></TextArea>
           <div class="button-wrapper">
             <Button className={styles.button} type="primary" htmlType="submit">
               Add Algorithm
@@ -58,7 +60,7 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
 DescriptionText.propTypes = {
   todoList: PropTypes.array,
   onEditDescription: PropTypes.func,
-  tableId: PropTypes.string,
+  table_name: PropTypes.string,
 };
 
 export default DescriptionText;
