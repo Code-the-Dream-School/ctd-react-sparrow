@@ -62,7 +62,7 @@ const App = () => {
           collapsed={collapsed}
           onCollapse={() => setCollapsed(!collapsed)}
           className={`${styles.sider} ${collapsed ? styles.collapsed : ""}`}
-          breakpoint="md"
+          // breakpoint="lg"
           trigger={<MenuOutlined />}
           collapsedWidth="50"
           ref={siderRef}
@@ -73,8 +73,8 @@ const App = () => {
           <div className="logo" />
           <Menu
             theme="dark"
-            defaultselectedkeys={["1"]}
-            selectedkeys={[currentLink]}
+            // defaultselectedkeys={["3"]}
+            // selectedkeys={[currentLink]}
             onSelect={(item) => setCurrentLink(item.key)}
             mode="inline"
           >
@@ -87,7 +87,7 @@ const App = () => {
               <Tooltip
                 title="Daily Hacks"
                 placement="top"
-                style={{ marginLeft: "30px" }}
+                // style={{ marginLeft: "30px" }}
               >
                 <NavLink to="/">The Matrix</NavLink>
               </Tooltip>
@@ -100,7 +100,7 @@ const App = () => {
               <Tooltip
                 title="Weekly Habits"
                 placement="top"
-                style={{ marginLeft: "30px" }}
+                // style={{ marginLeft: "30px" }}
               >
                 <NavLink to="/pointbreak">Point Break</NavLink>
               </Tooltip>
@@ -113,7 +113,7 @@ const App = () => {
               <Tooltip
                 title="Annual Goals"
                 placement="top"
-                style={{ marginLeft: "30px" }}
+                // style={{ marginLeft: "30px" }}
               >
                 <NavLink to="/bucket">Bucket List</NavLink>
               </Tooltip>
@@ -126,7 +126,7 @@ const App = () => {
               <Tooltip
                 title="Lifetime Ideas"
                 placement="top"
-                style={{ marginLeft: "30px" }}
+                // style={{ marginLeft: "30px" }}
               >
                 <NavLink to="/inception">Inception</NavLink>
               </Tooltip>
@@ -136,7 +136,7 @@ const App = () => {
               <Tooltip
                 title="Search Actions"
                 placement="top"
-                style={{ marginTop: "40px" }}
+                // style={{ marginTop: "40px" }}
               >
                 <Search handleSearch={handleSearch} />
               </Tooltip>
@@ -155,9 +155,9 @@ const App = () => {
                   path="/"
                   element={
                     <TodoContainer
-                      collapsed={collapsed}
+                      // collapsed={collapsed}
                       tableName={"The Matrix"}
-                      setCurrentLink={setCurrentLink}
+                      // setCurrentLink={setCurrentLink}
                       searchTerm={searchTerm}
                       image={MatrixImg}
                       handleImageClick={handleImageClick}

@@ -14,9 +14,9 @@
   display: grid;
   grid-template-columns: 1fr 330px;
   height: 100vh;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+  margin-top: 0;
+  
+
 }
 
 /*--- this is the item description component---*/
@@ -26,20 +26,20 @@
   justify-content: center;
   align-items: center;
   border: none;
-  margin-left: 20px;
-  padding-left: 20px;
+  flex-direction: column;
+  margin-left: 0%;
 }
 
 /*--- AddForm and TodoList component ---*/
 .left_pane {
   background-color: var(--background-color);
-  /* border: 1px solid var(--border-color-base);
-  border-top: 2px;
-  border-left: 2px;
-  border-right: 2px; */
-  margin-left: 3rem;
-  padding-right: auto;
-  padding-left: auto;
+  border: 1px solid var(--border-color-base);
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  margin-left: 10rem;
+  margin-top: 0;
+  
 }
 
 .banner {
@@ -48,7 +48,6 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-weight: 500;
-  /* font-family: "Roboto", sans-serif; add a custom font */
   text-decoration: none; /* add underline */
   cursor: pointer; /* add cursor on hover */
   transition: all 0.2s ease-in-out; /* add transition effect */
@@ -61,43 +60,25 @@
 }
 
 /*todo list title*/
-.tableId {
+.table_name {
   font-weight: 500;
   font-size: 1.4375rem; /* equivalent to 23px */
   padding-top: 5px;
-  padding-left: 15px;
+  padding-left: 5px;
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 10px; /* Adds more margin to the bottom */
-  /* width: 100%; Takes up the full width of its container */
-}
-
-/*Middle pane todoList and ItemDescription components*/
-.todo_container {
-  transition: left 0.25s;
-  padding-left: 2rem;
-  .todo_container {
-  transition: left 0.25s;
-  padding-left: 10%;
-  margin-left: 70px; /* replace with the width of the sider */
-}
-
-}
-.todo_container.active {
-  padding-left: 10%; /* Use percentage value */
-  overflow: hidden;
-  transition: left 0.25s;
-  margin-right: 10%; /* Use percentage value */
 }
 
 /*Image Component*/
+
 .image_link {
   width: 10rem;
-  height: 10rem;
+  height: 10rem;  
   display: block;
   margin: auto;
   cursor: pointer;
-  border: 4px solid #b0b0ea;
+  border: 4px solid var(--primary-color);
   border-radius: 50%; /* make the border circular */
   overflow: hidden; /* ensure that the image stays within the circular border */
   padding: 4px; /* add some padding to make room for the inner border */
@@ -117,17 +98,11 @@
   width: 23px;
   height: 23px;
   opacity: 1;
+  margin-left: auto;
   margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   border: 1px solid;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /*------ loading text -------*/
@@ -135,6 +110,7 @@
   display: block;
   margin-left: 1rem;
   margin-top: 3px;
+  font-size: 14px;
 }
 
 /* iPhone XR */
@@ -142,94 +118,91 @@
   .split_box {
     grid-template-columns: 1fr;
   }
+
+  .left_pane {
+    margin: 5%;
+    padding: 5%;
+  }
   .right_pane {
-    margin-left: 0;
-    padding-left: 0;
-  }
-  .todo_container {
-    margin-left: 0;
-    padding-right: 0;
-    padding-left: 0;
-  }
-  .tableId {
-    font-size: 1rem;
+    margin: 5%;
+    padding: 5%;
   }
 }
 
 /* iPad Air */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .split_box {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 330px;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .left_pane {
+    margin: 5%;
+    padding: 5%;
+    flex: 1;
   }
   .right_pane {
-    margin: auto;
-    padding: auto;
-  }
-  .todo_container {
-    margin-left: 0;
-    padding-right: auto;
-    padding-left: auto;
-  }
-  .tableId {
-    font-size: 1.25rem;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 330px;
   }
 }
 
 /* iPad Mini */
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
+@media only screen and (min-width: 415px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
   (min-resolution: 144dpi) {
   .split_box {
     grid-template-columns: 1fr;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .left_pane {
+    margin: 5%;
+    padding: 5%;
+    flex: 1;
   }
   .right_pane {
-    margin: auto;
-    padding: auto;
-  }
-  .todo_container {
-    margin-left: 0;
-    padding-right: auto;
-    padding-left: auto;
-  }
-  .tableId {
-    font-size: 1.25rem;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 330px;
   }
 }
 
-/* iMac 14' */
+
 @media only screen and (min-width: 920px) and (max-width: 2560px) {
   .split_box {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 330px;
+    margin-top: 0;
+    padding-top: 0;
+    
+  }
+  .left_pane {
+    margin: 5%;
+    padding: 5%;
+    flex: 1;
   }
   .right_pane {
-    margin: auto;
-    padding: auto;
-  }
-  .todo_container {
-    margin-left: 0;
-    padding-right: auto;
-    padding-left: auto;
-  }
-  .tableId {
-    font-size: 1.4375rem;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 330px;
   }
 }
 
-/* iMac 16' */
 @media only screen and (min-width: 2560px) {
   .split_box {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 500px;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .left_pane {
+    margin: 5%;
+    padding: 5%;
+    flex: 1;
   }
   .right_pane {
-    margin: 1rem;
-    padding: auto;
-  }
-  .todo_container {
-    margin-left: auto;
-    padding-right: auto;
-    padding-left: auto;
-  }
-  .tableId {
-    font-size: 1.4375rem;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 330px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -237,23 +210,13 @@
     width: 6rem;
     height: 6rem;
   }
-}
-@media only screen and (max-width: 768px) {
-  .left_pane,
-  .right_pane {
-    padding-left: 10px;
-    padding-right: 10px;
+  .banner {
+    font-size: 1.2rem;
+  }
+  .table_name {
+    font-size: 0.75rem;
   }
 }
-/* @media only screen and (max-width: 768px) {
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .left_pane,
-  .right_pane {
-    flex: 0 0 calc(50% - 10px);
-    padding: 10px;
-  }
-} */
+
+
+
