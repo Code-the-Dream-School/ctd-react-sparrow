@@ -5,6 +5,10 @@ import ItemDescription from "./Components/ItemDescription/ItemDescription";
 import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 import { Tooltip } from "antd";
+import { Layout } from "antd";
+import { Drawer } from "antd";
+import { Pagination } from "antd";
+
 import RedPillImg from "../UI/Images/red-pill.png";
 import {
   requestGetTodo,
@@ -17,22 +21,31 @@ import {
 // import {    handleImageClick  } from '../App'
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
 
-const TodoContainer = ({
-  tableName,
-  sideBar,
-  searchTerm,
-  setCurrentLink,
-  setModalOpen,
-  handleImageClick,
-  image,
-}) => {
+const { Content } = Layout;
+
+const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [direction, setDirection] = useState("asc");
   const [itemDescription, setItemDescription] = useState("");
-  const [showDescription, setShowDescription] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  // const [selectedImage, setSelectedImage] = useState("");
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+
+  const getPaginatedItems = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return todoList.slice(startIndex, endIndex);
+  };
+
+const handleItemsPerPageChange = (e) => {
+  const selectedValue = Number(e.target.value);
+  setItemsPerPage(selectedValue);
+};
+  
+  
+
 
   useEffect(() => {
     const getData = async () => {
@@ -146,78 +159,112 @@ const TodoContainer = ({
   };
 
   const handleDescription = (id) => {
-    setShowDescription(!showDescription);
     setItemDescription(id);
+    setDrawerVisible(true);
   };
 
-  // const handleImageClick = (image) => {
-  //   setSelectedImage(image);
-  //   setModalOpen(true);
-  // };
-
   return (
-    
-      <div className={style.split_box}>
-        <div className={style.left_pane}>
-          {errorMessage && <p className={style.error}>{errorMessage}</p>}{" "}
-          {/* User error message */}
-          <Tooltip title="Enter the Matrix!">
-            <h1
-              className={style.banner}
-              onClick={() => handleImageClick(RedPillImg)}
-            >
-              To Do or Not To Do !
-            </h1>
-          </Tooltip>
-          <Tooltip title="Click Me!">
-            <img
-              src={image}
-              alt="{table_name}"
-              className={style.image_link}
-              onClick={() => handleImageClick(image)}
-            />
-          </Tooltip>
-          <h5 className={style.table_name}>{tableName}</h5>
-          <AddTodoForm
-            onAddTodo={addTodo}
-            todoList={todoList}
-            tableName={tableName}
-          />
-          <Tooltip title="Sort Actions">
-            <SortButton className={style.sort_button} onClick={handleSort} />
-          </Tooltip>
-          {isLoading ? (
-            <span className={style.loading_text}>Is Loading...</span>
-          ) : (
-            <TodoList
-              searchTerm={searchTerm}
+    <Layout>
+      <Content
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <div className={style.container}>
+          <div className={style.todo_list}>
+            {errorMessage && <p className={style.error}>{errorMessage}</p>}{" "}
+            {/* User error message */}
+            <Tooltip title="Enter the Matrix!">
+              <h1
+                className={style.banner}
+                onClick={() => handleImageClick(RedPillImg)}
+              >
+                To Do or Not To Do !
+              </h1>
+            </Tooltip>
+            <Tooltip title="Click Me!">
+              <img
+                src={image}
+                alt="{table_name}"
+                className={style.image_link}
+                onClick={() => handleImageClick(image)}
+              />
+            </Tooltip>
+            <h5 className={style.table_name}>{tableName}</h5>
+            <AddTodoForm
+              onAddTodo={addTodo}
               todoList={todoList}
-              onRemoveTodo={removeTodo}
-              onEditTodo={editTodo}
-              handleDescription={handleDescription}
               tableName={tableName}
             />
-          )}
-        </div>
-        {showDescription ? (
-          <div className={style.right_pane}>
-            <ItemDescription
-              tableName={tableName}
-              todoList={todoList}
-              itemDescription={itemDescription}
-              onEditDescription={editDescription}
-              setShowDescription={setShowDescription}
+            <Tooltip title="Sort Actions">
+              <SortButton className={style.sort_button} onClick={handleSort} />
+            </Tooltip>
+            {isLoading ? (
+              <span className={style.loading_text}>Is Loading...</span>
+            ) : (
+              <TodoList
+                searchTerm={searchTerm}
+                // todoList={todoList}
+                onRemoveTodo={removeTodo}
+                onEditTodo={editTodo}
+                handleDescription={handleDescription}
+                tableName={tableName}
+                todoList={getPaginatedItems()}
+              />
+            )}
+            <Pagination
+              total={todoList.length}
+              pageSize={itemsPerPage}
+              current={currentPage}
+              onChange={(page) => setCurrentPage(page)}
             />
           </div>
-        ) : null}
-      </div>
-    
+          <div>
+            <label htmlFor="itemsPerPage">Items per page:</label>
+            <select
+              id="itemsPerPage"
+              value={itemsPerPage}
+              onChange={handleItemsPerPageChange}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+            </select>
+          </div>
+          <Drawer
+            title="Action Steps:"
+            placement="right"
+            closable={true}
+            onClose={() => setDrawerVisible(false)}
+            open={drawerVisible}
+            width={380}
+          >
+            <ItemDescription
+              itemDescription={itemDescription}
+              onEditDescription={editDescription}
+              todoList={todoList}
+              tableName={tableName}
+              setIsLoading={setIsLoading}
+              setErrorMessage={setErrorMessage}
+            />
+          </Drawer>
+        </div>
+      </Content>
+    </Layout>
   );
 };
 
 TodoContainer.propTypes = {
-  tableName: PropTypes.string,
-  setCurrentLink: PropTypes.func,
-  sideBar: PropTypes.bool,
+  tableName: PropTypes.string.isRequired,
+  sideBar: PropTypes.node.isRequired,
+  searchTerm: PropTypes.string.isRequired,
+  setCurrentLink: PropTypes.func.isRequired,
+  setModalOpen: PropTypes.func.isRequired,
+  handleImageClick: PropTypes.func.isRequired,
+  image: PropTypes.string.isRequired,
 };
+
 export default TodoContainer;

@@ -3,13 +3,13 @@ li {
   list-style: none;
 }
 
-/* .container {
+.container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   min-height: 80vh;
-} */
+}
 
 .button-wrapper {
   display: flex;
@@ -72,14 +72,15 @@ li {
   padding-right: 10%;
   line-height: 1.5;
   content: center;
-  min-height: 85vh;
-  width: 330px;
+  min-height: 90vh;
+  width: 300px;
   background-color: var(--background-color);
   outline: none;
-  resize: none;
+  resize: vertical;
   border: 1px solid var(--border-color-base);
   /* border: none; */
   font-size: 14px;
+  autoSize: true;
 }
 
 /* @media (max-width: 35em) {
