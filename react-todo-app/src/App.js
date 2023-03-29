@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import TodoContainer from "./TodoContainer/TodoContainer";
-// import NavMain from "./UI/NavMain/NavMain.js";
 import Search from "./TodoContainer/Components/Search/Search";
 import { Layout, Menu, Tooltip } from "antd";
-
 import { NavLink } from "react-router-dom";
 import {
   UserOutlined,
@@ -14,7 +12,6 @@ import {
   GlobalOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
-
 import MatrixImg from "./UI/Images/the-matrix.png";
 import PointBreakImg from "./UI/Images/pointbreak1.png";
 import BucketListImg from "./UI/Images/bucket-list.png";
@@ -40,19 +37,14 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState("");
 
   const handleImageClick = (image) => {
-    // console.log("handleImageClick called with image:", image);
     setSelectedImage(image);
-    // console.log("selectedImage state updated to:", selectedImage);
     setModalOpen(true);
-    // console.log("modalOpen state updated to:", modalOpen);
   };
 
   const closeModal = () => {
     setSelectedImage("");
     setModalOpen(false);
   };
-
-  const siderRef = React.useRef(null);
 
   return (
     <Router>
@@ -62,19 +54,14 @@ const App = () => {
           collapsed={collapsed}
           onCollapse={() => setCollapsed(!collapsed)}
           className={`${styles.sider} ${collapsed ? styles.collapsed : ""}`}
-          // breakpoint="lg"
           trigger={<MenuOutlined />}
-          collapsedWidth="50"
-          ref={siderRef}
-          currentLink={currentLink}
-          setCurrentLink={setCurrentLink}
           style={{ position: "fixed", zIndex: 1, height: "100vh" }}
         >
           <div className="logo" />
           <Menu
             theme="dark"
-            // defaultselectedkeys={["3"]}
-            // selectedkeys={[currentLink]}
+            defaultselectedkeys={["1"]}
+            selectedkeys={[currentLink]}
             onSelect={(item) => setCurrentLink(item.key)}
             mode="inline"
           >
@@ -148,16 +135,14 @@ const App = () => {
           <Content style={{ margin: "0 16px" }}>
             <div
               className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
+              // style={{ padding: 24, minHeight: 360 }}
             >
               <Routes>
                 <Route
                   path="/"
                   element={
                     <TodoContainer
-                      // collapsed={collapsed}
                       tableName={"The Matrix"}
-                      // setCurrentLink={setCurrentLink}
                       searchTerm={searchTerm}
                       image={MatrixImg}
                       handleImageClick={handleImageClick}

@@ -9,37 +9,21 @@
   font-weight: 700; /* Makes the error message bold */
 }
 
-/* ----grid from the div tag ----*/
-.split_box {
-  display: grid;
-  grid-template-columns: 1fr 330px;
-  height: 100vh;
-  margin-top: 0;
-  
-
-}
-
-/*--- this is the item description component---*/
-.right_pane {
-  background-color: var(--background-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  flex-direction: column;
-  margin-left: 0%;
-}
-
 /*--- AddForm and TodoList component ---*/
-.left_pane {
+.todo_list {
   background-color: var(--background-color);
   border: 1px solid var(--border-color-base);
-  border-top: 1px;
-  border-left: 1px;
-  border-right: 1px;
-  margin-left: 10rem;
-  margin-top: 0;
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: flex;
+  border: none;
+  flex-direction: column;
+  padding-left: 5rem;
+  height: 100%;
+  width: 90%;
+  overflow-y: auto;
+  padding-top: 1rem;
+  min-height: 90vh;
 }
 
 .banner {
@@ -74,7 +58,7 @@
 
 .image_link {
   width: 10rem;
-  height: 10rem;  
+  height: 10rem;
   display: block;
   margin: auto;
   cursor: pointer;
@@ -99,6 +83,7 @@
   height: 23px;
   opacity: 1;
   margin-left: auto;
+  margin-right: auto;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   border: 1px solid;
@@ -115,97 +100,39 @@
 
 /* iPhone XR */
 @media only screen and (max-width: 414px) {
-  .split_box {
-    grid-template-columns: 1fr;
-  }
-
-  .left_pane {
-    margin: 5%;
-    padding: 5%;
-  }
-  .right_pane {
-    margin: 5%;
-    padding: 5%;
+  .todo_list {
+    margin: auto;
   }
 }
 
 /* iPad Air */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .split_box {
-    grid-template-columns: 1fr 330px;
-    margin-top: 0;
-    padding-top: 0;
-  }
-  .left_pane {
-    margin: 5%;
-    padding: 5%;
-    flex: 1;
-  }
-  .right_pane {
-    margin: 0;
-    padding: 0;
-    flex: 0 0 330px;
+  .todo_list {
+    margin: auto;
   }
 }
 
 /* iPad Mini */
-@media only screen and (min-width: 415px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
-  (min-resolution: 144dpi) {
-  .split_box {
-    grid-template-columns: 1fr;
-    margin-top: 0;
-    padding-top: 0;
-  }
-  .left_pane {
-    margin: 5%;
-    padding: 5%;
-    flex: 1;
-  }
-  .right_pane {
-    margin: 0;
-    padding: 0;
-    flex: 0 0 330px;
+@media only screen and (min-width: 415px) and (max-width: 1024px) {
+  .todo_list {
+    margin: auto;
   }
 }
 
-
 @media only screen and (min-width: 920px) and (max-width: 2560px) {
-  .split_box {
-    grid-template-columns: 1fr 330px;
-    margin-top: 0;
-    padding-top: 0;
-    
-  }
-  .left_pane {
-    margin: 5%;
-    padding: 5%;
-    flex: 1;
-  }
-  .right_pane {
-    margin: 0;
-    padding: 0;
-    flex: 0 0 330px;
+  .todo_list {
+    margin: auto;
   }
 }
 
 @media only screen and (min-width: 2560px) {
-  .split_box {
-    grid-template-columns: 1fr 500px;
-    margin-top: 0;
-    padding-top: 0;
-  }
-  .left_pane {
-    margin: 5%;
-    padding: 5%;
-    flex: 1;
-  }
-  .right_pane {
-    margin: 0;
-    padding: 0;
-    flex: 0 0 330px;
+  .todo_list {
+    margin: auto;
   }
 }
+
 @media screen and (max-width: 767px) {
+  
   .image_link {
     width: 6rem;
     height: 6rem;
@@ -217,6 +144,3 @@
     font-size: 0.75rem;
   }
 }
-
-
-

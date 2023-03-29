@@ -12,23 +12,23 @@ const ItemDescription = ({
   return (
     <>
       <ul className={style.ul_el}>
-        {todoList.map((todoList) => {
-          if (todoList.id === itemDescription) {
-            return (
-              <>
-                <DescriptionText
-                  key={todoList.id}
-                  todoList={todoList}
-                  className={style.li_el}
-                  onEditDescription={onEditDescription}
-                  tableName={tableName}
-                />
-              </>
-            );
-          }
-          // Add a return statement for the case where the if statement doesn't match
-          return null;
-        })}
+        {todoList &&
+          todoList.map((todo) => {
+            if (todo.id === itemDescription) {
+              return (
+                <>
+                  <DescriptionText
+                    key={todo.id}
+                    todoList={todo}
+                    className={style.li_el}
+                    onEditDescription={onEditDescription}
+                    tableName={tableName}
+                  />
+                </>
+              );
+            }
+            return null;
+          })}
       </ul>
     </>
   );

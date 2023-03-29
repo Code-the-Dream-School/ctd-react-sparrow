@@ -45,6 +45,7 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
             value={textDescription}
             onChange={onChangeDescription}
             placeholder="Add Action Steps ..."
+            autoSize={{ minRows: 5, maxRows: 50 }}
           ></TextArea>
           <div class="button-wrapper">
             <Button className={styles.button} type="primary" htmlType="submit">
