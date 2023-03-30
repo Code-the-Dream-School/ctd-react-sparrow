@@ -1,4 +1,11 @@
 
+/* Sider styles */
+
+.collapsed {
+  width: 50px;
+}
+
+
 /* Modal styles */
 
 .modalContainer {
