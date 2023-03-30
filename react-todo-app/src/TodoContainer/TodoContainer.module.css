@@ -18,12 +18,12 @@
   align-items: flex;
   border: none;
   flex-direction: column;
-  padding-left: 5rem;
   height: 100%;
-  width: 90%;
   overflow-y: auto;
-  padding-top: 1rem;
+  padding-top: 0;
   min-height: 90vh;
+  width: 100%; /* increase the width of the todo_list component */
+  margin: auto; /* remove the margin property to center the component */
 }
 
 .banner {
@@ -96,51 +96,4 @@
   margin-left: 1rem;
   margin-top: 3px;
   font-size: 14px;
-}
-
-/* iPhone XR */
-@media only screen and (max-width: 414px) {
-  .todo_list {
-    margin: auto;
-  }
-}
-
-/* iPad Air */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .todo_list {
-    margin: auto;
-  }
-}
-
-/* iPad Mini */
-@media only screen and (min-width: 415px) and (max-width: 1024px) {
-  .todo_list {
-    margin: auto;
-  }
-}
-
-@media only screen and (min-width: 920px) and (max-width: 2560px) {
-  .todo_list {
-    margin: auto;
-  }
-}
-
-@media only screen and (min-width: 2560px) {
-  .todo_list {
-    margin: auto;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  
-  .image_link {
-    width: 6rem;
-    height: 6rem;
-  }
-  .banner {
-    font-size: 1.2rem;
-  }
-  .table_name {
-    font-size: 0.75rem;
-  }
 }

@@ -3,7 +3,7 @@ import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 import TodoList from "./Components/TodoList/TodoList.js";
 import ItemDescription from "./Components/ItemDescription/ItemDescription";
 import style from "./TodoContainer.module.css";
-import PropTypes from "prop-types";
+
 import { Tooltip } from "antd";
 import { Layout } from "antd";
 import { Drawer } from "antd";
@@ -21,7 +21,7 @@ import {
 // import {    handleImageClick  } from '../App'
 import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
 
-const { Content } = Layout;
+const { Content, Header } = Layout;
 
 const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
   const [todoList, setTodoList] = useState([]);
@@ -31,7 +31,7 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   const getPaginatedItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -39,13 +39,10 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
     return todoList.slice(startIndex, endIndex);
   };
 
-const handleItemsPerPageChange = (e) => {
-  const selectedValue = Number(e.target.value);
-  setItemsPerPage(selectedValue);
-};
-  
-  
-
+  const handleItemsPerPageChange = (e) => {
+    const selectedValue = Number(e.target.value);
+    setItemsPerPage(selectedValue);
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -164,7 +161,31 @@ const handleItemsPerPageChange = (e) => {
   };
 
   return (
-    <Layout>
+    <Layout
+      style={{
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <Header
+        className={style.header}
+        mode="block"
+        style={{
+          backgroundColor: "var(--primary-color)",
+          padding: "0 2rem",
+          width: "100%",
+          height: "3rem",
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
+        }}
+      >
+        <div className="logo">
+          <p style={{ color: "#fff", fontSize: "20px" }}>LaserMind</p>
+        </div>
+      </Header>
       <Content
         style={{
           display: "flex",
@@ -255,16 +276,6 @@ const handleItemsPerPageChange = (e) => {
       </Content>
     </Layout>
   );
-};
-
-TodoContainer.propTypes = {
-  tableName: PropTypes.string.isRequired,
-  sideBar: PropTypes.node.isRequired,
-  searchTerm: PropTypes.string.isRequired,
-  setCurrentLink: PropTypes.func.isRequired,
-  setModalOpen: PropTypes.func.isRequired,
-  handleImageClick: PropTypes.func.isRequired,
-  image: PropTypes.string.isRequired,
 };
 
 export default TodoContainer;

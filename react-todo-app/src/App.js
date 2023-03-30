@@ -16,6 +16,7 @@ import MatrixImg from "./UI/Images/the-matrix.png";
 import PointBreakImg from "./UI/Images/pointbreak1.png";
 import BucketListImg from "./UI/Images/bucket-list.png";
 import InceptionImg from "./UI/Images/inception.png";
+import RedPillImg from "./UI/Images/red-pill.png";
 
 const { Content, Sider } = Layout;
 
@@ -46,6 +47,11 @@ const App = () => {
     setModalOpen(false);
   };
 
+  React.useEffect(() => {
+    // set the selected image on app start
+    setSelectedImage(RedPillImg);
+  }, []);
+
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
@@ -55,9 +61,15 @@ const App = () => {
           onCollapse={() => setCollapsed(!collapsed)}
           className={`${styles.sider} ${collapsed ? styles.collapsed : ""}`}
           trigger={<MenuOutlined />}
-          style={{ position: "fixed", zIndex: 1, height: "100vh" }}
+          style={{
+            position: "relative",
+            display: "inline-block",
+            zIndex: 1,
+            height: "100vh",
+            width: "20px",
+          }}
         >
-          <div className="logo" />
+          {/* <div className="logo" /> */}
           <Menu
             theme="dark"
             defaultselectedkeys={["1"]}
@@ -131,59 +143,54 @@ const App = () => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
-          <Content style={{ margin: "0 16px" }}>
-            <div
-              className="site-layout-background"
-              // style={{ padding: 24, minHeight: 360 }}
-            >
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <TodoContainer
-                      tableName={"The Matrix"}
-                      searchTerm={searchTerm}
-                      image={MatrixImg}
-                      handleImageClick={handleImageClick}
-                    />
-                  }
-                ></Route>
-                <Route
-                  path="/pointbreak"
-                  element={
-                    <TodoContainer
-                      tableName={"Point Break"}
-                      searchTerm={searchTerm}
-                      image={PointBreakImg}
-                      handleImageClick={handleImageClick}
-                    />
-                  }
-                />
-                <Route
-                  path="/bucket"
-                  element={
-                    <TodoContainer
-                      tableName={"The Bucket List"}
-                      searchTerm={searchTerm}
-                      image={BucketListImg}
-                      handleImageClick={handleImageClick}
-                    />
-                  }
-                />
-                <Route
-                  path="/inception"
-                  element={
-                    <TodoContainer
-                      tableName={"Inception"}
-                      searchTerm={searchTerm}
-                      image={InceptionImg}
-                      handleImageClick={handleImageClick}
-                    />
-                  }
-                />
-              </Routes>
-            </div>
+        <Layout>
+          <Content>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <TodoContainer
+                    tableName={"The Matrix"}
+                    searchTerm={searchTerm}
+                    image={MatrixImg}
+                    handleImageClick={handleImageClick}
+                  />
+                }
+              ></Route>
+              <Route
+                path="/pointbreak"
+                element={
+                  <TodoContainer
+                    tableName={"Point Break"}
+                    searchTerm={searchTerm}
+                    image={PointBreakImg}
+                    handleImageClick={handleImageClick}
+                  />
+                }
+              />
+              <Route
+                path="/bucket"
+                element={
+                  <TodoContainer
+                    tableName={"The Bucket List"}
+                    searchTerm={searchTerm}
+                    image={BucketListImg}
+                    handleImageClick={handleImageClick}
+                  />
+                }
+              />
+              <Route
+                path="/inception"
+                element={
+                  <TodoContainer
+                    tableName={"Inception"}
+                    searchTerm={searchTerm}
+                    image={InceptionImg}
+                    handleImageClick={handleImageClick}
+                  />
+                }
+              />
+            </Routes>
           </Content>
 
           {/* Modal */}
