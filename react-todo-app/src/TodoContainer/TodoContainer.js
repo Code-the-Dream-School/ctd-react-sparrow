@@ -19,7 +19,7 @@ import {
   requestEditDescription,
 } from "./API";
 // import {    handleImageClick  } from '../App'
-import { ReactComponent as SortButton } from "./Components/IconsComponents/sort.svg";
+import { SortAscendingOutlined } from "@ant-design/icons";
 
 const { Content, Header } = Layout;
 
@@ -31,7 +31,7 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   const getPaginatedItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -221,7 +221,10 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
               tableName={tableName}
             />
             <Tooltip title="Sort Actions">
-              <SortButton className={style.sort_button} onClick={handleSort} />
+              <SortAscendingOutlined
+                className={style.sort_button}
+                onClick={handleSort}
+              />
             </Tooltip>
             {isLoading ? (
               <span className={style.loading_text}>Is Loading...</span>
@@ -256,12 +259,14 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
             </select>
           </div>
           <Drawer
+            className="drawer-right"
             title="Action Steps:"
             placement="right"
             closable={true}
             onClose={() => setDrawerVisible(false)}
             open={drawerVisible}
             width={380}
+            zIndex={1}
           >
             <ItemDescription
               itemDescription={itemDescription}

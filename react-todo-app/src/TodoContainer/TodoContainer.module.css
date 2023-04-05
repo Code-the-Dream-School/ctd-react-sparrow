@@ -1,3 +1,7 @@
+.drawer-right {
+  background-color: var(--background-color);
+}
+
 /* ----user errors ----*/
 .error {
   color: var(--error-color);
@@ -12,24 +16,25 @@
 /*--- AddForm and TodoList component ---*/
 .todo_list {
   background-color: var(--background-color);
-  border: 1px solid var(--border-color-base);
+  /* border: 1px solid var(--border-color-base); */
   display: flex;
   justify-content: space-between;
   align-items: flex;
   border: none;
   flex-direction: column;
   height: 100%;
-  overflow-y: auto;
-  padding-top: 0;
-  min-height: 90vh;
-  width: 100%; /* increase the width of the todo_list component */
-  margin: auto; /* remove the margin property to center the component */
+  /* overflow-y: auto; */
+  padding: auto;
+  min-height: 70%;
+  width: 100%;
+  margin: auto;
 }
 
 .banner {
   font-size: 2rem;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 0;
+  padding-top: 0%;
   margin-bottom: 1rem;
   font-weight: 500;
   text-decoration: none; /* add underline */
@@ -78,9 +83,10 @@
 
 /*Sort button*/
 .sort_button {
-  color: #393d40;
-  width: 23px;
-  height: 23px;
+  color: var(--text-color);
+  /* width: 23px; */
+  /* height: 23px; */
+  font-size: 1rem;
   opacity: 1;
   margin-left: auto;
   margin-right: auto;

@@ -59,7 +59,6 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
 };
 
 DescriptionText.propTypes = {
-  todoList: PropTypes.array,
   onEditDescription: PropTypes.func,
   table_name: PropTypes.string,
 };
