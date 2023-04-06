@@ -22,6 +22,7 @@
   flex-direction: column;
   height: auto;
   margin-top: 5rem;
+  flex: 1;
 }
 
 .todo_list {
@@ -39,6 +40,7 @@
   width: 100%;
   max-width: 50rem;
   margin: 3 0 rem;
+  /* flex: 1; */
 }
 
 .banner {
@@ -73,8 +75,8 @@
 /*Image Component*/
 
 .image_link {
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   display: block;
   margin: 0.5rem auto;
   cursor: pointer;
@@ -91,6 +93,7 @@
   border: 1px solid white; /* add the inner white border to the image */
   border-radius: 50%; /* make the image circular */
   object-fit: contain;
+  min-width: 200px;
 }
 
 /*Sort button*/
@@ -114,4 +117,34 @@
   margin-left: 1rem;
   margin-top: 3px;
   font-size: 14px;
+}
+
+@media screen and (max-width: 480px) {
+  .image_link {
+    width: 6rem;
+    height: 6rem;
+  }
+  li {
+    min-width: 20px;
+  }
+  .banner {
+    display: none;
+  }
+  .image_link {
+    display: none;
+  }
+  .table_name {
+    display: none;
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 896px) {
+  .banner {
+    display: none;
+  }
+  .image_link {
+    display: none;
+  }
+  .table_name {
+    display: none;
+  }
 }

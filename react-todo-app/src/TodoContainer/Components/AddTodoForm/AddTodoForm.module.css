@@ -1,13 +1,14 @@
 .label_container {
-  margin-top: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px;
   width: 100%;
+  flex: 0 0 1;
 }
 
 .add_button {
