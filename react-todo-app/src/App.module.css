@@ -1,10 +1,14 @@
-
 /* Sider styles */
 
-.collapsed {
-  width: 50px;
+.sider.collapsed {
+  width: 100%;
+  /* flex: 1; */
 }
-
+@media screen and (max-width: 767px) {
+  .sider.collapsed {
+    width: 20px;
+  }
+}
 
 /* Modal styles */
 
@@ -48,4 +52,3 @@
   max-width: 100%;
   max-height: 90vh;
 }
-

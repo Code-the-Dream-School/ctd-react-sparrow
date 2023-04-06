@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import style from "./TodoListItem.module.css";
-import { ReactComponent as XIcon } from "../IconsComponents/x.svg";
-import { ReactComponent as NoteIcon } from "../IconsComponents/note.svg";
 import PropTypes from "prop-types";
 import { Tooltip, List, Checkbox, Input, Typography } from "antd";
-
+import { DeleteOutlined, FormOutlined } from "@ant-design/icons";
 const { TextArea } = Input;
 
 // import { requestEditCheck } from "../../API";
@@ -148,13 +146,13 @@ const TodoListItem = ({
         </div>
         <div>
           <Tooltip title="Add Action Steps">
-            <NoteIcon
+            <FormOutlined
               className={style.icons}
               onClick={() => handleDescription(todoList.id)}
             />
           </Tooltip>
           <Tooltip title="Delete Action">
-            <XIcon
+            <DeleteOutlined
               className={style.icons}
               onClick={() => {
                 onRemoveTodo(todoList.id, tableName);

@@ -1,23 +1,32 @@
 .label_container {
-  margin-top: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid black;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   padding: 5px;
+  width: 100%;
+  flex: 0 0 1;
 }
 
 .add_button {
-  background-color: #E6F7FF;
-  color: #393d40;
-  width: 30px;
-  height: 30px;
-  border-color: #62929e;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 1em; */
+  /* height: 1em; */
+  font-size: 25px;
+  border-color: var(--border-color);
   border-top: 1px;
   border-left: 1px;
   border-bottom: 1px;
   border-right: 1px;
   cursor: pointer;
-  margin-left: 1px;
+  margin-left: 5px;
+  margin-right: 2px;
+
 }

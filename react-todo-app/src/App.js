@@ -66,7 +66,7 @@ const App = () => {
             display: "inline-block",
             zIndex: 1,
             height: "100vh",
-            width: "20px",
+            width: `${collapsed ? "40px" : "100px"}`,
           }}
         >
           {/* <div className="logo" /> */}

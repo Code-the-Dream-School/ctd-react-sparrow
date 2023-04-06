@@ -1,20 +1,20 @@
 .listItem_container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  min-height: 30px;
+  align-items: center;
+  min-height: 20px;
   width: 100%;
-  flex: 1 1 auto;
-  justify-content: flex-start;
+  /* flex: 1 1 auto; */
+  justify-content: center;
 }
 
 .checkbox_container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start; 
-  width: 40px;
-  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 20px;
   flex: 0 0 auto;
 }
 
@@ -28,7 +28,7 @@
   color: var(--text-color);
   font-size: 14px;
   font-weight: 500;
-  min-height: 30px;
+  min-height: 20px;
   border-bottom: 1px solid var(--border-color-base);
   border-radius: 3px;
   word-wrap: break-word;
@@ -44,7 +44,8 @@
   margin-right: 1rem;
   display: flex;
   align-items: center; /* align vertically */
-  justify-content: flex-start; /* center horizontally */
+  justify-content: center; /* center horizontally */
+  font: 1rem;
 }
 
 .item_text {
@@ -62,9 +63,10 @@
 /* ------ buttons and icons ------*/
 
 .icons {
-  color: #393d40;
-  width: 20px;
-  height: 20px;
+  color: var(--text-color);
+  /* width: 20px; */
+  /* height: 20px; */
+  font-size: 1rem;
   opacity: 1;
   cursor: pointer;
   display: flex;
@@ -72,6 +74,7 @@
   margin: 0 10px;
   margin-left: auto;
   align-items: center;
+  padding: 2px;
 }
 
 .icons:hover {
@@ -84,7 +87,7 @@
   background-color: var(--background-color);
   outline: none;
   width: 100%;
-  color: black;
+  color: var(--text-color);
   font-weight: bold;
   padding: 8px 8px 5px;
   font-size: 12px;
