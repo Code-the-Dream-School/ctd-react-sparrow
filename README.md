@@ -17,6 +17,22 @@ Sync tasks with Airtable backend
 
 Support Responsive design for all screen sizes with Ant Design UI components.
 
-<img alt="TodoApp-Matrix" src="/react-todo-app/src/UI/Images/PointBreak-Edit.png" width="700px" >
+<img alt="Task-Edit" src="/react-todo-app/src/UI/Images/PointBreak-Edit.png" width="700px" >
 
+## Similar to React JS managing variables state, TodoApp - TheMatrix helps to manage your state of mind when creating and managing your activity.  
 
+My favorite movies help me to focus my mind and set me in a creative mode. 
+
+ 
+
+The 4 lists encompass my Activities Lifecycle:  
+
+“The Matrix” - The Daily Hacks 
+
+“Point Break” - Weekly Habits 
+
+“Bucket List” - Annual Goals 
+
+“Inception” - Lifetime Ideas 
+
+<img alt="Description-Edit" src="/react-todo-app/src/UI/Images/Description-Drawer.png" width="700px" >
