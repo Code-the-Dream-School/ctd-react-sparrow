@@ -21,7 +21,8 @@ Support Responsive design for all screen sizes with Ant Design UI components.
 
 ## Similar to React JS managing variables state, TodoApp - TheMatrix helps to manage your state of mind when creating and managing your activity.  
 
-My favorite movies help me to focus my mind and set me in a creative mode. 
+My favorite movies help me to focus my mind and set me in a creative mode.
+For enhancing visual effects, I can easily enlarge the movie images in a full-screen modal by clicking on them and on the top banner.
 
  
 
