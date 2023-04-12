@@ -1,7 +1,6 @@
-.drawer-right {
-  background-color: var(--background-color);
+body::-webkit-scrollbar {
+  display: none;
 }
-
 /* ----user errors ----*/
 .error {
   color: var(--error-color);
@@ -119,6 +118,10 @@
   font-size: 14px;
 }
 
+.drawer-right {
+background-color:  "#f0f8ff !important"
+
+}
 @media screen and (max-width: 480px) {
   .image_link {
     width: 6rem;

@@ -145,7 +145,7 @@ const TodoListItem = ({
           )}
         </div>
         <div>
-          <Tooltip title="Add Action Steps">
+          <Tooltip mouseLeaveDelay={0} zIndex={0} title="Add Action Steps">
             <FormOutlined
               className={style.icons}
               onClick={() => handleDescription(todoList.id)}

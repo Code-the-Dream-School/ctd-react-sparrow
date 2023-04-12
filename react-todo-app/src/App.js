@@ -16,7 +16,8 @@ import MatrixImg from "./UI/Images/the-matrix.png";
 import PointBreakImg from "./UI/Images/pointbreak1.png";
 import BucketListImg from "./UI/Images/bucket-list.png";
 import InceptionImg from "./UI/Images/inception.png";
-import RedPillImg from "./UI/Images/red-pill.png";
+// import RedPillImg from "./UI/Images/red-pill.png";
+import Morpheus from "./UI/Images/ToDoOrNotToDo1.gif";
 
 const { Content, Sider } = Layout;
 
@@ -49,7 +50,8 @@ const App = () => {
 
   React.useEffect(() => {
     // set the selected image on app start
-    setSelectedImage(RedPillImg);
+    setSelectedImage(Morpheus);
+    setModalOpen(true); // set modal open by default
   }, []);
 
   return (
