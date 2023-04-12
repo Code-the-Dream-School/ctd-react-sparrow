@@ -34,7 +34,7 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
 
   return (
     <div>
-      <li>
+      <li key={todoList.id}>
         <form onSubmit={onSubmit}>
           <label htmlFor="textDescription" className={styles.title}>
             {todoList.fields.Title}:
@@ -47,7 +47,7 @@ const DescriptionText = ({ todoList, onEditDescription, tableName }) => {
             placeholder="Add Action Steps ..."
             autoSize={{ minRows: 5, maxRows: 50 }}
           ></TextArea>
-          <div class="button-wrapper">
+          <div className="button-wrapper">
             <Button className={styles.button} type="primary" htmlType="submit">
               Add Algorithm
             </Button>

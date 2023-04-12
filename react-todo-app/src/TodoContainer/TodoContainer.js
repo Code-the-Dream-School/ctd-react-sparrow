@@ -267,6 +267,7 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
             open={drawerVisible}
             width={380}
             zIndex={10}
+            style={{ background: "#f0f8ff !important" }}
           >
             <ItemDescription
               itemDescription={itemDescription}
