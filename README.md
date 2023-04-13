@@ -43,3 +43,29 @@ The 4 lists encompass my Activities Lifecycle:
 
 
 <img alt="Description-Edit" src="/react-todo-app/src/UI/Images/Description-Drawer.png" width="700px" >
+
+
+## Netlify deployed view:
+https://helpful-hotteok-3e6fac.netlify.app/
+
+
+
+<img alt="TodoApp-Matrix" src="/react-todo-app/src/UI/Images/TodoApp-TheMatrix.png" width="700px" >
+
+## What I Learned: 
+
+* React Component Architecture, Hooks, Routes, State, Props, Lifecycle Methods 
+
+* REST API, React Axios, Async/Await
+
+* Airtable as a Backend Db, Configuring Netlify and Vercel deployment with Airtable API keys
+
+* Responsive design with Ant Design UI Components
+
+* Modals for Image Display onClick and OnLoad
+
+* Canva for Image Design and Edit
+
+* AI Image Generator - Midjourney - For enhanced UI
+
+
