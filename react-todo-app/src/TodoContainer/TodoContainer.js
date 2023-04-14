@@ -8,6 +8,7 @@ import { Tooltip } from "antd";
 import { Layout } from "antd";
 import { Drawer } from "antd";
 import { Pagination } from "antd";
+import { Spin } from "antd";
 
 import RedPillImg from "../UI/Images/red-pill.png";
 import {
@@ -32,8 +33,20 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [sortByTimeAsc, setSortByTimeAsc] = useState(true);
+
+  const handlePageChange = (page) => {
+    setIsLoading(true);
+    setCurrentPage(page);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  };
 
   const getPaginatedItems = () => {
+    if (isLoading) {
+      return [];
+    }
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return todoList.slice(startIndex, endIndex);
@@ -47,15 +60,18 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
-      try {
-        const data = await requestGetTodo(tableName);
-        setTodoList(data.records);
-      } catch (error) {
-        setErrorMessage(
-          "Error fetching data from the server. Please try again."
-        );
-      }
-      setIsLoading(false);
+
+      setTimeout(async () => {
+        try {
+          const data = await requestGetTodo(tableName);
+          setTodoList(data.records);
+        } catch (error) {
+          setErrorMessage(
+            "Error fetching data from the server. Please try again."
+          );
+        }
+        setIsLoading(false);
+      }, 1000);
     };
     getData();
   }, [tableName]);
@@ -66,17 +82,32 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
     }
   }, [todoList, isLoading]);
 
-  const handleSort = async () => {
+  const handleSortByTitle = async () => {
+    setIsLoading(true);
     const isAscending = direction === "asc";
     const sortDirection = isAscending ? "desc" : "asc";
     setDirection(sortDirection);
     try {
-      const result = await requestSortData(tableName, direction);
+      const result = await requestSortData(tableName, sortDirection);
       setTodoList(result.records);
     } catch (error) {
       setErrorMessage("Error sorting data. Please try again.");
     }
     setIsLoading(false);
+  };
+
+  const handleSortByTime = () => {
+    const sortedList = [...todoList].sort((a, b) => {
+      const createdTimeA = new Date(a.fields.createdTime);
+      const createdTimeB = new Date(b.fields.createdTime);
+      if (sortByTimeAsc) {
+        return createdTimeA - createdTimeB;
+      } else {
+        return createdTimeB - createdTimeA;
+      }
+    });
+    setTodoList(sortedList);
+    setSortByTimeAsc(!sortByTimeAsc);
   };
 
   const addTodo = async (newTodo, tableName) => {
@@ -220,18 +251,38 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
               todoList={todoList}
               tableName={tableName}
             />
-            <Tooltip title="Sort Actions">
-              <SortAscendingOutlined
-                className={style.sort_button}
-                onClick={handleSort}
-              />
-            </Tooltip>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                width: "100%",
+                justifyContent: "space-around",
+              }}
+            >
+              <div>
+                <Tooltip title="Sort by Title">
+                  <SortAscendingOutlined
+                    className={style.sort_by_title}
+                    onClick={handleSortByTitle}
+                  />
+                </Tooltip>
+              </div>
+              
+              <div>
+                <Tooltip title="Sort by Time">
+                  <SortAscendingOutlined
+                    className={style.sort_by_time}
+                    onClick={handleSortByTime}
+                  />
+                </Tooltip>
+              </div>
+            </div>
             {isLoading ? (
-              <span className={style.loading_text}>Is Loading...</span>
+              <Spin size="large" animation="border" variant="primary" />
             ) : (
               <TodoList
                 searchTerm={searchTerm}
-                // todoList={todoList}
                 onRemoveTodo={removeTodo}
                 onEditTodo={editTodo}
                 handleDescription={handleDescription}
@@ -239,25 +290,43 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
                 todoList={getPaginatedItems()}
               />
             )}
-            <Pagination
-              total={todoList.length}
-              pageSize={itemsPerPage}
-              current={currentPage}
-              onChange={(page) => setCurrentPage(page)}
-            />
-          </div>
-          <div>
-            <label htmlFor="itemsPerPage">Items per page:</label>
-            <select
-              id="itemsPerPage"
-              value={itemsPerPage}
-              onChange={handleItemsPerPageChange}
+            <div
+              className={style.pagination}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "1rem",
+                marginTop: "2rem",
+              }}
             >
-              <option value={5}>5</option>
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-            </select>
+              <span style={{ marginRight: "1rem" }}>Items per page:</span>
+              <select
+                defaultValue={itemsPerPage}
+                onChange={handleItemsPerPageChange}
+                style={{ marginRight: "1rem" }}
+              >
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={15}>15</option>
+              </select>
+              <span style={{ marginRight: "1rem" }}>Pages:</span>
+              {isLoading ? (
+                <Spin size="large" animation="border" variant="primary" />
+              ) : (
+                <Pagination
+                  showQuickJumper
+                  pageSizeOptions={["5", "10", "15"]}
+                  current={currentPage}
+                  total={todoList.length}
+                  pageSize={itemsPerPage}
+                  onChange={handlePageChange}
+                  onShowSizeChange={handleItemsPerPageChange}
+                  style={{ marginRight: "1rem" }}
+                />
+              )}
+            </div>
           </div>
+
           <Drawer
             className="drawer-right"
             title="Action Steps:"
@@ -267,7 +336,6 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
             open={drawerVisible}
             width={380}
             zIndex={10}
-            style={{ background: "#f0f8ff !important" }}
           >
             <ItemDescription
               itemDescription={itemDescription}
