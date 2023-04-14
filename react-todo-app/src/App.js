@@ -13,11 +13,11 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import MatrixImg from "./UI/Images/the-matrix.png";
-import PointBreakImg from "./UI/Images/pointbreak1.png";
+import PointBreakImg from "./UI/Images/point-break.png";
 import BucketListImg from "./UI/Images/bucket-list.png";
-import InceptionImg from "./UI/Images/inception.png";
+import InceptionImg from "./UI/Images/Inception5.gif";
 // import RedPillImg from "./UI/Images/red-pill.png";
-import Morpheus from "./UI/Images/ToDoOrNotToDo1.gif";
+import Morpheus from "./UI/Images/ToDoOrNotToDo.gif";
 
 const { Content, Sider } = Layout;
 
@@ -133,15 +133,11 @@ const App = () => {
               </Tooltip>
             </Menu.Item>
             <Menu.Item key="5">
-              {/* <div style={{ paddingTop: "50px", zIndex: 10 }}> */}
-              <Tooltip
-                title="Search Actions"
-                placement="top"
-                // style={{ marginTop: "40px" }}
-              >
-                <Search handleSearch={handleSearch} />
-              </Tooltip>
-              {/* </div> */}
+              {!collapsed && (
+                <Tooltip title="Search Actions" placement="top">
+                  <Search handleSearch={handleSearch} />
+                </Tooltip>
+              )}
             </Menu.Item>
           </Menu>
         </Sider>
