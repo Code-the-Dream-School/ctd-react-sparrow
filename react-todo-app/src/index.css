@@ -1,0 +1,60 @@
+@import "~antd/dist/reset.css";
+
+/* Define global color variables */
+:root {
+  --primary-color: #1890ff;
+  --background-color: #f0faff;
+  --success-color: #52c41a;
+  --warning-color: #faad14;
+  --error-color: #f5222d;
+  --text-color: #333;
+  --text-color-secondary: #999;
+  --disabled-color: #ccc;
+  --border-color-base: #d9d9d9;
+  --sidebar-color: #bae7ff;
+  --transition-duration: 0.25s;
+}
+
+/* Use the variables in your styles */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid var(--border-color-base);
+}
+
+a {
+  color: var(--primary-color);
+}
+
+/* Override Ant Design's default variables */
+/* @import 'my-theme-variables.less'; */
+
+/* console.log(blue); // ['#E6F7FF', '#BAE7FF', '#91D5FF', '#69C0FF', '#40A9FF', '#1890FF', '#096DD9', '#0050B3', '#003A8C', '#002766'] */
+/* console.log(blue.primary); // '#1890FF' */
+
+/*Fonts*/
+
+@font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji';
+
+/* @font-face {
+  font-family: "SF Pro";
+  src: url("/Library/Fonts/SF-Pro-Text-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+body {
+  font-family: "Segoe UI", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto:wght@100&display=swap");
+
+/*Universal style*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial;
+  box-sizing: border-box;
+}
