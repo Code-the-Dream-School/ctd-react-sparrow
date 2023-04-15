@@ -1,161 +1,157 @@
-  body::-webkit-scrollbar {
+body::-webkit-scrollbar {
+  display: none;
+}
+/* ----user errors ----*/
+.error {
+  color: var(--error-color);
+  font-size: 1.125rem; /* equivalent to 18px */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center; /* Aligns the error message in the center */
+  text-decoration: underline; /* Underlines the error message */
+  font-weight: 700; /* Makes the error message bold */
+}
+
+/*--- AddForm and TodoList component ---*/
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: none;
+  flex-direction: column;
+  height: auto;
+  margin-top: 5rem;
+  flex: 1;
+}
+
+.todo_list {
+  background-color: var(--background-color);
+  /* border: 1px solid var(--border-color-base); */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 0;
+  min-height: 90%;
+  width: 100%;
+  max-width: 50rem;
+  margin: 3 0 rem;
+  /* flex: 1; */
+}
+
+.banner {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0%;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  text-decoration: none; /* add underline */
+  cursor: pointer; /* add cursor on hover */
+  transition: all 0.2s ease-in-out; /* add transition effect */
+}
+
+.banner:hover {
+  color: var(--error-color); /* change text color on hover */
+  text-shadow: 3px 2px 3px #68dcc5; /* add text shadow on hover */
+  transform: scale(1.1); /* add scale effect on hover */
+}
+
+/*todo list title*/
+.table_name {
+  font-weight: 500;
+  font-size: 1.4375rem; /* equivalent to 23px */
+  padding-top: 5px;
+  padding-left: 5px;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 10px; /* Adds more margin to the bottom */
+}
+
+/*Image Component*/
+
+.image_link {
+  width: 8rem;
+  height: 8rem;
+  display: block;
+  margin: 0.5rem auto;
+  cursor: pointer;
+  border: 4px solid var(--primary-color);
+  border-radius: 50%; /* make the border circular */
+  overflow: hidden; /* ensure that the image stays within the circular border */
+  padding: 4px; /* add some padding to make room for the inner border */
+}
+
+.image_link img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  min-width: 200px;
+  object-fit: contain;
+  border-radius: 50%; /* make the image circular */
+  border: 1px solid white; /* add the inner white border to the image */
+}
+
+/*Sort button*/
+.sort_by_title {
+  color: var(--text-color);
+  font-size: 1rem;
+  opacity: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.sort_by_time {
+  color: var(--text-color);
+  font-size: 1.4rem;
+  opacity: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  /* border: 1px solid; */
+  cursor: pointer;
+}
+
+/*------ loading text -------*/
+.loading_text {
+  display: block;
+  margin-left: 1rem;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.drawer-right {
+  background-color: #f0f8ff !important;
+}
+
+@media screen and (max-width: 480px) {
+  .image_link {
+    width: 6rem;
+    height: 6rem;
+  }
+  li {
+    min-width: 20px;
+  }
+  .banner {
     display: none;
   }
-  /* ----user errors ----*/
-  .error {
-    color: var(--error-color);
-    font-size: 1.125rem; /* equivalent to 18px */
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-align: center; /* Aligns the error message in the center */
-    text-decoration: underline; /* Underlines the error message */
-    font-weight: 700; /* Makes the error message bold */
-  }
-
-  /*--- AddForm and TodoList component ---*/
-  .container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    border: none;
-    flex-direction: column;
-    height: auto;
-    margin-top: 5rem;
-    flex: 1;
-  }
-
-  .todo_list {
-    background-color: var(--background-color);
-    /* border: 1px solid var(--border-color-base); */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border: none;
-    flex-direction: column;
-    height: 100vh;
-    overflow-y: auto;
-    padding: 0;
-    min-height: 90%;
-    width: 100%;
-    max-width: 50rem;
-    margin: 3 0 rem;
-    /* flex: 1; */
-  }
-
-  .banner {
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 0;
-    padding-top: 0%;
-    margin-bottom: 1rem;
-    font-weight: 500;
-    text-decoration: none; /* add underline */
-    cursor: pointer; /* add cursor on hover */
-    transition: all 0.2s ease-in-out; /* add transition effect */
-  }
-
-  .banner:hover {
-    color: var(--error-color); /* change text color on hover */
-    text-shadow: 3px 2px 3px #68dcc5; /* add text shadow on hover */
-    transform: scale(1.1); /* add scale effect on hover */
-  }
-
-  /*todo list title*/
-  .table_name {
-    font-weight: 500;
-    font-size: 1.4375rem; /* equivalent to 23px */
-    padding-top: 5px;
-    padding-left: 5px;
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 10px; /* Adds more margin to the bottom */
-  }
-
-  /*Image Component*/
-
   .image_link {
-    width: 8rem;
-    height: 8rem;
-    display: block;
-    margin: 0.5rem auto;
-    cursor: pointer;
-    border: 4px solid var(--primary-color);
-    border-radius: 50%; /* make the border circular */
-    overflow: hidden; /* ensure that the image stays within the circular border */
-    padding: 4px; /* add some padding to make room for the inner border */
+    display: none;
   }
-
-  .image_link img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    min-width: 200px;
-    object-fit: contain;
-    border-radius: 50%; /* make the image circular */
-    border: 1px solid white; /* add the inner white border to the image */
+}
+@media screen and (orientation: landscape) and (max-width: 896px) {
+  .banner {
+    display: none;
   }
-
-
-  /*Sort button*/
-  .sort_by_title  {
-    color: var(--text-color);
-    font-size: 1rem;
-    opacity: 1;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid;
-    cursor: pointer;
+  .image_link {
+    display: none;
   }
-
-  .sort_by_time {
-    color: var(--text-color);
-    font-size: 1rem;
-    opacity: 1;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid;
-    cursor: pointer;
-  }
-
-
-  /*------ loading text -------*/
-  .loading_text {
-    display: block;
-    margin-left: 1rem;
-    margin-top: 3px;
-    font-size: 14px;
-  }
-
-  .drawer-right {
-    background-color: #f0f8ff !important;
-  }
-
-
-
-  @media screen and (max-width: 480px) {
-    .image_link {
-      width: 6rem;
-      height: 6rem;
-    }
-    li {
-      min-width: 20px;
-    }
-    .banner {
-      display: none;
-    }
-    .image_link {
-      display: none;
-    }
-  }
-  @media screen and (orientation: landscape) and (max-width: 896px) {
-    .banner {
-      display: none;
-    }
-    .image_link {
-      display: none;
-    }
-  }
+}
