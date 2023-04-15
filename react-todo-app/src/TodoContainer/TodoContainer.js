@@ -21,6 +21,7 @@ import {
 } from "./API";
 // import {    handleImageClick  } from '../App'
 import { SortAscendingOutlined } from "@ant-design/icons";
+import { FieldTimeOutlined } from "@ant-design/icons";
 
 const { Content, Header } = Layout;
 
@@ -268,10 +269,10 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
                   />
                 </Tooltip>
               </div>
-              
+
               <div>
                 <Tooltip title="Sort by Time">
-                  <SortAscendingOutlined
+                  <FieldTimeOutlined
                     className={style.sort_by_time}
                     onClick={handleSortByTime}
                   />
@@ -307,7 +308,6 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
               >
                 <option value={5}>5</option>
                 <option value={10}>10</option>
-                <option value={15}>15</option>
               </select>
               <span style={{ marginRight: "1rem" }}>Pages:</span>
               {isLoading ? (
