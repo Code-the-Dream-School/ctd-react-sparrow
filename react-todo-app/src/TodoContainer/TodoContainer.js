@@ -35,6 +35,7 @@ const TodoContainer = ({ tableName, searchTerm, handleImageClick, image }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [sortByTimeAsc, setSortByTimeAsc] = useState(true);
+  const [sortByTitleAsc, setSortByTitleAsc] = useState(true);
 
   const handlePageChange = (page) => {
     setIsLoading(true);
