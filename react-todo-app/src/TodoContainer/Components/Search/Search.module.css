@@ -1,0 +1,19 @@
+.input {
+  padding: 3px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  width: 100%;
+  outline: 0;
+  background-color: var(--background-color);
+  transition: width 1s;
+  margin: 40px auto auto 20;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  min-height: 20px;
+}
+
+.input:hover {
+  width: 85%;
+  background-color: var(--background-color);
+}
